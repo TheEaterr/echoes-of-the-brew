@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://drnt8ao7dnk8s"]
+
+[node name="PotionSpot" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 490.0
+offset_top = 463.0
+offset_right = 530.0
+offset_bottom = 503.0
