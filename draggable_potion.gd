@@ -52,6 +52,8 @@ func _ready() -> void:
 	child_entered_tree.connect(_on_child_entered_tree)
 	child_exiting_tree.connect(_on_child_exiting_tree)
 	input_event.connect(_on_input_event)
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 
 	add_child(sprite)
 
