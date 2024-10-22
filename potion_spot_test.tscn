@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://drnt8ao7dnk8s"]
+
+[ext_resource type="Script" path="res://draggable_potion.gd" id="1_qsqai"]
+[ext_resource type="Texture2D" uid="uid://pmgqlnle5w45" path="res://assets/default_item.svg" id="2_7yp3m"]
+[ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://potion_spot.tscn" id="3_swji5"]
+
+[node name="PotionSpotTest" type="Node"]
+
+[node name="DraggablePotion2" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(426, 134)
+skew = 0.479966
+priority = 1
+script = ExtResource("1_qsqai")
+texture = ExtResource("2_7yp3m")
+metadata/_edit_group_ = true
+
+[node name="DraggablePotion" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(213, 67)
+priority = 1
+script = ExtResource("1_qsqai")
+texture = ExtResource("2_7yp3m")
+metadata/_edit_group_ = true
+
+[node name="PotionSpot3" parent="." instance=ExtResource("3_swji5")]
+position = Vector2(259, 286)
+
+[node name="PotionSpot2" parent="." instance=ExtResource("3_swji5")]
+position = Vector2(416, 161)
+
+[node name="PotionSpot" parent="." instance=ExtResource("3_swji5")]
+position = Vector2(219, 100)
+
+[connection signal="area_entered" from="DraggablePotion2" to="DraggablePotion2" method="_on_area_entered"]
+[connection signal="area_exited" from="DraggablePotion2" to="DraggablePotion2" method="_on_area_exited"]
+[connection signal="area_entered" from="DraggablePotion" to="DraggablePotion" method="_on_area_entered"]
+[connection signal="area_exited" from="DraggablePotion" to="DraggablePotion" method="_on_area_exited"]
