@@ -36,7 +36,7 @@ func _on_received_potion(potion:DraggablePotion) -> void:
 		return
 	hovering_potion = null
 	if current_potion:
-		current_potion.position = potion.source_area.position
+		current_potion.global_position = potion.source_area.global_position
 		current_potion.source_area = potion.source_area
 		potion.source_area.emit_signal("received_potion", current_potion)
 	current_potion = potion

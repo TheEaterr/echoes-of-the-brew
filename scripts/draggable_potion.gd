@@ -60,18 +60,20 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	# If the input_method is down and the object is and can be grabbed, update it's position
 	if Input.is_mouse_button_pressed(input_method) and is_grabbed and grabbable:
-		position = get_global_mouse_position() + grabbed_offset
+		global_position = get_global_mouse_position() + grabbed_offset
+		z_index = 2
 		mb_pressed = true
 	# Otherwise, if the mouse button was pressed on the previous frame but now isn't, the object is released
 	if not Input.is_mouse_button_pressed(input_method) and mb_pressed:
+		z_index = 1
 		if over_area:
 			over_area.emit_signal("received_potion", self)
-			position = over_area.position
+			global_position = over_area.global_position
 			source_area = over_area
 			over_area = null
 		else:
 			if source_area:
-				position = source_area.position
+				global_position = source_area.global_position
 				source_area.emit_signal("received_potion", self)
 		mb_pressed = false
 
@@ -99,7 +101,7 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 		is_grabbed = event.is_pressed()
 		# Helps a bit to make the dragging less choppy
 		if !centerDrag:
-			grabbed_offset = position - get_global_mouse_position()
+			grabbed_offset = global_position - get_global_mouse_position()
 
 func _on_child_entered_tree(child) -> void:
 	if (child is CollisionShape2D or child is CollisionPolygon2D) and child != default_collider:
@@ -116,7 +118,7 @@ func _on_area_entered(area:Area2D) -> void:
 		# if source area is null, then the object just got instantiated
 		if source_area == null:
 			source_area = area
-			position = area.position
+			global_position = area.global_position
 			source_area.emit_signal("received_potion", self)
 		else:
 			over_area = area
