@@ -42,9 +42,9 @@ func start_cooking():
 		
 
 func _on_Timer_timeout():
+	update_potion_animation()
 	if cooking_level < 100:
 		cooking_level += 1
-		update_potion_animation()
 	else:
 		timer.stop()
 		is_cooking = false
