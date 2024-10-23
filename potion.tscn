@@ -96,5 +96,7 @@ sprite_frames = SubResource("SpriteFrames_3ornj")
 animation = &"blue_low"
 frame_progress = 0.956274
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wntg2")
