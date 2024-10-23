@@ -6,62 +6,60 @@
 [ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(598, 125)
 script = ExtResource("1_hgtjr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(5, 5)
-offset = Vector2(0, 200)
-zoom = Vector2(0.5, 0.5)
-
 [node name="Button" type="Button" parent="."]
-offset_left = 828.0
-offset_top = 20.0
-offset_right = 994.0
-offset_bottom = 97.0
+offset_left = 762.0
+offset_top = 156.0
+offset_right = 928.0
+offset_bottom = 233.0
 theme_override_font_sizes/font_size = 25
 text = "TAKE ORDER"
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -466.0
-offset_top = -292.0
-offset_right = 859.0
-offset_bottom = -22.0
+offset_left = -578.0
+offset_top = -68.0
+offset_right = 747.0
+offset_bottom = 202.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PotionSpot" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(907, 268)
+position = Vector2(916, 382)
 
 [node name="PotionSpot2" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(648, 285)
+position = Vector2(743, 385)
 
 [node name="PotionSpot3" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(927, 698)
+position = Vector2(903, 691)
 
 [node name="PotionSpot4" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(910, 507)
+position = Vector2(921, 530)
 
 [node name="PotionSpot5" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(648, 693)
+position = Vector2(726, 696)
 
 [node name="PotionSpot6" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(641, 490)
+position = Vector2(738, 537)
 
 [node name="Potion" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(642, 275)
+position = Vector2(737, 375)
 
 [node name="Potion2" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(922, 689)
+position = Vector2(900, 680)
 
 [node name="Potion3" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(660, 675)
+position = Vector2(719, 689)
 
 [node name="Potion4" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(901, 489)
+position = Vector2(915, 519)
 
 [node name="Potion5" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(636, 486)
+position = Vector2(719, 517)
 
 [node name="Potion6" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(903, 262)
+position = Vector2(908, 367)
 
 [node name="Assembly" parent="." instance=ExtResource("4_oeskb")]
-position = Vector2(-495, 376)
+position = Vector2(-15, 352)
