@@ -40,22 +40,22 @@ position = Vector2(927, 698)
 position = Vector2(910, 507)
 
 [node name="PotionSpot5" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(650, 688)
+position = Vector2(648, 693)
 
 [node name="PotionSpot6" parent="." instance=ExtResource("4_32bdg")]
 position = Vector2(641, 490)
 
 [node name="PotionSpot7" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(-545, 466)
+position = Vector2(-723, 494)
 
 [node name="DraggablePotion" type="Area2D" parent="."]
-position = Vector2(624, 239)
+position = Vector2(640, 273)
 scale = Vector2(0.1, 0.1)
 script = ExtResource("2_y6qcr")
 texture = ExtResource("3_pgu72")
 
 [node name="DraggablePotion2" type="Area2D" parent="."]
-position = Vector2(639, 727)
+position = Vector2(646, 680)
 scale = Vector2(0.1, 0.1)
 script = ExtResource("2_y6qcr")
 texture = ExtResource("3_pgu72")
@@ -73,7 +73,7 @@ script = ExtResource("2_y6qcr")
 texture = ExtResource("3_pgu72")
 
 [node name="DraggablePotion6" type="Area2D" parent="."]
-position = Vector2(892, 252)
+position = Vector2(897, 254)
 scale = Vector2(0.1, 0.1)
 script = ExtResource("2_y6qcr")
 texture = ExtResource("3_pgu72")

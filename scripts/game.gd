@@ -1,3 +1,4 @@
+# game.gd
 extends Node2D
 
 var client_scene = preload("res://scenes/client.tscn")
@@ -21,6 +22,7 @@ func _on_take_order_pressed():
 # Fonction pour supprimer un client
 func remove_client(client):
 	print("Suppression du client : ", client)
+	print("Temps d'attente: ", client.waiting_time)
 	var client_index = client.client_index
 	clients.erase(client)  # Retire le client de la liste
 	client.queue_free()  # Supprime le client de la scène
@@ -33,3 +35,13 @@ func remove_client(client):
 # Lien entre le bouton et la fonction
 func _ready():
 	$Button.connect("pressed", Callable(self, "_on_take_order_pressed"))
+
+# Fonction pour mettre en pause tous les chronomètres des clients
+func pause_all_clients():
+	for client in clients:
+		client.pause_timer()
+
+# Fonction pour reprendre les chronomètres des clients
+func resume_all_clients():
+	for client in clients:
+		client.resume_timer()
