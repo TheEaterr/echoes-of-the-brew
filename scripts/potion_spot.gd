@@ -4,9 +4,11 @@ extends Area2D
 # Called by an emit_signal in DraggableSprite2D
 @warning_ignore("unused_signal")
 signal received_potion
+signal received_potion_for_client
 
 var hovering_potion: DraggablePotion = null
 var current_potion: DraggablePotion = null
+var is_client = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,3 +42,6 @@ func _on_received_potion(potion:DraggablePotion) -> void:
 		current_potion.source_area = potion.source_area
 		potion.source_area.emit_signal("received_potion", current_potion)
 	current_potion = potion
+	if is_client:
+		print("LOG signal emis")
+		emit_signal("received_potion_for_client", potion)

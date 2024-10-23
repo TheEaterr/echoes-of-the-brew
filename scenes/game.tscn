@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
-[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_xvioa"]
+[ext_resource type="PackedScene" path="res://scenes/potion.tscn" id="3_xvioa"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_32bdg"]
-[ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
+[ext_resource type="PackedScene" path="res://scenes/assembly.tscn" id="4_oeskb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hgtjr")

@@ -30,7 +30,6 @@ func remove_client(client):
 	for i in range(client_index, clients.size()):
 		clients[i].client_index = i  # Met à jour l'indice
 		clients[i].move_to_position(Vector2(-300 + queue_offset * i, 100))  # Déplace le client vers la nouvelle position
-		print("Client déplacé : ", clients[i])
 
 # Lien entre le bouton et la fonction
 func _ready():

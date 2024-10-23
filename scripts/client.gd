@@ -30,12 +30,6 @@ func show_order_icon():
 	$Potion.cooking_level = randi() % 100
 	$Potion.set_color($Potion.available_colors[randi() % ($Potion.available_colors.size() - 1) + 1])
 
-# Fonction pour détecter un clic sur le client
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		print("Client cliqué : ", self)
-		get_parent().remove_client(self)  # Appelle remove_client depuis la scène parent (game.gd)
-
 # Fonction pour gérer la pause du chronomètre
 func pause_timer():
 	timer_paused = true
@@ -44,5 +38,14 @@ func resume_timer():
 	timer_paused = false
 
 func _ready():
+	$PotionSpot.is_client = true
 	# Connecte le signal pour détecter les clics sur l'aire
 	show_order_icon()
+	$PotionSpot.connect("received_potion_for_client", Callable(self, "_on_potion_received"))
+
+func _on_potion_received(potion: DraggablePotion):
+	# Quand le client reçoit une potion, on le supprime
+	print("Potion reçue pour le client : ", self)
+	get_parent().remove_client(self)
+	potion.queue_free() 
+	

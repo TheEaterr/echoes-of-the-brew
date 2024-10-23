@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
-[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
+[ext_resource type="PackedScene" path="res://scenes/potion.tscn" id="3_22eut"]
+[ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k3qg"]
 atlas = ExtResource("1_nwp1f")
@@ -57,15 +58,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd8y8"]
 size = Vector2(111.25, 231.062)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qav1"]
-size = Vector2(110, 231)
-
 [node name="Client" type="CharacterBody2D"]
 script = ExtResource("1_35ctu")
 metadata/_edit_horizontal_guides_ = [-202.0]
 
+[node name="PotionSpot" parent="." instance=ExtResource("4_urfob")]
+visible = false
+position = Vector2(-20, -116)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -138)
+position = Vector2(-2, -139)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
 animation = &"walking_left"
 frame = 5
@@ -78,11 +80,3 @@ shape = SubResource("RectangleShape2D_sd8y8")
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
 position = Vector2(-3, -327)
 grabbable = false
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-60, -132)
-shape = SubResource("RectangleShape2D_8qav1")
-
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
