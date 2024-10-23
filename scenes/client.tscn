@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
-[ext_resource type="PackedScene" path="res://scenes/potion.tscn" id="3_22eut"]
+[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k3qg"]

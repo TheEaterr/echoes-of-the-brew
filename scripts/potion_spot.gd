@@ -43,5 +43,4 @@ func _on_received_potion(potion:DraggablePotion) -> void:
 		potion.source_area.emit_signal("received_potion", current_potion)
 	current_potion = potion
 	if is_client:
-		print("LOG signal emis")
 		emit_signal("received_potion_for_client", potion)

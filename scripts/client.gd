@@ -45,7 +45,6 @@ func _ready():
 
 func _on_potion_received(potion: DraggablePotion):
 	# Quand le client reçoit une potion, on le supprime
-	print("Potion reçue pour le client : ", self)
 	get_parent().remove_client(self)
 	potion.queue_free() 
 	
