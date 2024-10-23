@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ldrtcoaq56u"]
+
+[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="1_36rp4"]
+[ext_resource type="Script" path="res://scripts/draggable_potion.gd" id="1_lxpr7"]
+
+[node name="DraggablePotion" type="Area2D"]
+position = Vector2(436, 202)
+script = ExtResource("1_lxpr7")
+metadata/_edit_group_ = true
+
+[node name="Potion" parent="." instance=ExtResource("1_36rp4")]

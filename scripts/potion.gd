@@ -1,13 +1,12 @@
-extends Node
+extends DraggablePotion
 
 class_name Potion
 
 @export var color : String = "empty"
 @export var ingredients : Array = []
-@export var cooking_level : int = 0
+@export var cooking_level : int = 50
 @export var is_cooking : bool = false
 @export var timer : Timer
-@export var animation_sprite: AnimatedSprite2D
 @export var potion_sprite: Sprite2D
 
 var available_colors = ["empty", "purple", "blue", "green"]
@@ -30,21 +29,17 @@ func _init():
 	
 func update_potion_animation():
 	if color == "empty":
-		potion_sprite.visible = true
-		potion_sprite.texture = potion_textures["empty"]
+		$AnimatedSprite2D.play("empty")
 	else:
 		if cooking_level < 33:
-			potion_sprite.texture = potion_textures[color + "_high"]
+			$AnimatedSprite2D.play(color + "_high")
 		elif cooking_level < 66:
-			potion_sprite.visible = false
-			animation_sprite.visible = true
-			animation_sprite.play(color + "_mid")
+			$AnimatedSprite2D.visible = true
+			$AnimatedSprite2D.play(color + "_mid")
 		elif cooking_level < 100:
-			animation_sprite.play(color + "_low")
+			$AnimatedSprite2D.play(color + "_low")
 		else: 
-			animation_sprite.visible = false
-			potion_sprite.visible = true
-			potion_sprite.texture = potion_textures["empty"]
+			$AnimatedSprite2D.play("empty")
 
 	
 func start_cooking():
@@ -64,6 +59,8 @@ func _on_Timer_timeout():
 func set_color(new_color : String):
 	if new_color in available_colors:
 		color = new_color
+		update_potion_animation()
+		
 		
 func add_ingredients(new_ingredient : String):
 	if new_ingredient in available_ingredients and len(ingredients) < 2 :
@@ -72,9 +69,5 @@ func add_ingredients(new_ingredient : String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	super._ready()
+	update_potion_animation()

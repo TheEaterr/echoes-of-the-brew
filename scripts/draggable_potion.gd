@@ -15,14 +15,6 @@ signal released
 @export var centerDrag := false
 ## The input button that will be used to grab the sprite
 @export var input_method: MouseButton = MOUSE_BUTTON_LEFT
-## The texture that will be displayed by the sprite. [br]
-## Note: The texture can't be rezised as nicley as a Sprite2D.
-@export var texture : Texture2D : 
-	set(value):
-		texture = value
-		sprite.texture = texture
-		# Update the default_collider with the shape and size of the sprite, if it exists
-		update_default_collider()
 
 ## The Sprite node that will be used to display the texture
 var sprite := Sprite2D.new()
@@ -60,8 +52,6 @@ func _ready() -> void:
 	default_collider = CollisionShape2D.new()
 	default_collider.shape = RectangleShape2D.new()
 
-	update_default_collider()
-	
 	add_child(default_collider)
 	if has_custom_collider():
 		toggle_default_collider(false)
@@ -101,15 +91,6 @@ func has_custom_collider() -> bool:
 func toggle_default_collider(on: bool) -> void:
 	default_collider.visible = on
 	default_collider.disabled = not on
-
-
-## Updates the default collider to match the size of the sprite
-func update_default_collider() -> void:
-		if default_collider and default_collider.shape:
-			if not texture:
-				default_collider.shape.size = Vector2(0, 0)
-				return
-			default_collider.shape.size = Vector2(texture.get_width(), texture.get_height())
 
 
 func _on_input_event(_viewport, event, _shape_idx) -> void:

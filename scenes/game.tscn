@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=4 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
-[ext_resource type="Script" path="res://scripts/draggable_potion.gd" id="2_y6qcr"]
-[ext_resource type="Texture2D" uid="uid://bagg11myomdv3" path="res://assets/potion.jpg" id="3_pgu72"]
+[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_xvioa"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_32bdg"]
 
 [node name="Game" type="Node2D"]
@@ -48,38 +47,22 @@ position = Vector2(641, 490)
 [node name="PotionSpot7" parent="." instance=ExtResource("4_32bdg")]
 position = Vector2(-723, 494)
 
-[node name="DraggablePotion" type="Area2D" parent="."]
-position = Vector2(640, 273)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(642, 275)
+color = "blue"
 
-[node name="DraggablePotion2" type="Area2D" parent="."]
-position = Vector2(646, 680)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion2" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(922, 689)
 
-[node name="DraggablePotion3" type="Area2D" parent="."]
-position = Vector2(637, 474)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion3" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(660, 675)
 
-[node name="DraggablePotion4" type="Area2D" parent="."]
-position = Vector2(891, 484)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion4" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(901, 489)
 
-[node name="DraggablePotion6" type="Area2D" parent="."]
-position = Vector2(897, 254)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion5" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(636, 486)
 
-[node name="DraggablePotion7" type="Area2D" parent="."]
-position = Vector2(918, 681)
-scale = Vector2(0.1, 0.1)
-script = ExtResource("2_y6qcr")
-texture = ExtResource("3_pgu72")
+[node name="Potion6" parent="." instance=ExtResource("3_xvioa")]
+position = Vector2(903, 262)
+color = "purple"

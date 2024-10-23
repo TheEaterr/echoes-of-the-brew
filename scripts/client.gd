@@ -23,7 +23,11 @@ func _process(delta):
 	else:
 		# Arrêter l'animation de marche une fois arrivé
 		$AnimatedSprite2D.stop()
-		$OrderIcon.show()
+
+# Fonction pour afficher la bulle de commande (une fois le client en place)
+func show_order_icon():
+	$Potion.show() 
+	$Potion.set_color($Potion.available_colors[randi() % $Potion.available_colors.size()])
 
 # Fonction pour détecter un clic sur le client
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -40,4 +44,4 @@ func resume_timer():
 
 func _ready():
 	# Connecte le signal pour détecter les clics sur l'aire
-	$Area2D.connect("input_event", Callable(self, "_on_area_2d_input_event"))
+	show_order_icon()
