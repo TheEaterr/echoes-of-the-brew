@@ -27,7 +27,8 @@ func _process(delta):
 # Fonction pour afficher la bulle de commande (une fois le client en place)
 func show_order_icon():
 	$Potion.show() 
-	$Potion.set_color($Potion.available_colors[randi() % $Potion.available_colors.size()])
+	$Potion.cooking_level = randi() % 100
+	$Potion.set_color($Potion.available_colors[randi() % ($Potion.available_colors.size() - 1) + 1])
 
 # Fonction pour détecter un clic sur le client
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

@@ -4,20 +4,13 @@ class_name Potion
 
 @export var color : String = "empty"
 @export var ingredients : Array = []
-@export var cooking_level : int = 50
+@export var cooking_level : int = 0
 @export var is_cooking : bool = false
 @export var timer : Timer
 @export var potion_sprite: Sprite2D
 
 var available_colors = ["empty", "purple", "blue", "green"]
 var available_ingredients = ["mushroom", "flower", "root", "eyeball", "cristal"]
-
-var potion_textures = {
-	"purple_high": preload("res://assets/potion_purple_high.png"),
-	"blue_high": preload("res://assets/potion_blue_high.png"),
-	"green_high": preload("res://assets/potion_green_high.png"),
-	"empty": preload("res://assets/potion_empty.png")
-}
 
 func _init():
 	color = "empty"
