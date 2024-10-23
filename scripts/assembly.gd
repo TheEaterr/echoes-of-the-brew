@@ -12,6 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	print("Here")
-	if $PotionSpot.current_potion:
-		$PotionSpot.current_potion.set_color("purple")
+	if $PotionSpotControl/PotionSpot.current_potion:
+		$PotionSpotControl/PotionSpot.current_potion.set_color("purple")
