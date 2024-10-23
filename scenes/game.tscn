@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
+[ext_resource type="Script" path="res://scripts/draggable_potion.gd" id="2_y6qcr"]
+[ext_resource type="Texture2D" uid="uid://bagg11myomdv3" path="res://assets/potion.jpg" id="3_pgu72"]
+[ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_32bdg"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_hgtjr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(5, 5)
+offset = Vector2(0, 200)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 828.0
+offset_top = 20.0
+offset_right = 994.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 25
+text = "TAKE ORDER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -466.0
+offset_top = -292.0
+offset_right = 859.0
+offset_bottom = -22.0
+
+[node name="PotionSpot" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(907, 268)
+
+[node name="PotionSpot2" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(648, 285)
+
+[node name="PotionSpot3" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(927, 698)
+
+[node name="PotionSpot4" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(910, 507)
+
+[node name="PotionSpot5" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(650, 688)
+
+[node name="PotionSpot6" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(641, 490)
+
+[node name="PotionSpot7" parent="." instance=ExtResource("4_32bdg")]
+position = Vector2(-545, 466)
+
+[node name="DraggablePotion" type="Area2D" parent="."]
+position = Vector2(624, 239)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")
+
+[node name="DraggablePotion2" type="Area2D" parent="."]
+position = Vector2(639, 727)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")
+
+[node name="DraggablePotion3" type="Area2D" parent="."]
+position = Vector2(637, 474)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")
+
+[node name="DraggablePotion4" type="Area2D" parent="."]
+position = Vector2(891, 484)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")
+
+[node name="DraggablePotion6" type="Area2D" parent="."]
+position = Vector2(892, 252)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")
+
+[node name="DraggablePotion7" type="Area2D" parent="."]
+position = Vector2(918, 681)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_y6qcr")
+texture = ExtResource("3_pgu72")

@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://dh2mr2w6nl5p0"]
+
+[ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
+[ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
+[ext_resource type="Texture2D" uid="uid://bagg11myomdv3" path="res://assets/potion.jpg" id="2_yxj11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k3qg"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(1170, 0, 234, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjd14"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(936, 0, 234, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20r51"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(702, 0, 234, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi543"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(468, 0, 234, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23isw"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(234, 0, 234, 249)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_accni"]
+atlas = ExtResource("1_nwp1f")
+region = Rect2(0, 0, 234, 249)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1eq8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k3qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjd14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20r51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi543")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23isw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_accni")
+}],
+"loop": false,
+"name": &"walking_left",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd8y8"]
+size = Vector2(111.25, 231.062)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qav1"]
+size = Vector2(110, 231)
+
+[node name="Client" type="CharacterBody2D"]
+script = ExtResource("1_35ctu")
+metadata/_edit_horizontal_guides_ = [-202.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -138)
+sprite_frames = SubResource("SpriteFrames_1eq8f")
+animation = &"walking_left"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-60, -132)
+shape = SubResource("RectangleShape2D_sd8y8")
+
+[node name="OrderIcon" type="Sprite2D" parent="."]
+position = Vector2(5, -343)
+scale = Vector2(0.0932291, 0.0915625)
+texture = ExtResource("2_yxj11")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-60, -132)
+shape = SubResource("RectangleShape2D_8qav1")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
