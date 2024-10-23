@@ -7,8 +7,8 @@ class_name Potion
 @export var cooking_level : int = 0
 @export var is_cooking : bool = false
 @export var timer : Timer
-
-var animation_sprite: AnimatedSprite2D
+@export var animation_sprite: AnimatedSprite2D
+@export var potion_sprite: Sprite2D
 
 var available_colors = ["empty", "purple", "blue", "green"]
 var available_ingredients = ["mushroom", "flower", "root", "eyeball", "cristal"]
@@ -28,14 +28,35 @@ func _init():
 	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 	add_child(timer)
 	
+func update_potion_animation():
+	if color == "empty":
+		potion_sprite.visible = true
+		potion_sprite.texture = potion_textures["empty"]
+	else:
+		if cooking_level < 33:
+			potion_sprite.texture = potion_textures[color + "_high"]
+		elif cooking_level < 66:
+			potion_sprite.visible = false
+			animation_sprite.visible = true
+			animation_sprite.play(color + "_mid")
+		elif cooking_level < 100:
+			animation_sprite.play(color + "_low")
+		else: 
+			animation_sprite.visible = false
+			potion_sprite.visible = true
+			potion_sprite.texture = potion_textures["empty"]
+
+	
 func start_cooking():
 	if not is_cooking:
 		is_cooking = true
 		timer.start()
 		
+
 func _on_Timer_timeout():
 	if cooking_level < 100:
 		cooking_level += 1
+		update_potion_animation()
 	else:
 		timer.stop()
 		is_cooking = false
