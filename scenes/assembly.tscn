@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/assembly.gd" id="1_83mvq"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
-[ext_resource type="Script" path="res://scripts/assembly/base_color_picker.gd" id="3_s44oo"]
+[ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 
 [node name="Assembly" type="Node2D"]
 script = ExtResource("1_83mvq")
@@ -11,39 +11,35 @@ script = ExtResource("1_83mvq")
 [node name="PotionSpotControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 2.0
-offset_top = -1.0
-offset_right = 128.0
-offset_bottom = 132.0
+offset_left = 740.0
+offset_top = 394.0
+offset_right = 866.0
+offset_bottom = 527.0
 mouse_filter = 1
 script = ExtResource("2_gwo1m")
+metadata/_edit_group_ = true
 
 [node name="PotionSpot" parent="PotionSpotControl" instance=ExtResource("1_fw8jq")]
-position = Vector2(69, 82)
 
-[node name="Button" type="Button" parent="."]
-offset_left = -4.0
-offset_top = 141.0
-offset_right = 130.0
-offset_bottom = 172.0
-text = "Add purple base"
+[node name="BluePotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
+offset_left = 40.0
+offset_top = 47.0
+offset_right = 543.0
+offset_bottom = 510.0
+scale = Vector2(0.4, 0.4)
 
-[node name="PotionBaseColorPicker" type="ColorPickerButton" parent="."]
-offset_left = 155.0
-offset_top = 54.0
-offset_right = 205.0
-offset_bottom = 85.0
-text = "          "
-color = Color(0, 1, 0, 1)
-script = ExtResource("3_s44oo")
+[node name="GreenPotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
+offset_left = 267.0
+offset_top = 40.0
+offset_right = 770.0
+offset_bottom = 503.0
+scale = Vector2(0.4, 0.4)
+base_color = "green"
 
-[node name="PotionBaseColorPicker2" type="ColorPickerButton" parent="."]
-offset_left = 156.0
-offset_top = 12.0
-offset_right = 206.0
-offset_bottom = 43.0
-text = "          "
-color = Color(1, 0, 0, 1)
-script = ExtResource("3_s44oo")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="PurplePotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
+offset_left = 484.0
+offset_top = 42.0
+offset_right = 987.0
+offset_bottom = 505.0
+scale = Vector2(0.4, 0.4)
+base_color = "purple"

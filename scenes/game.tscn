@@ -62,4 +62,4 @@ position = Vector2(719, 517)
 position = Vector2(908, 367)
 
 [node name="Assembly" parent="." instance=ExtResource("4_oeskb")]
-position = Vector2(-15, 352)
+position = Vector2(-596, 231)

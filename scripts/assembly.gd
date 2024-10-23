@@ -7,10 +7,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
-
-
-func _on_button_pressed() -> void:
-	if $PotionSpotControl/PotionSpot.current_potion:
-		$PotionSpotControl/PotionSpot.current_potion.set_color("purple")

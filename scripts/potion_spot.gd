@@ -4,6 +4,7 @@ extends Area2D
 # Called by an emit_signal in DraggableSprite2D
 @warning_ignore("unused_signal")
 signal received_potion
+@warning_ignore("unused_signal")
 signal received_potion_for_client
 
 var hovering_potion: DraggablePotion = null

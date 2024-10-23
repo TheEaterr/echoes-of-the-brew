@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dybp0hqm6tffs"]
+
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_n8ipe"]
+[ext_resource type="Script" path="res://scripts/assembly/base_color_picker.gd" id="2_40tdf"]
+[ext_resource type="Texture2D" uid="uid://dr3yna0gij3df" path="res://assets/cauldron_blue_0.png" id="3_405j7"]
+[ext_resource type="Texture2D" uid="uid://d2jfa7gewkub6" path="res://assets/cauldron_blue_1.png" id="4_dl1ys"]
+[ext_resource type="Texture2D" uid="uid://d4boukakljgdd" path="res://assets/cauldron_green_0.png" id="5_abxsy"]
+[ext_resource type="Texture2D" uid="uid://bsy43skmlbjaa" path="res://assets/cauldron_green_1.png" id="6_wmwbg"]
+[ext_resource type="Texture2D" uid="uid://dctqbc2224b83" path="res://assets/cauldron_purple_0.png" id="7_swa5w"]
+[ext_resource type="Texture2D" uid="uid://yulhs4val0mp" path="res://assets/cauldron_purple_1.png" id="8_au5ua"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqumb"]
+resource_local_to_scene = true
+shader = ExtResource("1_n8ipe")
+shader_parameter/outline_width = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecrh8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_405j7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dl1ys")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_abxsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wmwbg")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_swa5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_au5ua")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}]
+
+[node name="PotionBaseColorPicker" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 501.0
+offset_bottom = 465.0
+script = ExtResource("2_40tdf")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_uqumb")
+position = Vector2(249, 249)
+sprite_frames = SubResource("SpriteFrames_ecrh8")
+animation = &"purple"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
