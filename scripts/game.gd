@@ -5,8 +5,12 @@ var potion_scene = preload("res://scenes/potion.tscn")
 
 func reset_game():
 	%Counter/SpawnClientTimer.stop()
-	%Counter/TimeTrialCountdown.stop()
+	%Counter/TimeTrialCountdown.paused = true
 	%Counter.global_score = 0
+	%Counter.goal_reached = 0
+	%Counter.score_goal = 50
+	%Counter.time_remaining = 60
+	%Counter.clients_served = 0
 	%Counter/ScoreLabel.text = "Score: 0"
 	for client in %Counter.clients:
 		client.queue_free()
@@ -34,12 +38,18 @@ func reset_game():
 func _on_restart_button_pressed() -> void:
 	%GameOver.hide()
 	reset_game()
+	if Global.mode == "infinite":
+		_on_infinite_button_pressed()
+	else:
+		_on_time_trial_button_pressed()
 
 func _on_infinite_button_pressed() -> void:
 	%MainMenu.hide()
 	Global.mode = "infinite"
 	%Counter/ClientsServedLabel.show()
 	%Counter/Button.hide()
+	%Counter/TimeRemainingLabel.hide()
+	%Counter/ScoreToReachLabel.hide()
 	%Counter/SpawnClientTimer.start()
 	%Counter._on_take_order_pressed()
 	%Counter._on_take_order_pressed()
@@ -49,10 +59,12 @@ func _on_infinite_button_pressed() -> void:
 func _on_time_trial_button_pressed() -> void:
 	%MainMenu.hide()
 	Global.mode = "time_trial"
+	%Counter/TimeTrialCountdown.paused = false
 	%Counter/ClientsServedLabel.hide()
 	%Counter/Button.show()
 	%Counter/TimeTrialCountdown.start()
-
+	%Counter/TimeRemainingLabel.show()
+	%Counter/ScoreToReachLabel.show()
 
 func _on_main_menu_button_pressed() -> void:
 	reset_game()    

@@ -145,4 +145,4 @@ func _on_time_trial_countdown_timeout() -> void:
 			goal_reached += 1
 			score_goal += 50 + goal_reached * 10
 			$ScoreToReachLabel.text = "Score to reach: " + str(score_goal)
-		$TimeRemainingLabel.text = "Time remaining: " + str(time_remaining)
+	$TimeRemainingLabel.text = "Time remaining: " + str(time_remaining)
