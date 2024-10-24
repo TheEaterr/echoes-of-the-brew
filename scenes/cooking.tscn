@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpjotj54h21u2"]
+[gd_scene load_steps=4 format=3 uid="uid://bpjotj54h21u2"]
 
 [ext_resource type="Texture2D" uid="uid://brlvpbh7y4par" path="res://assets/stone.jpg" id="1_ssgk1"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="2_bd2k3"]
+[ext_resource type="PackedScene" uid="uid://5k7m88p2s7kv" path="res://scenes/cooking_slot.tscn" id="3_da404"]
 
 [node name="Cooking" type="TextureRect"]
 custom_minimum_size = Vector2(1000, 500)
@@ -25,5 +26,32 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Assembly
 "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -65.0
+offset_right = 266.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="CookingSlot" parent="HBoxContainer" instance=ExtResource("3_da404")]
+layout_mode = 2
+
+[node name="CookingSlot2" parent="HBoxContainer" instance=ExtResource("3_da404")]
+layout_mode = 2
+
+[node name="CookingSlot3" parent="HBoxContainer" instance=ExtResource("3_da404")]
+layout_mode = 2
+
+[node name="CookingSlot4" parent="HBoxContainer" instance=ExtResource("3_da404")]
+layout_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

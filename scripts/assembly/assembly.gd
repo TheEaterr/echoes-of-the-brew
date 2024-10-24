@@ -14,3 +14,6 @@ func _process(_delta: float) -> void:
 func _on_button_pressed() -> void:
 	hide()
 	%Cooking.show()
+	%Cooking.toggle_potions_view(true)
+	if $PotionSpotControl/PotionSpot.current_potion:
+		$PotionSpotControl/PotionSpot.current_potion.hide()

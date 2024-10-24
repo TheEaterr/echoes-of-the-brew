@@ -6,10 +6,13 @@ extends Area2D
 signal received_potion
 @warning_ignore("unused_signal")
 signal received_potion_for_client
+@warning_ignore("unused_signal")
+signal received_potion_for_cooking
 
-var hovering_potion: DraggablePotion = null
-var current_potion: DraggablePotion = null
+var hovering_potion: Potion = null
+var current_potion: Potion = null
 var is_client = false
+@export var is_cooking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +24,7 @@ func _process(_delta: float) -> void:
 	pass # Replace with function body.
 
 func _on_area_entered(area:Area2D) -> void:
-	if area is DraggablePotion and (current_potion != hovering_potion or current_potion == null) and area.is_grabbed:
+	if area is Potion and (current_potion != hovering_potion or current_potion == null) and area.is_grabbed:
 		hovering_potion = area
 		$SpotRect.color = Color(0, 1, 0, 1)
 
@@ -33,7 +36,9 @@ func _on_area_exited(area:Area2D) -> void:
 	if area == current_potion:
 		current_potion = null
 
-func _on_received_potion(potion:DraggablePotion) -> void:
+func _on_received_potion(potion:Potion) -> void:
+	if is_cooking:
+		potion.start_cooking()
 	$SpotRect.color = Color(1, 1, 1, 1)
 	if current_potion == potion:
 		return

@@ -11,6 +11,33 @@ func _process(_delta: float) -> void:
 	pass
 
 
+func pause_all_potions():
+	for slot in $HBoxContainer.get_children():
+		var spot = slot.get_node("PotionSpot")
+		if spot.current_potion != null:
+			spot.current_potion.pause_cooking()
+
+
+func unpause_all_potions():
+	for slot in $HBoxContainer.get_children():
+		var spot = slot.get_node("PotionSpot")
+		if spot.current_potion != null:
+			spot.current_potion.unpause_cooking()
+
+
+func toggle_potions_view(showPotions: bool):
+	for slot in $HBoxContainer.get_children():
+		var spot = slot.get_node("PotionSpot")
+		if spot.current_potion != null:
+			if showPotions:
+				spot.current_potion.show()
+			else:
+				spot.current_potion.hide()
+
+
 func _on_button_pressed() -> void:
 	hide()
+	toggle_potions_view(false)
 	%Assembly.show()
+	if %Assembly/PotionSpotControl/PotionSpot.current_potion:
+		%Assembly/PotionSpotControl/PotionSpot.current_potion.show()

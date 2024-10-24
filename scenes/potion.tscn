@@ -128,11 +128,6 @@ position = Vector2(-39, 9)
 scale = Vector2(0.3, 0.3)
 priority = 1
 script = ExtResource("1_ig88o")
-cooking_level = null
-is_cooking = null
-grabbable = null
-centerDrag = null
-input_method = null
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -43,7 +43,7 @@ func _ready():
 	show_order_icon()
 	$PotionSpot.connect("received_potion_for_client", Callable(self, "_on_potion_received"))
 
-func _on_potion_received(potion: DraggablePotion):
+func _on_potion_received(potion: Potion):
 	# Quand le client reçoit une potion, on le supprime
 	get_parent().remove_client(self)
 	potion.queue_free() 
