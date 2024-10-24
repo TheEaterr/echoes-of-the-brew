@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bctkj7nh63lui"]
+[gd_scene load_steps=7 format=3 uid="uid://bctkj7nh63lui"]
 
+[ext_resource type="Texture2D" uid="uid://n382bbwlf7yu" path="res://assets/wood.jpg" id="1_7432j"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
+[ext_resource type="Script" path="res://scripts/assembly/assembly.gd" id="2_3bnba"]
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 [ext_resource type="PackedScene" uid="uid://cwm5ptffdcrwh" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 
-[node name="Assembly" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Assembly" type="TextureRect"]
+texture_repeat = 2
 offset_right = 1000.0
 offset_bottom = 500.0
-mouse_filter = 1
+texture = ExtResource("1_7432j")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("2_3bnba")
 
 [node name="ColorPickers" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -73,3 +77,19 @@ ingredient = "gems"
 [node name="LeavesPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
 layout_mode = 2
 ingredient = "leaves"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 61.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Cooking
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

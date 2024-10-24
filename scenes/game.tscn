@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=6 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
 [ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
+[ext_resource type="PackedScene" uid="uid://bpjotj54h21u2" path="res://scenes/cooking.tscn" id="3_egwb1"]
 [ext_resource type="PackedScene" uid="uid://c8n74txubuwy2" path="res://scenes/inventory.tscn" id="4_c7sq5"]
 [ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
 
@@ -19,7 +20,13 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
+[node name="Cooking" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_egwb1")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="Assembly" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_oeskb")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
 
