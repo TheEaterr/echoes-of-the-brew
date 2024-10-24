@@ -37,3 +37,11 @@ func _get_drag_data(_at_position: Vector2) -> String:
 
 	# Return color as drag data.
 	return ingredient
+
+func _on_mouse_entered() -> void:
+	if !Global.is_dragging_potion:
+		$Sprite2D.material.set_shader_parameter("outline_width", 4.0)
+
+
+func _on_mouse_exited() -> void:
+	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)

@@ -35,6 +35,14 @@ func toggle_potions_view(showPotions: bool):
 				spot.current_potion.hide()
 
 
+func delete_all_potions():
+	for slot in $HBoxContainer.get_children():
+		var spot = slot.get_node("PotionSpot")
+		if spot.current_potion != null:
+			spot.current_potion.queue_free()
+			spot.current_potion = null
+
+
 func _on_button_pressed() -> void:
 	hide()
 	toggle_potions_view(false)

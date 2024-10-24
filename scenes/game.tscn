@@ -9,27 +9,75 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hgtjr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1600.0
+offset_bottom = 900.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainBox"]
+layout_mode = 0
+offset_right = 1604.0
 offset_bottom = 904.0
 
-[node name="Counter" parent="VBoxContainer" instance=ExtResource("2_5jqg4")]
+[node name="Counter" parent="MainBox/VBoxContainer" instance=ExtResource("2_5jqg4")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainBox/VBoxContainer"]
 layout_mode = 2
 
-[node name="Cooking" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_egwb1")]
+[node name="Cooking" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("3_egwb1")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Assembly" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_oeskb")]
+[node name="Assembly" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("4_oeskb")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
 
-[node name="Inventory" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c7sq5")]
+[node name="Inventory" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("4_c7sq5")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="GameOver" type="Panel" parent="MainBox"]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainBox/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -83.0
+offset_right = 135.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/Button" to="." method="_on_button_pressed"]

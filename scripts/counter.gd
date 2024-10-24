@@ -36,6 +36,9 @@ func remove_client(client, potion):
 	for i in range(client_index, clients.size()):
 		clients[i].client_index = i  # Met à jour l'indice
 		clients[i].move_to_position(Vector2(200 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
+	
+	if global_score <= -150:
+		%GameOver.show()
 
 # Lien entre le bouton et la fonction
 func _ready():
@@ -62,7 +65,8 @@ func add_empty_potion():
 			new_potion.current_spot = spot
 			add_child(new_potion)  # Ajoute la potion à la scène
 			new_potion.global_position = spot.global_position  # Positionne la potion au même endroit que le PotionSpot
-			return  # Sort de la fonction après avoir ajouté la potion
+			return true # Sort de la fonction après avoir ajouté la potion
+	return false
 
 
 func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> float:
@@ -96,4 +100,4 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	score += cooking_level_penalty 
 	
 	var cooking_bonus_time = 10*(client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
-	return 25 - score + cooking_bonus_time
+	return 40 - score + cooking_bonus_time
