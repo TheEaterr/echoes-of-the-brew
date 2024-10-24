@@ -20,3 +20,10 @@ metadata/_edit_group_ = true
 
 [node name="Potion" parent="." instance=ExtResource("2_1kpls")]
 position = Vector2(64, 69)
+color = null
+ingredients = null
+cooking_level = null
+is_cooking = null
+grabbable = null
+centerDrag = null
+input_method = null

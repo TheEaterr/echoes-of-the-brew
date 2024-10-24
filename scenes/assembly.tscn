@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bctkj7nh63lui"]
+[gd_scene load_steps=5 format=3 uid="uid://bctkj7nh63lui"]
 
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
+[ext_resource type="PackedScene" uid="uid://cwm5ptffdcrwh" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 
 [node name="Assembly" type="Control"]
 layout_mode = 3
@@ -10,6 +11,23 @@ anchors_preset = 0
 offset_right = 1000.0
 offset_bottom = 500.0
 mouse_filter = 1
+
+[node name="ColorPickers" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 592.0
+offset_bottom = 162.0
+scale = Vector2(0.5, 0.5)
+
+[node name="BluePotionBaseColorPicker" parent="ColorPickers" instance=ExtResource("4_wlwro")]
+layout_mode = 2
+
+[node name="GreenPotionBaseColorPicker" parent="ColorPickers" instance=ExtResource("4_wlwro")]
+layout_mode = 2
+base_color = "green"
+
+[node name="PurplePotionBaseColorPicker" parent="ColorPickers" instance=ExtResource("4_wlwro")]
+layout_mode = 2
+base_color = "purple"
 
 [node name="PotionSpotControl" type="Control" parent="."]
 layout_mode = 3
@@ -24,25 +42,34 @@ metadata/_edit_group_ = true
 
 [node name="PotionSpot" parent="PotionSpotControl" instance=ExtResource("1_fw8jq")]
 
-[node name="BluePotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
-offset_left = 40.0
-offset_top = 47.0
-offset_right = 543.0
-offset_bottom = 510.0
-scale = Vector2(0.4, 0.4)
+[node name="IngredientPickers" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 243.0
+offset_right = 627.0
+offset_bottom = 547.0
+scale = Vector2(0.8, 0.8)
+columns = 3
 
-[node name="GreenPotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
-offset_left = 267.0
-offset_top = 40.0
-offset_right = 770.0
-offset_bottom = 503.0
-scale = Vector2(0.4, 0.4)
-base_color = "green"
+[node name="EyeballPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
 
-[node name="PurplePotionBaseColorPicker" parent="." instance=ExtResource("4_wlwro")]
-offset_left = 484.0
-offset_top = 42.0
-offset_right = 987.0
-offset_bottom = 505.0
-scale = Vector2(0.4, 0.4)
-base_color = "purple"
+[node name="BonesPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
+ingredient = "bones"
+
+[node name="FlowerPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
+ingredient = "flower"
+
+[node name="RootsPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
+ingredient = "roots"
+
+[node name="GemsPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
+ingredient = "gems"
+
+[node name="LeavesPicker" parent="IngredientPickers" instance=ExtResource("4_xdlfu")]
+layout_mode = 2
+ingredient = "leaves"

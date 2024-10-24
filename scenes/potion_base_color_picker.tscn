@@ -52,12 +52,13 @@ animations = [{
 }]
 
 [node name="PotionBaseColorPicker" type="Control"]
+custom_minimum_size = Vector2(500, 450)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -2.0
 offset_top = 2.0
-offset_right = 501.0
-offset_bottom = 465.0
+offset_right = 498.0
+offset_bottom = 452.0
 script = ExtResource("2_40tdf")
 metadata/_edit_group_ = true
 
