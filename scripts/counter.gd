@@ -48,13 +48,16 @@ func resume_all_clients():
 
 # Fonction pour ajouter une potion vide dans un PotionSpot disponible
 func add_empty_potion():
-	for spot in get_children():  # Parcourt tous les enfants de la scène
+	var inventoryGrid = %Inventory/InventoryGrid
+	print(inventoryGrid.get_children())
+	for slot in inventoryGrid.get_children():  # Parcourt tous les enfants de la scène
+		var spot = slot.get_node("PotionSpot")  # Récupère le Potion
 		if spot is PotionSpot and spot.current_potion == null:
 			var new_potion = potion_scene.instantiate()  # Crée une nouvelle potion
 			spot.current_potion = new_potion  # Associe la potion au PotionSpot
 			add_child(new_potion)  # Ajoute la potion à la scène
-			new_potion.position = spot.position  # Positionne la potion au même endroit que le PotionSpot
-			print("Potion ajoutée à:", spot.position)  # Debug pour vérifier où la potion a été ajoutée
+			new_potion.global_position = spot.global_position  # Positionne la potion au même endroit que le PotionSpot
+			print("Potion ajoutée à:", spot.global_position)  # Debug pour vérifier où la potion a été ajoutée
 			return  # Sort de la fonction après avoir ajouté la potion
 
 	print("Aucun PotionSpot disponible.")  # Message si aucun PotionSpot n'est disponible

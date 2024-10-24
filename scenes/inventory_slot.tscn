@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rhn4asbmgvq"]
+
+[ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_vd2eo"]
+[ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="2_1kpls"]
+
+[node name="InventorySlot" type="Control"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1470.0
+offset_bottom = -770.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_group_ = true
+
+[node name="PotionSpot" parent="." instance=ExtResource("1_vd2eo")]
+
+[node name="Potion" parent="." instance=ExtResource("2_1kpls")]
+position = Vector2(64, 69)
