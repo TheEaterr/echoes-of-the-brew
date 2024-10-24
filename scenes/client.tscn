@@ -41,6 +41,14 @@ size = Vector2(111.25, 231.062)
 script = ExtResource("1_35ctu")
 metadata/_edit_horizontal_guides_ = [-202.0]
 
+[node name="Label" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -337.0
+offset_right = 12.0
+offset_bottom = -314.0
+theme_override_font_sizes/font_size = 30
+text = "Yummy!"
+
 [node name="PotionSpot" parent="." instance=ExtResource("4_urfob")]
 position = Vector2(-20, -116)
 
@@ -56,5 +64,6 @@ position = Vector2(-60, -132)
 shape = SubResource("RectangleShape2D_sd8y8")
 
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
+visible = false
 position = Vector2(-3, -327)
 grabbable = false

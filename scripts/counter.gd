@@ -31,11 +31,18 @@ func remove_client(client, potion):
 	$ScoreLabel.text = "Score : " + str(global_score)
 	
 	# Jouer l'animation
-	pause_all_clients()
-	var score_animation = preload("res://scenes/animation.tscn").instantiate()
-	score_animation.show_score(satisfaction_score)  # Affiche le score
-	get_tree().current_scene.add_child(score_animation)  # Ajoute l'animation à la scène
-	resume_all_clients()
+	# Définir le texte à afficher dans le label selon le score
+	var label_text = ""
+	if satisfaction_score > 0:
+		label_text = "Yummy! + " + str(satisfaction_score)
+	else:
+		label_text = "Disgusting! - " + str(abs(satisfaction_score))
+
+	# Jouer l'animation avec le bon texte
+	client.show_label(label_text)
+	
+	# Attendre 2 secondes avant de continuer
+	await get_tree().create_timer(2.0).timeout
 	
 	# Update graphique et suppression du client
 	add_empty_potion()
@@ -47,7 +54,7 @@ func remove_client(client, potion):
 		clients[i].client_index = i  # Met à jour l'indice
 		clients[i].move_to_position(Vector2(200 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
 	
-	if global_score <= -15:
+	if global_score <= -150:
 		%GameOver.show()
 
 # Lien entre le bouton et la fonction
