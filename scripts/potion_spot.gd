@@ -9,32 +9,20 @@ signal received_potion_for_client
 @warning_ignore("unused_signal")
 signal received_potion_for_cooking
 
-var hovering_potion: Potion = null
 var current_potion: Potion = null
 var is_client = false
 @export var is_cooking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	current_potion = get_node_or_null("Potion")
+	if current_potion:
+		current_potion.current_spot = self
+		current_potion.global_position = global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass # Replace with function body.
-
-func _on_area_entered(area:Area2D) -> void:
-	if area is Potion and (current_potion != hovering_potion or current_potion == null) and area.is_grabbed:
-		hovering_potion = area
-		$SpotRect.color = Color(0, 1, 0, 1)
-
-
-func _on_area_exited(area:Area2D) -> void:
-	if area == hovering_potion:
-		hovering_potion = null
-		$SpotRect.color = Color(1, 1, 1, 1)
-	if area == current_potion:
-		current_potion = null
 
 func _on_received_potion(potion:Potion) -> void:
 	if is_cooking:
@@ -42,11 +30,22 @@ func _on_received_potion(potion:Potion) -> void:
 	$SpotRect.color = Color(1, 1, 1, 1)
 	if current_potion == potion:
 		return
-	hovering_potion = null
 	if current_potion:
-		current_potion.global_position = potion.source_area.global_position
-		current_potion.source_area = potion.source_area
-		potion.source_area.emit_signal("received_potion", current_potion)
+		current_potion.global_position = potion.current_spot.global_position
+		current_potion.current_spot = potion.current_spot
+		potion.current_spot.current_potion = current_potion
 	current_potion = potion
 	if is_client:
 		emit_signal("received_potion_for_client", potion)
+
+
+func _on_mouse_entered() -> void:
+	if Global.is_dragging_potion:
+		$SpotRect.color = Color(0, 1, 0, 1) 
+		Global.hovered_spot = self
+
+
+func _on_mouse_exited() -> void:
+	$SpotRect.color = Color(1, 1, 1, 1) 
+	if Global.hovered_spot == self:
+		Global.hovered_spot = null

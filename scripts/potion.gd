@@ -37,10 +37,7 @@ var grabbed_offset := Vector2.ZERO
 # Mouse button pressed tracker, used to essentially replicate the behavior of 'is_action_just_released'
 var mb_pressed = false
 
-var over_area: Area2D = null
-var source_area: Area2D = null
-var destination_area: Area2D = null
-
+var current_spot: PotionSpot = null
 
 @export var color : String = "empty"
 @export var ingredients : Array = []
@@ -131,8 +128,6 @@ func _ready() -> void:
 	child_entered_tree.connect(_on_child_entered_tree)
 	child_exiting_tree.connect(_on_child_exiting_tree)
 	input_event.connect(_on_input_event)
-	area_entered.connect(_on_area_entered)
-	area_exited.connect(_on_area_exited)
 
 	add_child(sprite)
 
@@ -151,21 +146,21 @@ func _process(_delta) -> void:
 	# If the input_method is down and the object is and can be grabbed, update it's position
 	if Input.is_mouse_button_pressed(input_method) and is_grabbed and grabbable:
 		global_position = get_global_mouse_position() + grabbed_offset
+		Global.is_dragging_potion = true
 		z_index = 2
 		mb_pressed = true
 		stop_cooking()
 	# Otherwise, if the mouse button was pressed on the previous frame but now isn't, the object is released
 	if not Input.is_mouse_button_pressed(input_method) and mb_pressed:
+		Global.is_dragging_potion = false
 		z_index = 1
-		if over_area:
-			over_area.emit_signal("received_potion", self)
-			global_position = over_area.global_position
-			source_area = over_area
-			over_area = null
-		else:
-			if source_area:
-				global_position = source_area.global_position
-				source_area.emit_signal("received_potion", self)
+		if Global.hovered_spot:
+			global_position = Global.hovered_spot.global_position
+			Global.hovered_spot.emit_signal("received_potion", self)
+			current_spot = Global.hovered_spot
+		elif current_spot:
+			global_position = current_spot.global_position
+			current_spot.emit_signal("received_potion", self)
 		mb_pressed = false
 
 
@@ -202,19 +197,3 @@ func _on_child_entered_tree(child) -> void:
 func _on_child_exiting_tree(child) -> void:
 	if (child is CollisionShape2D or child is CollisionPolygon2D) and child != default_collider:
 		toggle_default_collider(true)
-
-
-func _on_area_entered(area:Area2D) -> void:
-	if area is PotionSpot:
-		# if source area is null, then the object just got instantiated
-		if source_area == null:
-			source_area = area
-			global_position = area.global_position
-			source_area.emit_signal("received_potion", self)
-		else:
-			over_area = area
-		
-
-func _on_area_exited(area:Area2D) -> void:
-	if area == over_area:
-		over_area = null

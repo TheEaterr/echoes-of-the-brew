@@ -69,6 +69,7 @@ func _ready():
 	ordered_color = $Potion.available_colors[randi() % ($Potion.available_colors.size() - 1) + 1]
 
 	$PotionSpot.is_client = true
+	$PotionSpot/SpotRect.hide()
 	# Connecte le signal pour détecter les clics sur l'aire
 	show_order_icon()
 	$PotionSpot.connect("received_potion_for_client", Callable(self, "_on_potion_received"))

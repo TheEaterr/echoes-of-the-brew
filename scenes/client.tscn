@@ -63,7 +63,6 @@ script = ExtResource("1_35ctu")
 metadata/_edit_horizontal_guides_ = [-202.0]
 
 [node name="PotionSpot" parent="." instance=ExtResource("4_urfob")]
-visible = false
 position = Vector2(-20, -116)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
