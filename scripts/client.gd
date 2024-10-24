@@ -77,5 +77,6 @@ func _ready():
 func _on_potion_received(potion: Potion):
 	# Quand le client reçoit une potion, on le supprime
 	get_parent().remove_client(self, potion)
+	potion.current_spot.current_potion = null
 	potion.queue_free() 
 	

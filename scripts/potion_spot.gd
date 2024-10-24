@@ -34,6 +34,8 @@ func _on_received_potion(potion:Potion) -> void:
 		current_potion.global_position = potion.current_spot.global_position
 		current_potion.current_spot = potion.current_spot
 		potion.current_spot.current_potion = current_potion
+	else:
+		potion.current_spot.current_potion = null
 	current_potion = potion
 	if is_client:
 		emit_signal("received_potion_for_client", potion)
