@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpjotj54h21u2"]
+
+[ext_resource type="Texture2D" uid="uid://brlvpbh7y4par" path="res://assets/stone.jpg" id="1_ssgk1"]
+[ext_resource type="Script" path="res://scripts/cooking.gd" id="2_bd2k3"]
+
+[node name="Cooking" type="TextureRect"]
+custom_minimum_size = Vector2(1000, 500)
+offset_right = 1000.0
+offset_bottom = 500.0
+texture = ExtResource("1_ssgk1")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("2_bd2k3")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -164.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 62.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Assembly
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
