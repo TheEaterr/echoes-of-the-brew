@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://v1snlban56ug"]
+
+[ext_resource type="Script" path="res://scripts/animation.gd" id="1_ey8op"]
+[ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="2_31pbq"]
+
+[sub_resource type="GDScript" id="GDScript_p5uek"]
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byie7"]
+atlas = ExtResource("2_31pbq")
+region = Rect2(936, 0, 234, 249)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0s0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byie7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ey8op")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "YUMMY"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label")
+script = SubResource("GDScript_p5uek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v0s0k")

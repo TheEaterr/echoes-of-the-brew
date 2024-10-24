@@ -27,7 +27,8 @@ func _on_take_order_pressed():
 
 # Fonction pour supprimer un client
 func remove_client(client, potion):
-	# Calcul du score d'insatisfaction du client
+	
+	# Score de satisfaction
 	var satisfaction_score = calculate_satisfaction_score(client.waiting_time, potion, client)
 	print("satisfaction score :", satisfaction_score)
 	global_score += satisfaction_score
@@ -35,6 +36,17 @@ func remove_client(client, potion):
 	clients_served += 1
 	$ClientsServedLabel.text = "Clients served: " + str(clients_served)
 	print("global_score: ", global_score)
+	# Update global score
+	$ScoreLabel.text = "Score : " + str(global_score)
+	
+	# Jouer l'animation
+	pause_all_clients()
+	var score_animation = preload("res://scenes/animation.tscn").instantiate()
+	score_animation.show_score(satisfaction_score)  # Affiche le score
+	get_tree().current_scene.add_child(score_animation)  # Ajoute l'animation à la scène
+	resume_all_clients()
+	
+	# Update graphique et suppression du client
 	add_empty_potion()
 	var client_index = client.client_index
 	clients.erase(client)  # Retire le client de la liste
@@ -44,7 +56,7 @@ func remove_client(client, potion):
 		clients[i].client_index = i  # Met à jour l'indice
 		clients[i].move_to_position(Vector2(200 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
 	
-	if global_score <= -150:
+	if global_score <= -15:
 		%GameOver.show()
 
 # Lien entre le bouton et la fonction
@@ -63,8 +75,8 @@ func resume_all_clients():
 	for client in clients:
 		client.resume_timer()
 
-# Fonction pour ajouter une potion vide dans un PotionSpot disponible
-func add_empty_potion():
+
+func add_empty_potion(restart = false):
 	var inventoryGrid = %Inventory/InventoryGrid
 	for slot in inventoryGrid.get_children():  # Parcourt tous les enfants de la scène
 		var spot = slot.get_node("PotionSpot")  # Récupère le Potion
@@ -79,7 +91,6 @@ func add_empty_potion():
 
 
 func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> float:
-	"""Score de satisfaction : """
 	var score = int(waiting_time)
 
 	# Comparaison des ingrédients
