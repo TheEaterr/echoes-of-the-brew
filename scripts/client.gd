@@ -36,6 +36,11 @@ func show_order_icon():
 	for ingredient in ordered_ingredients:
 		$Potion.add_ingredients(ingredient)
 
+func show_label(text):
+	$Potion.hide()
+	$Label.show()
+	$Label.text = text
+
 # Fonction pour gérer la pause du chronomètre
 func pause_timer():
 	timer_paused = true
@@ -75,6 +80,7 @@ func _ready():
 	# Connecte le signal pour détecter les clics sur l'aire
 	show_order_icon()
 	$PotionSpot.connect("received_potion_for_client", Callable(self, "_on_potion_received"))
+	$Label.hide()
 
 func _on_potion_received(potion: Potion):
 	# Quand le client reçoit une potion, on le supprime
