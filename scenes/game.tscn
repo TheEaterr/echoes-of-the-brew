@@ -1,65 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=6 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
+[ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
 [ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_xvioa"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_32bdg"]
 [ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
 
 [node name="Game" type="Node2D"]
-position = Vector2(598, 125)
 script = ExtResource("1_hgtjr")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 762.0
-offset_top = 156.0
-offset_right = 928.0
-offset_bottom = 233.0
-theme_override_font_sizes/font_size = 25
-text = "TAKE ORDER"
-metadata/_edit_use_anchors_ = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1600.0
+offset_bottom = 904.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -578.0
-offset_top = -68.0
-offset_right = 747.0
-offset_bottom = 202.0
-metadata/_edit_use_anchors_ = true
+[node name="Counter" parent="VBoxContainer" instance=ExtResource("2_5jqg4")]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
 
-[node name="PotionSpot" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(916, 382)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 
-[node name="PotionSpot2" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(743, 385)
+[node name="Assembly" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_oeskb")]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
 
-[node name="PotionSpot3" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(903, 691)
+[node name="Inventory" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
 
-[node name="PotionSpot4" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(921, 530)
+[node name="PotionSpot" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(298, 143)
 
-[node name="PotionSpot5" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(726, 696)
+[node name="PotionSpot2" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(125, 146)
 
-[node name="PotionSpot6" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(738, 537)
+[node name="PotionSpot3" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(285, 452)
 
-[node name="Potion" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(737, 375)
+[node name="PotionSpot4" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(303, 291)
 
-[node name="Potion2" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(900, 680)
+[node name="PotionSpot5" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(108, 457)
 
-[node name="Potion3" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(719, 689)
+[node name="PotionSpot6" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("4_32bdg")]
+position = Vector2(120, 298)
 
-[node name="Potion4" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(915, 519)
+[node name="Potion" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(119, 136)
 
-[node name="Potion5" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(719, 517)
+[node name="Potion2" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(282, 441)
 
-[node name="Potion6" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(908, 367)
+[node name="Potion3" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(101, 450)
 
-[node name="Assembly" parent="." instance=ExtResource("4_oeskb")]
-position = Vector2(-596, 231)
+[node name="Potion4" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(297, 280)
+
+[node name="Potion5" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(101, 278)
+
+[node name="Potion6" parent="VBoxContainer/HBoxContainer/Inventory" instance=ExtResource("3_xvioa")]
+position = Vector2(290, 128)
