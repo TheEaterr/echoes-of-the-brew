@@ -59,6 +59,7 @@ func add_empty_potion():
 		if spot is PotionSpot and spot.current_potion == null:
 			var new_potion = potion_scene.instantiate()  # Crée une nouvelle potion
 			spot.current_potion = new_potion  # Associe la potion au PotionSpot
+			new_potion.current_spot = spot
 			add_child(new_potion)  # Ajoute la potion à la scène
 			new_potion.global_position = spot.global_position  # Positionne la potion au même endroit que le PotionSpot
 			return  # Sort de la fonction après avoir ajouté la potion

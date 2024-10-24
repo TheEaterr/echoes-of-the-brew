@@ -70,6 +70,8 @@ func _ready():
 
 	$PotionSpot.is_client = true
 	$PotionSpot/Sprite2D.hide()
+	$PotionSpot/SpotCollision.shape = $CollisionShape2D.shape
+	$PotionSpot/SpotCollision.global_position = $CollisionShape2D.global_position
 	# Connecte le signal pour détecter les clics sur l'aire
 	show_order_icon()
 	$PotionSpot.connect("received_potion_for_client", Callable(self, "_on_potion_received"))

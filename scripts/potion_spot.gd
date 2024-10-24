@@ -44,9 +44,13 @@ func _on_received_potion(potion:Potion) -> void:
 func _on_mouse_entered() -> void:
 	$Sprite2D.material.set_shader_parameter("outline_width", 2.0)
 	Global.hovered_spot = self
+	if is_client:
+		get_parent().get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 2.0)
 
 
 func _on_mouse_exited() -> void:
 	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)
+	if is_client:
+		get_parent().get_node("AnimatedSprite2D").material.set_shader_parameter("outline_width", 0.0)
 	if Global.hovered_spot == self:
 		Global.hovered_spot = null

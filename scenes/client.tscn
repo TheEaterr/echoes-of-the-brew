@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh2mr2w6nl5p0"]
+[gd_scene load_steps=15 format=3 uid="uid://dh2mr2w6nl5p0"]
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_4uwps"]
 [ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v73t5"]
+resource_local_to_scene = true
+shader = ExtResource("3_4uwps")
+shader_parameter/outline_width = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k3qg"]
 atlas = ExtResource("1_nwp1f")
@@ -66,6 +73,7 @@ metadata/_edit_horizontal_guides_ = [-202.0]
 position = Vector2(-20, -116)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_v73t5")
 position = Vector2(-2, -139)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
 animation = &"walking_left"
