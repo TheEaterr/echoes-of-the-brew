@@ -78,11 +78,13 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	# 10 secondes de pénalité par ingrédient en trop ou manquant
 	var ingredient_penalty = (missing_ingredients + extra_ingredients) * 10
 	score += ingredient_penalty
+	
+	if client.ordered_color != potion.color:
+		score += 10 
 
 	# 10 secondes de pénalité par tranche de niveau de cuisson de différence
 	var cooking_level_difference = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33)*10
 	score += cooking_level_difference 
 	# Comparaison des couleurs
-	if client.ordered_color != potion.color:
-		score += 10 
+	
 	return score

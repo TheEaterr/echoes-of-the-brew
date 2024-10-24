@@ -109,7 +109,6 @@ func unpause_cooking():
 
 
 func _on_timer_timeout():
-	print(cooking_level)
 	if cooking_level < 100:
 		cooking_level += 1
 		update_potion_animation()
