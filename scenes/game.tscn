@@ -75,9 +75,59 @@ theme_override_font_sizes/font_size = 50
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MainBox/GameOver/VBoxContainer"]
+[node name="Restart" type="Button" parent="MainBox/GameOver/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Restart"
 
-[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="MainMenu" type="Button" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[node name="MainMenu" type="Panel" parent="."]
+unique_name_in_owner = true
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -83.0
+offset_right = 135.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Echoes of the brew"
+horizontal_alignment = 1
+
+[node name="StartInfinite" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Infinite"
+
+[node name="StartTimeTrial" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Time Trial"
+
+[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/MainMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/StartInfinite" to="." method="_on_infinite_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/StartTimeTrial" to="." method="_on_time_trial_button_pressed"]

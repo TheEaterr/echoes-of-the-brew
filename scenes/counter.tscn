@@ -21,6 +21,35 @@ theme_override_font_sizes/font_size = 25
 text = "TAKE ORDER"
 metadata/_edit_use_anchors_ = true
 
+[node name="ClientsServedLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -248.0
+offset_top = 69.0
+offset_right = -12.0
+offset_bottom = 111.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Clients served: 0
+"
+
+[node name="TimeRemainingLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -248.0
+offset_top = 69.0
+offset_right = -12.0
+offset_bottom = 111.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Time Remaing: 60
+"
+
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1416.0
@@ -29,3 +58,25 @@ offset_right = 1583.0
 offset_bottom = 56.0
 theme_override_font_sizes/font_size = 30
 text = "SCORE: 0"
+
+[node name="SpawnClientTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="TimeTrialCountdown" type="Timer" parent="."]
+
+[node name="ScoreToReachLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -265.0
+offset_top = 117.0
+offset_right = -9.0
+offset_bottom = 159.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Score to reach: 100
+"
+
+[connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
+[connection signal="timeout" from="TimeTrialCountdown" to="." method="_on_time_trial_countdown_timeout"]
