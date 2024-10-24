@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh2mr2w6nl5p0"]
+[gd_scene load_steps=11 format=3 uid="uid://dh2mr2w6nl5p0"]
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
@@ -12,52 +12,24 @@ shader = ExtResource("3_4uwps")
 shader_parameter/outline_width = 0.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3k3qg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_accni"]
 atlas = ExtResource("1_nwp1f")
-region = Rect2(1170, 0, 234, 249)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjd14"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(936, 0, 234, 249)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_20r51"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(702, 0, 234, 249)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xi543"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(468, 0, 234, 249)
+region = Rect2(0, 0, 234, 249)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23isw"]
 atlas = ExtResource("1_nwp1f")
 region = Rect2(234, 0, 234, 249)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_accni"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(0, 0, 234, 249)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1eq8f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3k3qg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjd14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20r51")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xi543")
+"texture": SubResource("AtlasTexture_accni")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_23isw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_accni")
 }],
-"loop": false,
+"loop": true,
 "name": &"walking_left",
 "speed": 3.0
 }]
@@ -77,7 +49,6 @@ material = SubResource("ShaderMaterial_v73t5")
 position = Vector2(-2, -139)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
 animation = &"walking_left"
-frame = 5
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

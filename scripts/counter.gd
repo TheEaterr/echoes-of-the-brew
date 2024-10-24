@@ -17,7 +17,7 @@ func _on_take_order_pressed():
 	# Positionner le client à l'endroit de départ hors de la file
 	new_client.position = Vector2(1200, 400) # Droite de l'écran
 	new_client.client_index = clients.size()
-	new_client.move_to_position(Vector2(100 + queue_offset * clients.size(), 400))
+	new_client.move_to_position(Vector2(200 + queue_offset * clients.size(), 400))
 	clients.append(new_client)
 
 # Fonction pour supprimer un client
@@ -35,7 +35,7 @@ func remove_client(client, potion):
 	# Réajuste la position des clients restants
 	for i in range(client_index, clients.size()):
 		clients[i].client_index = i  # Met à jour l'indice
-		clients[i].move_to_position(Vector2(100 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
+		clients[i].move_to_position(Vector2(200 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
 
 # Lien entre le bouton et la fonction
 func _ready():
