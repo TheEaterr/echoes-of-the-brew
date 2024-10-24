@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 func _on_received_potion(potion:Potion) -> void:
 	if is_cooking:
 		potion.start_cooking()
-	$SpotRect.color = Color(1, 1, 1, 1)
+	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)
 	if current_potion == potion:
 		return
 	if current_potion:
@@ -40,12 +40,11 @@ func _on_received_potion(potion:Potion) -> void:
 
 
 func _on_mouse_entered() -> void:
-	if Global.is_dragging_potion:
-		$SpotRect.color = Color(0, 1, 0, 1) 
-		Global.hovered_spot = self
+	$Sprite2D.material.set_shader_parameter("outline_width", 2.0)
+	Global.hovered_spot = self
 
 
 func _on_mouse_exited() -> void:
-	$SpotRect.color = Color(1, 1, 1, 1) 
+	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)
 	if Global.hovered_spot == self:
 		Global.hovered_spot = null

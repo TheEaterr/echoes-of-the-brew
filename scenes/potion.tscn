@@ -124,7 +124,6 @@ radius = 186.818
 
 [node name="Potion" type="Area2D"]
 z_index = 1
-position = Vector2(-39, 9)
 scale = Vector2(0.3, 0.3)
 priority = 1
 script = ExtResource("1_ig88o")

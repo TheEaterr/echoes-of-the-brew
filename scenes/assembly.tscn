@@ -36,15 +36,16 @@ base_color = "purple"
 [node name="PotionSpotControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 695.0
-offset_top = 326.0
-offset_right = 821.0
-offset_bottom = 459.0
+offset_left = 690.0
+offset_top = 294.0
+offset_right = 820.0
+offset_bottom = 424.0
 mouse_filter = 1
 script = ExtResource("2_gwo1m")
 metadata/_edit_group_ = true
 
 [node name="PotionSpot" parent="PotionSpotControl" instance=ExtResource("1_fw8jq")]
+position = Vector2(65, 65)
 
 [node name="IngredientPickers" type="GridContainer" parent="."]
 layout_mode = 0

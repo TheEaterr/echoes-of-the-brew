@@ -1,26 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://ohnixu1qn8j5"]
+[gd_scene load_steps=6 format=3 uid="uid://ohnixu1qn8j5"]
 
 [ext_resource type="Script" path="res://scripts/potion_spot.gd" id="1_hv68g"]
+[ext_resource type="Texture2D" uid="uid://dcg72apak0mr5" path="res://assets/spot_empty.png" id="2_nud46"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_rk44d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47vhb"]
 size = Vector2(127, 131)
 
-[node name="PotionSpot" type="Area2D"]
-position = Vector2(68, 82)
-script = ExtResource("1_hv68g")
-metadata/_edit_group_ = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uw0ne"]
+resource_local_to_scene = true
+shader = ExtResource("2_rk44d")
+shader_parameter/outline_width = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
-[node name="SpotRect" type="ColorRect" parent="."]
-offset_left = -69.0
-offset_top = -82.0
-offset_right = 58.0
-offset_bottom = 51.0
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
+[node name="PotionSpot" type="Area2D"]
+script = ExtResource("1_hv68g")
 
 [node name="SpotCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-6.5, -16.5)
 shape = SubResource("RectangleShape2D_47vhb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uw0ne")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_nud46")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
