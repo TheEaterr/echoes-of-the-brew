@@ -5,6 +5,7 @@ var potion_scene = preload("res://scenes/potion.tscn")
 var queue_offset = 200 # Espace entre les clients dans la file d'attente
 var current_queue_position = Vector2(-100, 300) # Position initiale des clients dans la file
 var clients = []  # Liste des clients en file
+var global_score = 0
 
 
 # Fonction appelée quand on clique sur le bouton "take order"
@@ -23,7 +24,10 @@ func _on_take_order_pressed():
 func remove_client(client, potion):
 	# Calcul du score d'insatisfaction du client
 	var satisfaction_score = calculate_satisfaction_score(client.waiting_time, potion, client)
-	print("unsatisfaction score :", satisfaction_score)
+	print("satisfaction score :", satisfaction_score)
+	global_score += satisfaction_score
+	$ScoreLabel.text = "Score: " + str(global_score)
+	print("global_score: ", global_score)
 	add_empty_potion()
 	var client_index = client.client_index
 	clients.erase(client)  # Retire le client de la liste
@@ -61,7 +65,8 @@ func add_empty_potion():
 
 
 func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> float:
-	var score = waiting_time
+	"""Score de satisfaction : """
+	var score = int(waiting_time)
 
 	# Comparaison des ingrédients
 	var missing_ingredients = 0
@@ -79,12 +84,15 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	var ingredient_penalty = (missing_ingredients + extra_ingredients) * 10
 	score += ingredient_penalty
 	
+	# Comparaison des couleurs
+	var color_penalty = 0
 	if client.ordered_color != potion.color:
-		score += 10 
+		color_penalty = 40
+	score += color_penalty
 
 	# 10 secondes de pénalité par tranche de niveau de cuisson de différence
-	var cooking_level_difference = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33)*10
-	score += cooking_level_difference 
-	# Comparaison des couleurs
+	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33)*10
+	score += cooking_level_penalty 
 	
-	return score
+	var cooking_bonus_time = 10*(client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
+	return 25 - score + cooking_bonus_time

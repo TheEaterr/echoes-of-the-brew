@@ -65,7 +65,7 @@ func _init():
 	color = "empty"
 	ingredients = []
 	timer = Timer.new()
-	timer.wait_time = 0.2
+	timer.wait_time = 0.3
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 	add_child(timer)
 	
