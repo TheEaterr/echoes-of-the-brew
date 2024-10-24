@@ -20,9 +20,10 @@ func _on_take_order_pressed():
 	clients.append(new_client)
 
 # Fonction pour supprimer un client
-func remove_client(client):
-	print("Suppression du client : ", client)
-	print("Temps d'attente: ", client.waiting_time)
+func remove_client(client, potion):
+	# Calcul du score d'insatisfaction du client
+	var satisfaction_score = calculate_satisfaction_score(client.waiting_time, potion, client)
+	print("unsatisfaction score :", satisfaction_score)
 	add_empty_potion()
 	var client_index = client.client_index
 	clients.erase(client)  # Retire le client de la liste
@@ -49,7 +50,6 @@ func resume_all_clients():
 # Fonction pour ajouter une potion vide dans un PotionSpot disponible
 func add_empty_potion():
 	var inventoryGrid = %Inventory/InventoryGrid
-	print(inventoryGrid.get_children())
 	for slot in inventoryGrid.get_children():  # Parcourt tous les enfants de la scène
 		var spot = slot.get_node("PotionSpot")  # Récupère le Potion
 		if spot is PotionSpot and spot.current_potion == null:
@@ -57,7 +57,32 @@ func add_empty_potion():
 			spot.current_potion = new_potion  # Associe la potion au PotionSpot
 			add_child(new_potion)  # Ajoute la potion à la scène
 			new_potion.global_position = spot.global_position  # Positionne la potion au même endroit que le PotionSpot
-			print("Potion ajoutée à:", spot.global_position)  # Debug pour vérifier où la potion a été ajoutée
 			return  # Sort de la fonction après avoir ajouté la potion
 
-	print("Aucun PotionSpot disponible.")  # Message si aucun PotionSpot n'est disponible
+
+func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> float:
+	var score = waiting_time
+
+	# Comparaison des ingrédients
+	var missing_ingredients = 0
+	var extra_ingredients = 0
+	
+	# Compter les ingrédients manquants et en trop
+	for ingredient in client.ordered_ingredients:
+		if ingredient not in potion.ingredients:
+			missing_ingredients += 1
+
+	for ingredient in potion.ingredients:
+		if ingredient not in client.ordered_ingredients:
+			extra_ingredients += 1
+	# 10 secondes de pénalité par ingrédient en trop ou manquant
+	var ingredient_penalty = (missing_ingredients + extra_ingredients) * 10
+	score += ingredient_penalty
+
+	# 10 secondes de pénalité par tranche de niveau de cuisson de différence
+	var cooking_level_difference = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33)*10
+	score += cooking_level_difference 
+	# Comparaison des couleurs
+	if client.ordered_color != potion.color:
+		score += 10 
+	return score

@@ -122,12 +122,10 @@ func set_color(new_color : String):
 		color = new_color
 		update_potion_animation()
 		
-		
 func add_ingredients(new_ingredient : String):
 	if new_ingredient in available_ingredients and len(ingredients) < 2 :
 		ingredients.append(new_ingredient)
 		update_potion_animation()
-		
 
 func _ready() -> void:
 	# Connect signals
