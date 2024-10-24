@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
-[ext_resource type="PackedScene" uid="uid://cwm5ptffdcrwh" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
+[ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 
 [node name="Assembly" type="Control"]
 layout_mode = 3
