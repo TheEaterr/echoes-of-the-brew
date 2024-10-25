@@ -15,6 +15,7 @@ var goal_reached = 0
 
 # Fonction appelée quand on clique sur le bouton "take order"
 func _on_take_order_pressed():
+	print("hello")
 	if len(clients) > 6:
 		return
 	# Instancier un nouveau client
@@ -52,6 +53,9 @@ func remove_client(client, potion, timeout=false):
 	# Jouer l'animation
 	# Jouer l'animation avec le bon texte
 	client.show_label(label_text)
+	var potion_spot = client.get_node("PotionSpot")
+	if potion_spot:
+		potion_spot.queue_free()
 	# Attendre 2 secondes
 	await get_tree().create_timer(2.0).timeout
 	

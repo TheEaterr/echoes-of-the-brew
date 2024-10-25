@@ -167,7 +167,6 @@ func _process(_delta) -> void:
 			current_spot.emit_signal("received_potion", self)
 		mb_pressed = false
 
-
 ## Returns true if the sprite has a custom collider
 func has_custom_collider() -> bool:
 	var children = get_children()
