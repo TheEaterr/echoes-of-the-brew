@@ -21,6 +21,7 @@ mouse_filter = 1
 layout_mode = 0
 offset_right = 1604.0
 offset_bottom = 904.0
+theme_override_constants/separation = 0
 
 [node name="Counter" parent="MainBox/VBoxContainer" instance=ExtResource("2_5jqg4")]
 unique_name_in_owner = true
@@ -29,6 +30,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainBox/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Cooking" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("3_egwb1")]
 unique_name_in_owner = true
