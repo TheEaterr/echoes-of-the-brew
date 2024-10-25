@@ -14,6 +14,7 @@ var is_queuing = true
 var queue_timeout = 60
 var zombie_type: int = 1
 var still_walking = true
+var animation_playing = false
 
 # Fonction pour déplacer le client vers sa place
 func move_to_position(target_pos: Vector2):
@@ -22,6 +23,11 @@ func move_to_position(target_pos: Vector2):
 	
 func play_hurt_animation():
 	$AnimatedSprite2D.play(str(zombie_type) + "_hurt")
+	animation_playing = true
+
+func play_jump_animation():
+	$AnimatedSprite2D.play(str(zombie_type) + "_jump")
+	animation_playing = true
 
 # Fonction appelée à chaque frame pour gérer le déplacement et le chronomètre
 func _process(delta):
@@ -30,7 +36,7 @@ func _process(delta):
 	
 	if position.distance_to(target_position) > 1:
 		position = position.move_toward(target_position, move_speed * delta)
-	elif still_walking:
+	elif still_walking and not(animation_playing):
 		# Arrêter l'animation de marche une fois arrivé
 		$AnimatedSprite2D.play(str(zombie_type) + "_idle")
 		still_walking = false
