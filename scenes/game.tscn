@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=7 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
 [ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
 [ext_resource type="PackedScene" uid="uid://bpjotj54h21u2" path="res://scenes/cooking.tscn" id="3_egwb1"]
 [ext_resource type="PackedScene" uid="uid://c8n74txubuwy2" path="res://scenes/inventory.tscn" id="4_c7sq5"]
 [ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
+[ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="6_msr6j"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hgtjr")
@@ -67,7 +68,7 @@ offset_right = 135.5
 offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 50
 
 [node name="Label" type="Label" parent="MainBox/GameOver/VBoxContainer"]
 layout_mode = 2
@@ -77,11 +78,13 @@ horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="MainBox/GameOver/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
 
 [node name="MainMenu" type="Button" parent="MainBox/GameOver/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Main Menu"
 
@@ -96,6 +99,16 @@ offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 301.0
+offset_right = 1130.0
+offset_bottom = 397.0
+theme_override_font_sizes/font_size = 70
+text = "Echoes of the brew"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
@@ -103,27 +116,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.5
-offset_top = -83.0
-offset_right = 135.5
-offset_bottom = 83.0
+offset_left = -133.0
+offset_top = 19.0
+offset_right = 138.0
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Echoes of the brew"
-horizontal_alignment = 1
+theme_override_constants/separation = 50
 
 [node name="StartInfinite" type="Button" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Infinite"
 
 [node name="StartTimeTrial" type="Button" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Time Trial"
 
