@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dak0wls7pbexl"]
+[gd_scene load_steps=11 format=3 uid="uid://dak0wls7pbexl"]
 
 [ext_resource type="Script" path="res://scripts/counter.gd" id="1_diwaw"]
 [ext_resource type="Texture2D" uid="uid://c4vpwkxw7126u" path="res://assets/customer-satisfaction.png" id="2_3t1kt"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://c6q767kld60fe" path="res://assets/mental-health.png" id="2_dosnb"]
 [ext_resource type="Texture2D" uid="uid://dsvpytdhtnca2" path="res://assets/trophy.png" id="2_pu5qm"]
 [ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vw2co"]
+pressed = true
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_mdfb4"]
+events = [SubResource("InputEventKey_vw2co")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ytk"]
 bg_color = Color(0.262932, 0.262932, 0.262932, 1)
@@ -42,6 +49,7 @@ anchor_top = 0.84
 anchor_right = 0.98125
 anchor_bottom = 0.983333
 theme_override_font_sizes/font_size = 25
+shortcut = SubResource("Shortcut_mdfb4")
 text = "TAKE ORDER"
 metadata/_edit_use_anchors_ = true
 

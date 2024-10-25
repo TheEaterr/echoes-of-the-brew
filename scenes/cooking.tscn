@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpjotj54h21u2"]
+[gd_scene load_steps=7 format=3 uid="uid://bpjotj54h21u2"]
 
 [ext_resource type="Texture2D" uid="uid://brlvpbh7y4par" path="res://assets/stone.jpg" id="1_ssgk1"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="2_bd2k3"]
 [ext_resource type="PackedScene" uid="uid://5k7m88p2s7kv" path="res://scenes/cooking_slot.tscn" id="3_da404"]
 [ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="3_mt7y8"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_524u0"]
+pressed = true
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_muvyd"]
+events = [SubResource("InputEventKey_524u0")]
 
 [node name="Cooking" type="TextureRect"]
 custom_minimum_size = Vector2(1000, 500)
@@ -26,6 +33,7 @@ offset_bottom = 76.0
 grow_horizontal = 0
 theme = ExtResource("3_mt7y8")
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_muvyd")
 text = "Assembly
 "
 

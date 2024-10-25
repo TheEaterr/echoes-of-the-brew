@@ -76,3 +76,4 @@ func _on_main_menu_button_pressed() -> void:
 	reset_game()    
 	%GameOver.hide()
 	%MainMenu.show()
+	

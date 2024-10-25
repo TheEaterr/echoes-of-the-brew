@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bctkj7nh63lui"]
+[gd_scene load_steps=10 format=3 uid="uid://bctkj7nh63lui"]
 
 [ext_resource type="Texture2D" uid="uid://n382bbwlf7yu" path="res://assets/wood.jpg" id="1_7432j"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 [ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 [ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="7_3ybtl"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0qaeo"]
+pressed = true
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_u7ets"]
+events = [SubResource("InputEventKey_0qaeo")]
 
 [node name="Assembly" type="TextureRect"]
 texture_repeat = 2
@@ -92,6 +99,7 @@ offset_bottom = 76.0
 grow_horizontal = 0
 theme = ExtResource("7_3ybtl")
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_u7ets")
 text = "Cooking
 "
 
