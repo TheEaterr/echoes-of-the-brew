@@ -28,7 +28,7 @@ func unpause_all_potions():
 func toggle_potions_view(showPotions: bool):
 	for slot in $HBoxContainer.get_children():
 		var spot = slot.get_node("PotionSpot")
-		if spot.current_potion != null:
+		if spot.current_potion != null and spot.current_potion != Global.dragged_potion:
 			if showPotions:
 				spot.current_potion.show()
 			else:

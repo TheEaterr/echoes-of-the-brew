@@ -1,6 +1,7 @@
 extends Node
 
 var is_dragging_potion: bool = false
+var dragged_potion: Potion = null
 var hovered_spot: PotionSpot = null
 var mode: String = "infinite"
 

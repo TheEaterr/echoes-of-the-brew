@@ -149,12 +149,14 @@ func _process(_delta) -> void:
 	if Input.is_mouse_button_pressed(input_method) and is_grabbed and grabbable:
 		global_position = get_global_mouse_position() + grabbed_offset
 		Global.is_dragging_potion = true
+		Global.dragged_potion = self
 		z_index = 2
 		mb_pressed = true
 		stop_cooking()
 	# Otherwise, if the mouse button was pressed on the previous frame but now isn't, the object is released
 	if not Input.is_mouse_button_pressed(input_method) and mb_pressed:
 		Global.is_dragging_potion = false
+		Global.dragged_potion = null
 		z_index = 1
 		if Global.hovered_spot:
 			global_position = Global.hovered_spot.global_position
