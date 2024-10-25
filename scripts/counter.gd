@@ -26,13 +26,18 @@ func _on_take_order_pressed():
 	clients.append(new_client)
 
 # Fonction pour supprimer un client
-func remove_client(client, potion):
+func remove_client(client, potion, timeout=false):
 	
-	# Score de satisfaction
-	# Appel de la fonction et récupération du score et du texte
-	var result = calculate_satisfaction_score(client.waiting_time, potion, client)
-	var satisfaction_score = result[0]  # Le score de satisfaction
-	var label_text = result[1]          # Le texte du commentaire
+	# Score de satisfaction et texte
+	var satisfaction_score = 0
+	var label_text = ""
+	if timeout:
+		satisfaction_score = -10
+		label_text = "How slow... I'm off!\n-10"
+	else:
+		var result = calculate_satisfaction_score(client.waiting_time, potion, client)
+		satisfaction_score = result[0]  # Le score de satisfaction
+		label_text = result[1]          # Le texte du commentaire
 
 	global_score += satisfaction_score
 	$ScoreLabel.text = "Score: " + str(global_score)
@@ -129,33 +134,38 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	# Définition des messages possibles avec une sélection aléatoire
 	var penalty_messages = []
 	if waiting_time > 40:
-		penalty_messages.append("So slow! ")
+		penalty_messages.append("So slow!\n")
 	if missing_ingredients > 0:
-		penalty_messages.append("Missing ingredients! ")
+		penalty_messages.append("Missing ingredients!\n")
 	if extra_ingredients > 0:
-		penalty_messages.append("Didn’t ask for extra! ")
+		penalty_messages.append("Didn’t ask for extra!\n")
 	if color_penalty > 0:
-		penalty_messages.append("Wrong color! ")
+		penalty_messages.append("Wrong color!\n")
 	if cooking_level_penalty > 0:
-		penalty_messages.append("Undercooked!" if potion.cooking_level < client.ordered_cooking_level else "Overcooked! ")
+		penalty_messages.append("Undercooked!\n" if potion.cooking_level < client.ordered_cooking_level else "Overcooked!\n")
 	if score <=0:
-		penalty_messages.append("Never coming back! ")
+		penalty_messages.append("Never coming back!\n")
 
 	# Si aucune pénalité spécifique, ajoute un commentaire général selon le score
 	if penalty_messages.size() == 0:
 		if score > 30:
-			label_text = "Perfect! "
+			label_text = "Perfect!\n"
 		elif score > 20:
-			label_text = "Excellent! "
+			label_text = "Excellent!\n"
 		elif score > 0:
-			label_text = "Yummy! "
+			label_text = "Yummy!\n"
 
 	else:
 		# Choix d’un commentaire de pénalité aléatoire
 		label_text = penalty_messages[randi() % penalty_messages.size()] + " "
 
 	# Ajout du score au commentaire
-	label_text += str(score)
+	if score >= 0:
+		label_text += "+ "
+		label_text += str(abs(score))
+	else:
+		label_text += "- "
+		label_text += str(abs(score))
 
 	return [score, label_text]
 

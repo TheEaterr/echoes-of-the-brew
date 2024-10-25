@@ -10,6 +10,8 @@ var timer_paused = false  # Variable pour savoir si le chronomètre est en pause
 var ordered_cooking_level = randi() % 100
 var ordered_color : String = "empty"
 var ordered_ingredients = []
+var is_queuing = true
+var queue_timeout = 60
 
 
 # Fonction pour déplacer le client vers sa place
@@ -27,6 +29,9 @@ func _process(delta):
 	else:
 		# Arrêter l'animation de marche une fois arrivé
 		$AnimatedSprite2D.stop()
+	if waiting_time > queue_timeout and is_queuing:
+		is_queuing = false
+		get_parent().remove_client(self, null, true)
 
 # Fonction pour afficher la bulle de commande (une fois le client en place)
 func show_order_icon():
