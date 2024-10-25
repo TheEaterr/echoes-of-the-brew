@@ -1,11 +1,40 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh2mr2w6nl5p0"]
+[gd_scene load_steps=39 format=3 uid="uid://dh2mr2w6nl5p0"]
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
-[ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
 [ext_resource type="Texture2D" uid="uid://socxe2jcsim8" path="res://assets/bulle_bd.png" id="2_uuxj1"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_4uwps"]
 [ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
+[ext_resource type="Texture2D" uid="uid://bahbwy3ax7qeq" path="res://assets/Zombie1/animation/Idle1.png" id="5_u6i05"]
+[ext_resource type="Texture2D" uid="uid://m7rpjs2x53lk" path="res://assets/Zombie1/animation/Idle2.png" id="6_lxgoo"]
+[ext_resource type="Texture2D" uid="uid://dwj1ktiuov6eq" path="res://assets/Zombie1/animation/Idle3.png" id="7_xeng1"]
+[ext_resource type="Texture2D" uid="uid://b30k02xboe3qm" path="res://assets/Zombie1/animation/Idle4.png" id="8_2ythx"]
+[ext_resource type="Texture2D" uid="uid://dvps2tcalsg84" path="res://assets/Zombie1/animation/Walk1.png" id="9_k63e3"]
+[ext_resource type="Texture2D" uid="uid://7e1e7bn61o8i" path="res://assets/Zombie1/animation/Walk2.png" id="10_4agu0"]
+[ext_resource type="Texture2D" uid="uid://dk2ie6wpn3ued" path="res://assets/Zombie1/animation/Walk3.png" id="11_20u4q"]
+[ext_resource type="Texture2D" uid="uid://d0wd5ui6g4wjf" path="res://assets/Zombie1/animation/Walk4.png" id="12_7henb"]
+[ext_resource type="Texture2D" uid="uid://crew4lhgjtrq6" path="res://assets/Zombie1/animation/Walk5.png" id="13_wptfl"]
+[ext_resource type="Texture2D" uid="uid://h6idi06y52sy" path="res://assets/Zombie1/animation/Walk6.png" id="14_d438w"]
+[ext_resource type="Texture2D" uid="uid://cirb4u536e4f1" path="res://assets/Zombie2/animation/Idle1.png" id="15_1bvo1"]
+[ext_resource type="Texture2D" uid="uid://d0ov682c3kxs" path="res://assets/Zombie2/animation/Idle2.png" id="16_gju16"]
+[ext_resource type="Texture2D" uid="uid://1nxq4vtji7a6" path="res://assets/Zombie2/animation/Idle3.png" id="17_oi2bc"]
+[ext_resource type="Texture2D" uid="uid://dgjv6wqgjmit2" path="res://assets/Zombie2/animation/Idle4.png" id="18_j5s0q"]
+[ext_resource type="Texture2D" uid="uid://l4w6fakvayrx" path="res://assets/Zombie2/animation/Walk1.png" id="19_3vyqm"]
+[ext_resource type="Texture2D" uid="uid://vck4b5ktw33w" path="res://assets/Zombie2/animation/Walk2.png" id="20_jox8n"]
+[ext_resource type="Texture2D" uid="uid://d37xg0u3v71mw" path="res://assets/Zombie2/animation/Walk3.png" id="21_t356n"]
+[ext_resource type="Texture2D" uid="uid://bqo3ll6lvt6n0" path="res://assets/Zombie2/animation/Walk4.png" id="22_l2jn6"]
+[ext_resource type="Texture2D" uid="uid://xqrh4wko3d3v" path="res://assets/Zombie2/animation/Walk5.png" id="23_ikamv"]
+[ext_resource type="Texture2D" uid="uid://bohgdu4lo8nsv" path="res://assets/Zombie2/animation/Walk6.png" id="24_7p48o"]
+[ext_resource type="Texture2D" uid="uid://cgys6vgantx5" path="res://assets/Zombie3/animation/Idle1.png" id="25_65suh"]
+[ext_resource type="Texture2D" uid="uid://bshnsq4ptr61f" path="res://assets/Zombie3/animation/Idle2.png" id="26_qhavb"]
+[ext_resource type="Texture2D" uid="uid://c21sk2302aevh" path="res://assets/Zombie3/animation/Idle3.png" id="27_julom"]
+[ext_resource type="Texture2D" uid="uid://cws47y4unx0g3" path="res://assets/Zombie3/animation/Idle4.png" id="28_ktkiv"]
+[ext_resource type="Texture2D" uid="uid://bb2mx8mjfiupc" path="res://assets/Zombie3/animation/Walk1.png" id="29_xewf4"]
+[ext_resource type="Texture2D" uid="uid://cr50ptvwogc7f" path="res://assets/Zombie3/animation/Walk2.png" id="30_7j1fl"]
+[ext_resource type="Texture2D" uid="uid://gbdj3dwca3ye" path="res://assets/Zombie3/animation/Walk3.png" id="31_i7ci8"]
+[ext_resource type="Texture2D" uid="uid://cgxu4dsl4g01s" path="res://assets/Zombie3/animation/Walk4.png" id="32_32e10"]
+[ext_resource type="Texture2D" uid="uid://brnrxt6uuv324" path="res://assets/Zombie3/animation/Walk5.png" id="33_loa1w"]
+[ext_resource type="Texture2D" uid="uid://ba1376widvumc" path="res://assets/Zombie3/animation/Walk6.png" id="34_heus8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v73t5"]
 resource_local_to_scene = true
@@ -13,30 +42,149 @@ shader = ExtResource("3_4uwps")
 shader_parameter/outline_width = 0.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_accni"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(0, 0, 234, 249)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_23isw"]
-atlas = ExtResource("1_nwp1f")
-region = Rect2(234, 0, 234, 249)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1eq8f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_accni")
+"texture": ExtResource("5_u6i05")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_23isw")
+"texture": ExtResource("6_lxgoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xeng1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2ythx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xeng1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lxgoo")
 }],
 "loop": true,
-"name": &"walking_left",
+"name": &"1_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_k63e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4agu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_20u4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7henb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wptfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d438w")
+}],
+"loop": true,
+"name": &"1_walking",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_1bvo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gju16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_oi2bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j5s0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_oi2bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gju16")
+}],
+"loop": true,
+"name": &"2_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_3vyqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_jox8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_t356n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_l2jn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ikamv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7p48o")
+}],
+"loop": true,
+"name": &"2_walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_65suh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_qhavb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_julom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ktkiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_julom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_qhavb")
+}],
+"loop": true,
+"name": &"3_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_xewf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7j1fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_i7ci8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_32e10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_loa1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_heus8")
+}],
+"loop": true,
+"name": &"3_walking",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd8y8"]
-size = Vector2(111.25, 231.062)
+size = Vector2(123.625, 258)
 
 [node name="Client" type="CharacterBody2D"]
 script = ExtResource("1_35ctu")
@@ -66,13 +214,14 @@ position = Vector2(-20, -116)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_v73t5")
-position = Vector2(-2, -139)
+position = Vector2(-61.25, -129.5)
+scale = Vector2(0.6, 0.641)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
-animation = &"walking_left"
-frame_progress = 1.0
+animation = &"3_walking"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-60, -132)
+position = Vector2(-66.1875, -132)
 shape = SubResource("RectangleShape2D_sd8y8")
 
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
