@@ -1,76 +1,133 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=6 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
-[ext_resource type="PackedScene" path="res://potion.tscn" id="3_xvioa"]
-[ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_32bdg"]
-[ext_resource type="PackedScene" path="res://scenes/assembly.tscn" id="4_oeskb"]
+[ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
+[ext_resource type="PackedScene" uid="uid://bpjotj54h21u2" path="res://scenes/cooking.tscn" id="3_egwb1"]
+[ext_resource type="PackedScene" uid="uid://c8n74txubuwy2" path="res://scenes/inventory.tscn" id="4_c7sq5"]
+[ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hgtjr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(5, 5)
-offset = Vector2(0, 200)
-zoom = Vector2(0.5, 0.5)
+[node name="MainBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+mouse_filter = 1
 
-[node name="Button" type="Button" parent="."]
-offset_left = 828.0
-offset_top = 20.0
-offset_right = 994.0
-offset_bottom = 97.0
-theme_override_font_sizes/font_size = 25
-text = "TAKE ORDER"
+[node name="VBoxContainer" type="VBoxContainer" parent="MainBox"]
+layout_mode = 0
+offset_right = 1604.0
+offset_bottom = 904.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = -466.0
-offset_top = -292.0
-offset_right = 859.0
-offset_bottom = -22.0
+[node name="Counter" parent="MainBox/VBoxContainer" instance=ExtResource("2_5jqg4")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
 
-[node name="PotionSpot" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(907, 268)
+[node name="HBoxContainer" type="HBoxContainer" parent="MainBox/VBoxContainer"]
+layout_mode = 2
 
-[node name="PotionSpot2" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(648, 285)
+[node name="Cooking" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("3_egwb1")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
-[node name="PotionSpot3" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(927, 698)
+[node name="Assembly" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("4_oeskb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
 
-[node name="PotionSpot4" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(910, 507)
+[node name="Inventory" parent="MainBox/VBoxContainer/HBoxContainer" instance=ExtResource("4_c7sq5")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="PotionSpot5" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(648, 693)
+[node name="GameOver" type="Panel" parent="MainBox"]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PotionSpot6" parent="." instance=ExtResource("4_32bdg")]
-position = Vector2(641, 490)
+[node name="VBoxContainer" type="VBoxContainer" parent="MainBox/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -83.0
+offset_right = 135.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="Potion" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(642, 275)
-script = null
+[node name="Label" type="Label" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
 
-[node name="Potion2" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(922, 689)
-script = null
+[node name="Restart" type="Button" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"
 
-[node name="Potion3" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(660, 675)
-script = null
+[node name="MainMenu" type="Button" parent="MainBox/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
 
-[node name="Potion4" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(901, 489)
-script = null
+[node name="MainMenu" type="Panel" parent="."]
+unique_name_in_owner = true
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Potion5" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(636, 486)
-script = null
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -83.0
+offset_right = 135.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="Potion6" parent="." instance=ExtResource("3_xvioa")]
-position = Vector2(903, 262)
-script = null
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Echoes of the brew"
+horizontal_alignment = 1
 
-[node name="Assembly" parent="." instance=ExtResource("4_oeskb")]
-offset_left = -495.0
-offset_top = 376.0
-offset_right = 505.0
-offset_bottom = 876.0
+[node name="StartInfinite" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Infinite"
+
+[node name="StartTimeTrial" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Time Trial"
+
+[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MainBox/GameOver/VBoxContainer/MainMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/StartInfinite" to="." method="_on_infinite_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/StartTimeTrial" to="." method="_on_time_trial_button_pressed"]
