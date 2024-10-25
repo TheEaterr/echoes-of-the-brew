@@ -194,16 +194,16 @@ metadata/_edit_horizontal_guides_ = [-202.0]
 z_index = -1
 offset_left = -183.0
 offset_top = -398.0
-offset_right = 23.0
+offset_right = 83.0
 offset_bottom = -190.0
 texture = ExtResource("2_uuxj1")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
-offset_left = -152.0
+offset_left = -144.0
 offset_top = -355.0
-offset_right = -4.0
-offset_bottom = -290.0
+offset_right = 29.0
+offset_bottom = -288.0
 theme_override_colors/font_color = Color(0.0156863, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
 text = "Yummy!
@@ -228,5 +228,5 @@ shape = SubResource("RectangleShape2D_sd8y8")
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
 visible = false
 z_index = 0
-position = Vector2(-78, -322)
+position = Vector2(-53, -323)
 grabbable = false

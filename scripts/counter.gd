@@ -2,7 +2,7 @@ extends Control
 
 var client_scene = preload("res://scenes/client.tscn")
 var potion_scene = preload("res://scenes/potion.tscn") 
-var queue_offset = 200 # Espace entre les clients dans la file d'attente
+var queue_offset = 250 # Espace entre les clients dans la file d'attente
 var current_queue_position = Vector2(-100, 300) # Position initiale des clients dans la file
 var clients = []  # Liste des clients en file
 var global_score = 0
@@ -15,7 +15,6 @@ var goal_reached = 0
 
 # Fonction appelée quand on clique sur le bouton "take order"
 func _on_take_order_pressed():
-	print("hello")
 	if len(clients) > 6:
 		return
 	# Instancier un nouveau client
