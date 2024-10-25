@@ -47,6 +47,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
 layout_mode = 0
 offset_right = 942.0
 offset_bottom = 655.0
