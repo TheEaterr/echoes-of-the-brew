@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpjotj54h21u2"]
+[gd_scene load_steps=8 format=3 uid="uid://bpjotj54h21u2"]
 
 [ext_resource type="Texture2D" uid="uid://brlvpbh7y4par" path="res://assets/stone.jpg" id="1_ssgk1"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="2_bd2k3"]
 [ext_resource type="PackedScene" uid="uid://5k7m88p2s7kv" path="res://scenes/cooking_slot.tscn" id="3_da404"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="3_mt7y8"]
+[ext_resource type="Texture2D" uid="uid://cjnrnaed8nak5" path="res://assets/fire.png" id="5_k5udq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_524u0"]
 pressed = true
@@ -63,5 +64,14 @@ layout_mode = 2
 
 [node name="CookingSlot4" parent="HBoxContainer" instance=ExtResource("3_da404")]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 319.0
+offset_right = 2015.0
+offset_bottom = 686.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k5udq")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

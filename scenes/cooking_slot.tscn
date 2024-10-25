@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://5k7m88p2s7kv"]
+[gd_scene load_steps=3 format=3 uid="uid://5k7m88p2s7kv"]
 
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_a7dko"]
+[ext_resource type="Texture2D" uid="uid://d06s6vdle040u" path="res://assets/mesh.png" id="2_4tjrv"]
 
 [node name="CookingSlot" type="Control"]
 custom_minimum_size = Vector2(130, 130)
@@ -14,6 +15,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_group_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -83.0
+offset_right = -74.0
+offset_bottom = 69.0
+scale = Vector2(18.3868, 1.513)
+texture = ExtResource("2_4tjrv")
+expand_mode = 1
 
 [node name="PotionSpot" parent="." instance=ExtResource("1_a7dko")]
 is_cooking = true
