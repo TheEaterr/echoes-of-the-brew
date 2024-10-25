@@ -1,7 +1,7 @@
 # game.gd
 extends Node2D
 
-var potion_scene = preload("res://scenes/potion.tscn") 
+var potion_scene = preload("res://scenes/potion.tscn")
 
 func reset_game():
 	%Counter/SpawnClientTimer.stop()

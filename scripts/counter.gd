@@ -15,7 +15,7 @@ var goal_reached = 0
 
 # Fonction appelée quand on clique sur le bouton "take order"
 func _on_take_order_pressed():
-	if len(clients) > 6:
+	if len(clients) > 5:
 		return
 	# Instancier un nouveau client
 	var new_client = client_scene.instantiate()
@@ -26,6 +26,11 @@ func _on_take_order_pressed():
 	new_client.client_index = clients.size()
 	new_client.move_to_position(Vector2(200 + queue_offset * clients.size(), 400))
 	clients.append(new_client)
+	
+	$Button.disabled = true  # Désactive le bouton
+	# Lance un timer pour réactiver le bouton après 1 seconde
+	await get_tree().create_timer(1).timeout
+	$Button.disabled = false  # Réactive le bouton
 
 # Fonction pour supprimer un client
 func remove_client(client, potion, timeout=false):
@@ -134,7 +139,7 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	
 	# Bonus de cuisson parfaite
 	var cooking_bonus_time = 10 * (client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
-	score = 40 - score + cooking_bonus_time
+	score = 50 - score + cooking_bonus_time
 
 	# Définition des messages possibles avec une sélection aléatoire
 	var penalty_messages = []
