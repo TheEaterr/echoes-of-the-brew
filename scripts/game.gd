@@ -11,7 +11,8 @@ func reset_game():
 	%Counter.score_goal = 50
 	%Counter.time_remaining = 60
 	%Counter.clients_served = 0
-	%Counter/ScoreLabel.text = "Score: 0"
+	%Counter/Score/ScoreLabel.text = "0"
+	%Counter/EsteemBar/ProgressBar.value = 0
 	for client in %Counter.clients:
 		client.queue_free()
 	%Counter.clients = []
@@ -46,10 +47,12 @@ func _on_restart_button_pressed() -> void:
 func _on_infinite_button_pressed() -> void:
 	%MainMenu.hide()
 	Global.mode = "infinite"
-	%Counter/ClientsServedLabel.show()
+	%Counter/EsteemBar.show()
+	%Counter/ClientsServed.show()
 	%Counter/Button.hide()
-	%Counter/TimeRemainingLabel.hide()
-	%Counter/ScoreToReachLabel.hide()
+	%Counter/TimeRemaining.hide()
+	%Counter/ScoreToReach.hide()
+	%Counter/Score.hide()
 	%Counter/SpawnClientTimer.start()
 	%Counter._on_take_order_pressed()
 	%Counter._on_take_order_pressed()
@@ -59,12 +62,15 @@ func _on_infinite_button_pressed() -> void:
 func _on_time_trial_button_pressed() -> void:
 	%MainMenu.hide()
 	Global.mode = "time_trial"
+	%Counter/EsteemBar.hide()
 	%Counter/TimeTrialCountdown.paused = false
-	%Counter/ClientsServedLabel.hide()
+	%Counter/ClientsServed.hide()
 	%Counter/Button.show()
 	%Counter/TimeTrialCountdown.start()
-	%Counter/TimeRemainingLabel.show()
-	%Counter/ScoreToReachLabel.show()
+	%Counter/TimeRemaining.show()
+	%Counter/TimeRemaining/TimeRemainingLabel.text = str(%Counter.time_remaining)
+	%Counter/ScoreToReach.show()
+	%Counter/Score.show()
 
 func _on_main_menu_button_pressed() -> void:
 	reset_game()    

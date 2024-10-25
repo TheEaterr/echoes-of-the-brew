@@ -13,7 +13,10 @@ func _ready() -> void:
 func _get_drag_data(_at_position: Vector2) -> String:
 	# Use another colorpicker as drag preview.
 	var cpb := ColorPickerButton.new()
-	cpb.color = base_color
+	if base_color == "blue":
+		cpb.color = "yellow"
+	else:
+		cpb.color = base_color
 	cpb.size = Vector2(50.0, 50.0)
 
 	# Allows us to center the color picker on the mouse.

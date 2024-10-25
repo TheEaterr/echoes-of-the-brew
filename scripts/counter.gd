@@ -40,12 +40,12 @@ func remove_client(client, potion, timeout=false):
 		label_text = result[1]          # Le texte du commentaire
 
 	global_score += satisfaction_score
-	$ScoreLabel.text = "Score: " + str(global_score)
+	if Global.mode == "infinite":
+		global_score = min(max(-150, global_score), 100)
+	$Score/ScoreLabel.text = str(global_score)
+	$EsteemBar/ProgressBar.value = global_score
 	clients_served += 1
-	$ClientsServedLabel.text = "Clients served: " + str(clients_served)
-	print("global_score: ", global_score)
-	# Update global score
-	$ScoreLabel.text = "Score : " + str(global_score)
+	$ClientsServed/ClientsServedLabel.text = str(clients_served)
 	
 	# Jouer l'animation
 	# Jouer l'animation avec le bon texte
@@ -68,7 +68,7 @@ func remove_client(client, potion, timeout=false):
 
 # Lien entre le bouton et la fonction
 func _ready():
-	$ScoreToReachLabel.text = "Score to reach: " + str(score_goal)
+	$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
 	max_timer = $SpawnClientTimer.wait_time
 	$Button.connect("pressed", Callable(self, "_on_take_order_pressed"))
 
@@ -180,10 +180,11 @@ func _on_time_trial_countdown_timeout() -> void:
 	time_remaining -= 1
 	if time_remaining == 0:
 		%GameOver.show()
+		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
 	else:
 		if global_score >= score_goal:
 			time_remaining = 60
 			goal_reached += 1
 			score_goal += 50 + goal_reached * 10
-			$ScoreToReachLabel.text = "Score to reach: " + str(score_goal)
-	$TimeRemainingLabel.text = "Time remaining: " + str(time_remaining)
+			$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
+		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
