@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dak0wls7pbexl"]
+[gd_scene load_steps=9 format=3 uid="uid://dak0wls7pbexl"]
 
 [ext_resource type="Script" path="res://scripts/counter.gd" id="1_diwaw"]
+[ext_resource type="Texture2D" uid="uid://c4vpwkxw7126u" path="res://assets/customer-satisfaction.png" id="2_3t1kt"]
+[ext_resource type="Texture2D" uid="uid://becjt83axtjr5" path="res://assets/hour-glass.png" id="2_c5oov"]
+[ext_resource type="Texture2D" uid="uid://c6q767kld60fe" path="res://assets/mental-health.png" id="2_dosnb"]
+[ext_resource type="Texture2D" uid="uid://dsvpytdhtnca2" path="res://assets/trophy.png" id="2_pu5qm"]
+[ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ytk"]
+bg_color = Color(0.262932, 0.262932, 0.262932, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oh1r"]
+bg_color = Color(0.799831, 0, 0.0772791, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
 
 [node name="Counter" type="Control"]
 custom_minimum_size = Vector2(1600, 300)
@@ -21,62 +45,109 @@ theme_override_font_sizes/font_size = 25
 text = "TAKE ORDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="ClientsServedLabel" type="Label" parent="."]
+[node name="ClientsServed" type="HBoxContainer" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -248.0
-offset_top = 69.0
-offset_right = -12.0
-offset_bottom = 111.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
-text = "Clients served: 0
-"
-
-[node name="TimeRemainingLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -248.0
-offset_top = 69.0
-offset_right = -12.0
-offset_bottom = 111.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
-text = "Time Remaing: 60
-"
-
-[node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1416.0
-offset_top = 18.0
-offset_right = 1583.0
-offset_bottom = 56.0
+offset_left = 1513.0
+offset_top = 76.0
+offset_right = 1584.0
+offset_bottom = 126.0
+
+[node name="TextureRect" type="TextureRect" parent="ClientsServed"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_3t1kt")
+expand_mode = 1
+
+[node name="ClientsServedLabel" type="Label" parent="ClientsServed"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Score: 0"
+text = "0
+"
+
+[node name="TimeRemaining" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 77.0
+offset_right = 1568.0
+offset_bottom = 127.0
+
+[node name="TextureRect" type="TextureRect" parent="TimeRemaining"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_c5oov")
+expand_mode = 1
+
+[node name="TimeRemainingLabel" type="Label" parent="TimeRemaining"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "60
+"
+
+[node name="Score" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1336.0
+offset_top = 12.0
+offset_right = 1407.0
+offset_bottom = 62.0
+
+[node name="TextureRect" type="TextureRect" parent="Score"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_pu5qm")
+expand_mode = 1
+
+[node name="ScoreLabel" type="Label" parent="Score"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
 
 [node name="SpawnClientTimer" type="Timer" parent="."]
 wait_time = 15.0
 
 [node name="TimeTrialCountdown" type="Timer" parent="."]
 
-[node name="ScoreToReachLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -265.0
-offset_top = 117.0
-offset_right = -9.0
-offset_bottom = 159.0
-grow_horizontal = 0
+[node name="ScoreToReach" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 10.0
+offset_right = 1585.0
+offset_bottom = 60.0
+
+[node name="TextureRect" type="TextureRect" parent="ScoreToReach"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_74muv")
+expand_mode = 1
+
+[node name="ScoreToReachLabel" type="Label" parent="ScoreToReach"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Score to reach: 100
+text = "100
 "
+
+[node name="EsteemBar" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1037.0
+offset_top = 12.0
+offset_right = 1591.0
+offset_bottom = 65.0
+
+[node name="Control" type="TextureRect" parent="EsteemBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("2_dosnb")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="EsteemBar"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_g0ytk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0oh1r")
+min_value = -150.0
+show_percentage = false
 
 [connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
 [connection signal="timeout" from="TimeTrialCountdown" to="." method="_on_time_trial_countdown_timeout"]
