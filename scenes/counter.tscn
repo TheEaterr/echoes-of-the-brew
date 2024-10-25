@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dak0wls7pbexl"]
+[gd_scene load_steps=10 format=3 uid="uid://dak0wls7pbexl"]
 
 [ext_resource type="Script" path="res://scripts/counter.gd" id="1_diwaw"]
 [ext_resource type="Texture2D" uid="uid://c4vpwkxw7126u" path="res://assets/customer-satisfaction.png" id="2_3t1kt"]
 [ext_resource type="Texture2D" uid="uid://becjt83axtjr5" path="res://assets/hour-glass.png" id="2_c5oov"]
 [ext_resource type="Texture2D" uid="uid://c6q767kld60fe" path="res://assets/mental-health.png" id="2_dosnb"]
 [ext_resource type="Texture2D" uid="uid://dsvpytdhtnca2" path="res://assets/trophy.png" id="2_pu5qm"]
+[ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="2_rtwgo"]
 [ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ytk"]
@@ -41,6 +42,7 @@ anchor_left = 0.881875
 anchor_top = 0.84
 anchor_right = 0.98125
 anchor_bottom = 0.983333
+theme = ExtResource("2_rtwgo")
 theme_override_font_sizes/font_size = 25
 text = "TAKE ORDER"
 metadata/_edit_use_anchors_ = true

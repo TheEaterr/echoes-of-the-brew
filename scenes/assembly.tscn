@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bctkj7nh63lui"]
+[gd_scene load_steps=8 format=3 uid="uid://bctkj7nh63lui"]
 
 [ext_resource type="Texture2D" uid="uid://n382bbwlf7yu" path="res://assets/wood.jpg" id="1_7432j"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 [ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
+[ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="7_3ybtl"]
 
 [node name="Assembly" type="TextureRect"]
 texture_repeat = 2
@@ -84,11 +85,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -139.0
-offset_top = 11.0
-offset_right = -14.0
-offset_bottom = 61.0
+offset_left = -140.0
+offset_top = 26.0
+offset_right = -15.0
+offset_bottom = 76.0
 grow_horizontal = 0
+theme = ExtResource("7_3ybtl")
 theme_override_font_sizes/font_size = 30
 text = "Cooking
 "
