@@ -4,7 +4,7 @@ extends Node2D
 var potion_scene = preload("res://scenes/potion.tscn")
 
 func reset_game():
-	%Counter/SpawnClientTimer.stop()
+	%Counter/SpawnClientTimer.paused = true
 	%Counter/TimeTrialCountdown.paused = true
 	%Counter.global_score = 0
 	%Counter.goal_reached = 0
@@ -53,6 +53,7 @@ func _on_infinite_button_pressed() -> void:
 	%Counter/TimeRemaining.hide()
 	%Counter/ScoreToReach.hide()
 	%Counter/Score.hide()
+	%Counter/SpawnClientTimer.paused = false
 	%Counter/SpawnClientTimer.start()
 	%Counter._on_take_order_pressed()
 	%Counter._on_take_order_pressed()

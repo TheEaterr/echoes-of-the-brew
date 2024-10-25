@@ -14,9 +14,9 @@ var score_goal = 50
 var goal_reached = 0
 
 # Fonction appelée quand on clique sur le bouton "take order"
-func _on_take_order_pressed():
+func _on_take_order_pressed() -> bool:
 	if len(clients) > 5:
-		return
+		return false
 	# Instancier un nouveau client
 	var new_client = client_scene.instantiate()
 	add_child(new_client)
@@ -30,7 +30,8 @@ func _on_take_order_pressed():
 	$Button.disabled = true  # Désactive le bouton
 	# Lance un timer pour réactiver le bouton après 1 seconde
 	await get_tree().create_timer(1).timeout
-	$Button.disabled = false  # Réactive le bouton
+	$Button.disabled = false  # Réactive le 
+	return true
 
 # Fonction pour supprimer un client
 func remove_client(client, potion, timeout=false):
@@ -79,6 +80,8 @@ func remove_client(client, potion, timeout=false):
 	
 	if global_score <= -150:
 		%GameOver.show()
+		if Global.mode == "infinite":
+			$SpawnClientTimer.paused = true
 
 # Lien entre le bouton et la fonction
 func _ready():
@@ -186,7 +189,10 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 
 
 func _on_spawn_client_timer_timeout() -> void:
-	_on_take_order_pressed()
+	var new_client = await _on_take_order_pressed()
+	if not new_client:
+		%GameOver.show()
+		$SpawnClientTimer.paused = true
 	$SpawnClientTimer.wait_time = max($SpawnClientTimer.wait_time - 2, min_timer)
 	$SpawnClientTimer.start()
 
@@ -195,6 +201,7 @@ func _on_time_trial_countdown_timeout() -> void:
 	if time_remaining == 0:
 		%GameOver.show()
 		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
+		$TimeTrialCountdown.paused = true
 	else:
 		if global_score >= score_goal:
 			time_remaining = 60

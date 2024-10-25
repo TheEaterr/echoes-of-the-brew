@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/assembly/assembly.gd" id="2_3bnba"]
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
-[ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
+[ext_resource type="PackedScene" uid="uid://cwm5ptffdcrwh" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="7_3ybtl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0qaeo"]
