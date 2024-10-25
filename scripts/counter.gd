@@ -56,6 +56,9 @@ func remove_client(client, potion, timeout=false):
 	
 	# Jouer l'animation
 	# Jouer l'animation avec le bon texte
+	if satisfaction_score < 0:
+		print("hello")
+		client.play_hurt_animation()
 	client.show_label(label_text)
 	var potion_spot = client.get_node("PotionSpot")
 	if potion_spot:

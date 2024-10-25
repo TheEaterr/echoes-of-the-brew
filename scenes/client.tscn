@@ -1,14 +1,19 @@
-[gd_scene load_steps=39 format=3 uid="uid://dh2mr2w6nl5p0"]
+[gd_scene load_steps=54 format=3 uid="uid://dh2mr2w6nl5p0"]
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://socxe2jcsim8" path="res://assets/bulle_bd.png" id="2_uuxj1"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_4uwps"]
 [ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
+[ext_resource type="Texture2D" uid="uid://ck81mtne2if01" path="res://assets/Zombie1/animation/Hurt1.png" id="5_qjlvn"]
 [ext_resource type="Texture2D" uid="uid://bahbwy3ax7qeq" path="res://assets/Zombie1/animation/Idle1.png" id="5_u6i05"]
+[ext_resource type="Texture2D" uid="uid://b7iiwc2tivqjk" path="res://assets/Zombie1/animation/Hurt2.png" id="6_bwm40"]
 [ext_resource type="Texture2D" uid="uid://m7rpjs2x53lk" path="res://assets/Zombie1/animation/Idle2.png" id="6_lxgoo"]
+[ext_resource type="Texture2D" uid="uid://umjv244kdrqc" path="res://assets/Zombie1/animation/Hurt3.png" id="7_mtwog"]
 [ext_resource type="Texture2D" uid="uid://dwj1ktiuov6eq" path="res://assets/Zombie1/animation/Idle3.png" id="7_xeng1"]
 [ext_resource type="Texture2D" uid="uid://b30k02xboe3qm" path="res://assets/Zombie1/animation/Idle4.png" id="8_2ythx"]
+[ext_resource type="Texture2D" uid="uid://ucrnyy5g6aqx" path="res://assets/Zombie1/animation/Hurt4.png" id="8_q2mh3"]
+[ext_resource type="Texture2D" uid="uid://pcrw3ts3xm3n" path="res://assets/Zombie1/animation/Hurt5.png" id="9_fvq17"]
 [ext_resource type="Texture2D" uid="uid://dvps2tcalsg84" path="res://assets/Zombie1/animation/Walk1.png" id="9_k63e3"]
 [ext_resource type="Texture2D" uid="uid://7e1e7bn61o8i" path="res://assets/Zombie1/animation/Walk2.png" id="10_4agu0"]
 [ext_resource type="Texture2D" uid="uid://dk2ie6wpn3ued" path="res://assets/Zombie1/animation/Walk3.png" id="11_20u4q"]
@@ -21,9 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://dgjv6wqgjmit2" path="res://assets/Zombie2/animation/Idle4.png" id="18_j5s0q"]
 [ext_resource type="Texture2D" uid="uid://l4w6fakvayrx" path="res://assets/Zombie2/animation/Walk1.png" id="19_3vyqm"]
 [ext_resource type="Texture2D" uid="uid://vck4b5ktw33w" path="res://assets/Zombie2/animation/Walk2.png" id="20_jox8n"]
+[ext_resource type="Texture2D" uid="uid://88ojwlu8b7tc" path="res://assets/Zombie2/animation/Hurt1.png" id="20_urdqu"]
+[ext_resource type="Texture2D" uid="uid://bw7ydagimdymx" path="res://assets/Zombie2/animation/Hurt2.png" id="21_kdk44"]
 [ext_resource type="Texture2D" uid="uid://d37xg0u3v71mw" path="res://assets/Zombie2/animation/Walk3.png" id="21_t356n"]
 [ext_resource type="Texture2D" uid="uid://bqo3ll6lvt6n0" path="res://assets/Zombie2/animation/Walk4.png" id="22_l2jn6"]
+[ext_resource type="Texture2D" uid="uid://hveixi14t0kq" path="res://assets/Zombie2/animation/Hurt3.png" id="22_weud2"]
 [ext_resource type="Texture2D" uid="uid://xqrh4wko3d3v" path="res://assets/Zombie2/animation/Walk5.png" id="23_ikamv"]
+[ext_resource type="Texture2D" uid="uid://d4jf2k6fpfvn5" path="res://assets/Zombie2/animation/Hurt4.png" id="23_xqdky"]
+[ext_resource type="Texture2D" uid="uid://vifp3gcnql82" path="res://assets/Zombie2/animation/Hurt5.png" id="24_7gkts"]
 [ext_resource type="Texture2D" uid="uid://bohgdu4lo8nsv" path="res://assets/Zombie2/animation/Walk6.png" id="24_7p48o"]
 [ext_resource type="Texture2D" uid="uid://cgys6vgantx5" path="res://assets/Zombie3/animation/Idle1.png" id="25_65suh"]
 [ext_resource type="Texture2D" uid="uid://bshnsq4ptr61f" path="res://assets/Zombie3/animation/Idle2.png" id="26_qhavb"]
@@ -35,6 +45,11 @@
 [ext_resource type="Texture2D" uid="uid://cgxu4dsl4g01s" path="res://assets/Zombie3/animation/Walk4.png" id="32_32e10"]
 [ext_resource type="Texture2D" uid="uid://brnrxt6uuv324" path="res://assets/Zombie3/animation/Walk5.png" id="33_loa1w"]
 [ext_resource type="Texture2D" uid="uid://ba1376widvumc" path="res://assets/Zombie3/animation/Walk6.png" id="34_heus8"]
+[ext_resource type="Texture2D" uid="uid://nllgdh4ue3ig" path="res://assets/Zombie3/animation/Hurt1.png" id="35_xtmln"]
+[ext_resource type="Texture2D" uid="uid://cs646uytsij6s" path="res://assets/Zombie3/animation/Hurt2.png" id="36_j4vfu"]
+[ext_resource type="Texture2D" uid="uid://bhbymho2ugoxc" path="res://assets/Zombie3/animation/Hurt3.png" id="37_n68w2"]
+[ext_resource type="Texture2D" uid="uid://b3jq46qwj3tkd" path="res://assets/Zombie3/animation/Hurt4.png" id="38_wfk2h"]
+[ext_resource type="Texture2D" uid="uid://jjkv0o1kpdd2" path="res://assets/Zombie3/animation/Hurt5.png" id="39_yv2vl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v73t5"]
 resource_local_to_scene = true
@@ -44,6 +59,26 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1eq8f"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qjlvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bwm40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mtwog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q2mh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fvq17")
+}],
+"loop": true,
+"name": &"1_hurt",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_u6i05")
@@ -92,6 +127,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("20_urdqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kdk44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_weud2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_xqdky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7gkts")
+}],
+"loop": true,
+"name": &"2_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("15_1bvo1")
 }, {
 "duration": 1.0,
@@ -134,6 +189,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"2_walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_xtmln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_j4vfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_n68w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_wfk2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_yv2vl")
+}],
+"loop": true,
+"name": &"3_hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -218,7 +293,7 @@ material = SubResource("ShaderMaterial_v73t5")
 position = Vector2(-61.25, -129.5)
 scale = Vector2(0.6, 0.641)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
-animation = &"3_walking"
+animation = &"3_hurt"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
