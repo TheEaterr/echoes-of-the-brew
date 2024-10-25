@@ -133,6 +133,7 @@ text = "100
 "
 
 [node name="EsteemBar" type="HBoxContainer" parent="."]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 1037.0
