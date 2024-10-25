@@ -2,7 +2,7 @@ extends Control
 
 var client_scene = preload("res://scenes/client.tscn")
 var potion_scene = preload("res://scenes/potion.tscn") 
-var queue_offset = 300 # Espace entre les clients dans la file d'attente
+var queue_offset = 200 # Espace entre les clients dans la file d'attente
 var current_queue_position = Vector2(-100, 300) # Position initiale des clients dans la file
 var clients = []  # Liste des clients en file
 var global_score = 0
@@ -15,12 +15,14 @@ var goal_reached = 0
 
 # Fonction appelée quand on clique sur le bouton "take order"
 func _on_take_order_pressed():
+	if len(clients) > 6:
+		return
 	# Instancier un nouveau client
 	var new_client = client_scene.instantiate()
 	add_child(new_client)
 
 	# Positionner le client à l'endroit de départ hors de la file
-	new_client.position = Vector2(1200, 400) # Droite de l'écran
+	new_client.position = Vector2(1600, 400) # Droite de l'écran
 	new_client.client_index = clients.size()
 	new_client.move_to_position(Vector2(200 + queue_offset * clients.size(), 400))
 	clients.append(new_client)
@@ -33,7 +35,7 @@ func remove_client(client, potion, timeout=false):
 	var label_text = ""
 	if timeout:
 		satisfaction_score = -10
-		label_text = "How slow... I'm off!\n-10"
+		label_text = "How slow...\n-10"
 	else:
 		var result = calculate_satisfaction_score(client.waiting_time, potion, client)
 		satisfaction_score = result[0]  # Le score de satisfaction

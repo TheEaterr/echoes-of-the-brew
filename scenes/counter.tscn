@@ -44,6 +44,7 @@ theme = ExtResource("1_sbb1e")
 script = ExtResource("1_diwaw")
 
 [node name="Button" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.881875
@@ -52,16 +53,17 @@ anchor_right = 0.98125
 anchor_bottom = 0.983333
 theme_override_font_sizes/font_size = 25
 shortcut = SubResource("Shortcut_mdfb4")
-text = "TAKE ORDER"
+text = "Take Order"
 metadata/_edit_use_anchors_ = true
 
 [node name="ClientsServed" type="HBoxContainer" parent="."]
 visible = false
+z_index = 1
 layout_mode = 0
-offset_left = 1513.0
-offset_top = 76.0
-offset_right = 1584.0
-offset_bottom = 126.0
+offset_left = 1482.0
+offset_top = 14.0
+offset_right = 1553.0
+offset_bottom = 64.0
 
 [node name="TextureRect" type="TextureRect" parent="ClientsServed"]
 custom_minimum_size = Vector2(50, 50)
@@ -76,11 +78,12 @@ text = "0
 "
 
 [node name="TimeRemaining" type="HBoxContainer" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 1480.0
-offset_top = 77.0
+offset_top = 149.0
 offset_right = 1568.0
-offset_bottom = 127.0
+offset_bottom = 199.0
 
 [node name="TextureRect" type="TextureRect" parent="TimeRemaining"]
 custom_minimum_size = Vector2(50, 50)
@@ -95,11 +98,12 @@ text = "60
 "
 
 [node name="Score" type="HBoxContainer" parent="."]
+z_index = 1
 layout_mode = 0
-offset_left = 1336.0
-offset_top = 12.0
-offset_right = 1407.0
-offset_bottom = 62.0
+offset_left = 1482.0
+offset_top = 13.0
+offset_right = 1553.0
+offset_bottom = 63.0
 
 [node name="TextureRect" type="TextureRect" parent="Score"]
 custom_minimum_size = Vector2(50, 50)
@@ -118,11 +122,12 @@ wait_time = 15.0
 [node name="TimeTrialCountdown" type="Timer" parent="."]
 
 [node name="ScoreToReach" type="HBoxContainer" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 1480.0
-offset_top = 10.0
+offset_top = 82.0
 offset_right = 1585.0
-offset_bottom = 60.0
+offset_bottom = 132.0
 
 [node name="TextureRect" type="TextureRect" parent="ScoreToReach"]
 custom_minimum_size = Vector2(50, 50)
@@ -138,11 +143,12 @@ text = "100
 
 [node name="EsteemBar" type="HBoxContainer" parent="."]
 visible = false
+z_index = 1
 layout_mode = 0
 offset_left = 1037.0
-offset_top = 12.0
+offset_top = 339.0
 offset_right = 1591.0
-offset_bottom = 65.0
+offset_bottom = 392.0
 
 [node name="Control" type="TextureRect" parent="EsteemBar"]
 custom_minimum_size = Vector2(50, 0)

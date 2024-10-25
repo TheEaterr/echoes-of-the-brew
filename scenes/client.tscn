@@ -191,10 +191,11 @@ script = ExtResource("1_35ctu")
 metadata/_edit_horizontal_guides_ = [-202.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -227.0
-offset_top = -385.0
-offset_right = 98.0
-offset_bottom = -208.0
+z_index = -1
+offset_left = -183.0
+offset_top = -398.0
+offset_right = 23.0
+offset_bottom = -190.0
 texture = ExtResource("2_uuxj1")
 expand_mode = 1
 
@@ -226,5 +227,6 @@ shape = SubResource("RectangleShape2D_sd8y8")
 
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
 visible = false
+z_index = 0
 position = Vector2(-78, -322)
 grabbable = false
