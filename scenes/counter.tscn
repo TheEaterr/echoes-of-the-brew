@@ -9,13 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
 [ext_resource type="Texture2D" uid="uid://bm2w10wrjjag8" path="res://assets/counter.png" id="8_ef7al"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_vw2co"]
-pressed = true
-keycode = 4194309
-
-[sub_resource type="Shortcut" id="Shortcut_mdfb4"]
-events = [SubResource("InputEventKey_vw2co")]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ytk"]
 bg_color = Color(0.262932, 0.262932, 0.262932, 1)
 border_width_left = 5
@@ -35,6 +28,13 @@ border_width_bottom = 5
 corner_radius_top_left = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="InputEventKey" id="InputEventKey_lcmmh"]
+pressed = true
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_66msg"]
+events = [SubResource("InputEventKey_lcmmh")]
+
 [node name="Counter" type="Control"]
 custom_minimum_size = Vector2(1600, 300)
 layout_mode = 3
@@ -43,24 +43,6 @@ offset_right = 1600.0
 offset_bottom = 300.0
 theme = ExtResource("1_sbb1e")
 script = ExtResource("1_diwaw")
-
-[node name="Button" type="Button" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -153.0
-offset_top = -64.0
-offset_right = -14.0
-offset_bottom = -25.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-shortcut = SubResource("Shortcut_mdfb4")
-text = "Take Order"
 
 [node name="ClientsServed" type="HBoxContainer" parent="."]
 visible = false
@@ -178,6 +160,24 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_ef7al")
+
+[node name="Button" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -64.0
+offset_right = -14.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+shortcut = SubResource("Shortcut_66msg")
+text = "Take Order"
 
 [connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
 [connection signal="timeout" from="TimeTrialCountdown" to="." method="_on_time_trial_countdown_timeout"]
