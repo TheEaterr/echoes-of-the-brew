@@ -29,8 +29,11 @@ func _on_take_order_pressed():
 func remove_client(client, potion):
 	
 	# Score de satisfaction
-	var satisfaction_score = calculate_satisfaction_score(client.waiting_time, potion, client)
-	print("satisfaction score :", satisfaction_score)
+	# Appel de la fonction et récupération du score et du texte
+	var result = calculate_satisfaction_score(client.waiting_time, potion, client)
+	var satisfaction_score = result[0]  # Le score de satisfaction
+	var label_text = result[1]          # Le texte du commentaire
+
 	global_score += satisfaction_score
 	$ScoreLabel.text = "Score: " + str(global_score)
 	clients_served += 1
@@ -40,17 +43,9 @@ func remove_client(client, potion):
 	$ScoreLabel.text = "Score : " + str(global_score)
 	
 	# Jouer l'animation
-	# Définir le texte à afficher dans le label selon le score
-	var label_text = ""
-	if satisfaction_score > 0:
-		label_text = "Yummy! + " + str(satisfaction_score)
-	else:
-		label_text = "Disgusting! - " + str(abs(satisfaction_score))
-
 	# Jouer l'animation avec le bon texte
 	client.show_label(label_text)
-	
-	# Attendre 2 secondes avant de continuer
+	# Attendre 2 secondes
 	await get_tree().create_timer(2.0).timeout
 	
 	# Update graphique et suppression du client
@@ -97,14 +92,15 @@ func add_empty_potion(restart = false):
 	return false
 
 
-func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> float:
+	
+func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> Array:
 	var score = int(waiting_time)
+	var label_text = ""
 
 	# Comparaison des ingrédients
 	var missing_ingredients = 0
 	var extra_ingredients = 0
 	
-	# Compter les ingrédients manquants et en trop
 	for ingredient in client.ordered_ingredients:
 		if ingredient not in potion.ingredients:
 			missing_ingredients += 1
@@ -112,7 +108,7 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	for ingredient in potion.ingredients:
 		if ingredient not in client.ordered_ingredients:
 			extra_ingredients += 1
-	# 10 secondes de pénalité par ingrédient en trop ou manquant
+
 	var ingredient_penalty = (missing_ingredients + extra_ingredients) * 10
 	score += ingredient_penalty
 	
@@ -122,12 +118,47 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 		color_penalty = 40
 	score += color_penalty
 
-	# 10 secondes de pénalité par tranche de niveau de cuisson de différence
-	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33)*10
+	# Pénalité de cuisson
+	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33) * 10
 	score += cooking_level_penalty 
 	
-	var cooking_bonus_time = 10*(client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
-	return 40 - score + cooking_bonus_time
+	# Bonus de cuisson parfaite
+	var cooking_bonus_time = 10 * (client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
+	score = 40 - score + cooking_bonus_time
+
+	# Définition des messages possibles avec une sélection aléatoire
+	var penalty_messages = []
+	if waiting_time > 40:
+		penalty_messages.append("So slow! ")
+	if missing_ingredients > 0:
+		penalty_messages.append("Missing ingredients! ")
+	if extra_ingredients > 0:
+		penalty_messages.append("Didn’t ask for extra! ")
+	if color_penalty > 0:
+		penalty_messages.append("Wrong color! ")
+	if cooking_level_penalty > 0:
+		penalty_messages.append("Undercooked!" if potion.cooking_level < client.ordered_cooking_level else "Overcooked! ")
+	if score <=0:
+		penalty_messages.append("Never coming back! ")
+
+	# Si aucune pénalité spécifique, ajoute un commentaire général selon le score
+	if penalty_messages.size() == 0:
+		if score > 30:
+			label_text = "Perfect! "
+		elif score > 20:
+			label_text = "Excellent! "
+		elif score > 0:
+			label_text = "Yummy! "
+
+	else:
+		# Choix d’un commentaire de pénalité aléatoire
+		label_text = penalty_messages[randi() % penalty_messages.size()] + " "
+
+	# Ajout du score au commentaire
+	label_text += str(score)
+
+	return [score, label_text]
+
 
 
 func _on_spawn_client_timer_timeout() -> void:

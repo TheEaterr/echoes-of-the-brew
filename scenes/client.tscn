@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh2mr2w6nl5p0"]
+[gd_scene load_steps=12 format=3 uid="uid://dh2mr2w6nl5p0"]
 
 [ext_resource type="Script" path="res://scripts/client.gd" id="1_35ctu"]
 [ext_resource type="Texture2D" uid="uid://bi7j1bkb7elmu" path="res://assets/zombie_character.png" id="1_nwp1f"]
+[ext_resource type="Texture2D" uid="uid://socxe2jcsim8" path="res://assets/bulle_bd.png" id="2_uuxj1"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_4uwps"]
 [ext_resource type="PackedScene" uid="uid://bdgqsuc7x5fte" path="res://scenes/potion.tscn" id="3_22eut"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="4_urfob"]
@@ -41,13 +42,22 @@ size = Vector2(111.25, 231.062)
 script = ExtResource("1_35ctu")
 metadata/_edit_horizontal_guides_ = [-202.0]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -227.0
+offset_top = -385.0
+offset_right = 73.0
+offset_bottom = -208.0
+texture = ExtResource("2_uuxj1")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="."]
-offset_left = -28.0
-offset_top = -337.0
-offset_right = 12.0
-offset_bottom = -314.0
-theme_override_font_sizes/font_size = 25
-text = "Yummy!"
+offset_left = -153.0
+offset_top = -343.0
+offset_right = -5.0
+offset_bottom = -308.0
+theme_override_colors/font_color = Color(0.0156863, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Yummy! +10"
 
 [node name="PotionSpot" parent="." instance=ExtResource("4_urfob")]
 position = Vector2(-20, -116)
@@ -65,5 +75,5 @@ shape = SubResource("RectangleShape2D_sd8y8")
 
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]
 visible = false
-position = Vector2(-3, -327)
+position = Vector2(-78, -322)
 grabbable = false
