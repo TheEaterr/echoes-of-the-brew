@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpjotj54h21u2" path="res://scenes/cooking.tscn" id="3_egwb1"]
 [ext_resource type="PackedScene" uid="uid://c8n74txubuwy2" path="res://scenes/inventory.tscn" id="4_c7sq5"]
 [ext_resource type="PackedScene" uid="uid://bctkj7nh63lui" path="res://scenes/assembly.tscn" id="4_oeskb"]
-[ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="6_msr6j"]
+[ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="6_msr6j"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hgtjr")

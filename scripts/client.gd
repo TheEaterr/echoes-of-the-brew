@@ -12,12 +12,13 @@ var ordered_color : String = "empty"
 var ordered_ingredients = []
 var is_queuing = true
 var queue_timeout = 60
+var zombie_type: int = 1
 
 
 # Fonction pour déplacer le client vers sa place
 func move_to_position(target_pos: Vector2):
 	target_position = target_pos
-	$AnimatedSprite2D.play("walking_left")
+	$AnimatedSprite2D.play(str(zombie_type) + "_walking")
 
 # Fonction appelée à chaque frame pour gérer le déplacement et le chronomètre
 func _process(delta):
@@ -28,7 +29,7 @@ func _process(delta):
 		position = position.move_toward(target_position, move_speed * delta)
 	else:
 		# Arrêter l'animation de marche une fois arrivé
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play(str(zombie_type) + "_idle")
 	if waiting_time > queue_timeout and is_queuing:
 		is_queuing = false
 		get_parent().remove_client(self, null, true)
@@ -56,6 +57,7 @@ func resume_timer():
 func _ready():
 	# Choix aléatoire des ingrédients commandés
 	var random_chance = randi() % 100
+	zombie_type = 1 + randi() % 3 
 
 	if random_chance < 20:
 		# 20% de chance de ne pas avoir d'ingrédients

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brlvpbh7y4par" path="res://assets/stone.jpg" id="1_ssgk1"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="2_bd2k3"]
 [ext_resource type="PackedScene" uid="uid://5k7m88p2s7kv" path="res://scenes/cooking_slot.tscn" id="3_da404"]
-[ext_resource type="Theme" uid="uid://dpnqtiv3dy3ir" path="res://theme.tres" id="3_mt7y8"]
+[ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="3_mt7y8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_524u0"]
 pressed = true
