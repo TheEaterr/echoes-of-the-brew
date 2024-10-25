@@ -89,11 +89,13 @@ func update_potion_animation():
 func start_cooking():
 	if not is_cooking and color != "empty":
 		is_cooking = true
+		$CookingBar.show()
 		timer.start()
 		
 func stop_cooking():
 	if is_cooking:
 		is_cooking = false
+		$CookingBar.hide()
 		timer.stop()
 
 func pause_cooking():
@@ -107,6 +109,7 @@ func unpause_cooking():
 
 func _on_timer_timeout():
 	cooking_level += 1
+	$CookingBar.value = cooking_level
 	if cooking_level < 100:
 		update_potion_animation()
 	else:
@@ -114,6 +117,8 @@ func _on_timer_timeout():
 		cooking_level = 0
 		timer.stop()
 		is_cooking = false
+		$CookingBar.value = 0
+		$CookingBar.hide()
 		
 func set_color(new_color : String):
 	if new_color in available_colors:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdgqsuc7x5fte"]
+[gd_scene load_steps=22 format=3 uid="uid://bdgqsuc7x5fte"]
 
 [ext_resource type="Script" path="res://scripts/potion.gd" id="1_ig88o"]
 [ext_resource type="Texture2D" uid="uid://3cn0edrg2jlb" path="res://assets/potion_blue_high.png" id="2_ejqtc"]
@@ -122,6 +122,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wntg2"]
 radius = 186.818
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6b4oo"]
+bg_color = Color(0.217101, 0.217101, 0.217101, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lde87"]
+bg_color = Color(1, 0.466667, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Potion" type="Area2D"]
 z_index = 1
 scale = Vector2(0.3, 0.3)
@@ -140,3 +162,14 @@ shape = SubResource("CircleShape2D_wntg2")
 
 [node name="Ingredient2" type="Sprite2D" parent="."]
 rotation = 3.14159
+
+[node name="CookingBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -213.333
+offset_top = 206.667
+offset_right = 216.667
+offset_bottom = 233.667
+scale = Vector2(1, 1.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_6b4oo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lde87")
+show_percentage = false

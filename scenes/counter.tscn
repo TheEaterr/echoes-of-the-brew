@@ -24,8 +24,11 @@ corner_radius_bottom_left = 10
 bg_color = Color(0.799831, 0, 0.0772791, 1)
 border_width_left = 5
 border_width_top = 5
+border_width_right = 5
 border_width_bottom = 5
 corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="InputEventKey" id="InputEventKey_lcmmh"]
