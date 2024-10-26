@@ -358,7 +358,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd8y8"]
-size = Vector2(123.625, 258)
+size = Vector2(176, 282)
 
 [node name="Client" type="CharacterBody2D"]
 script = ExtResource("1_35ctu")
@@ -396,7 +396,7 @@ animation = &"3_jump"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-66.1875, -132)
+position = Vector2(-66, -144)
 shape = SubResource("RectangleShape2D_sd8y8")
 
 [node name="Potion" parent="." instance=ExtResource("3_22eut")]

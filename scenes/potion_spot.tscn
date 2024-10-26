@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c2pfhxlpbuyyf" path="res://assets/sounds/hiss.wav" id="5_m6e6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47vhb"]
-size = Vector2(127, 131)
+size = Vector2(155, 155)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uw0ne"]
 resource_local_to_scene = true

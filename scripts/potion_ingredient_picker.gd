@@ -15,6 +15,8 @@ var ingredient_textures = {
 
 func _ready() -> void:
 	$Sprite2D.texture = ingredient_textures[ingredient]
+	$Sprite2D2.texture = ingredient_textures[ingredient]
+	$Sprite2D3.texture = ingredient_textures[ingredient]
 
 
 # Returns the data to pass from an object when you click and drag away from
@@ -41,7 +43,11 @@ func _get_drag_data(_at_position: Vector2) -> String:
 func _on_mouse_entered() -> void:
 	if !Global.is_dragging_potion:
 		$Sprite2D.material.set_shader_parameter("outline_width", 4.0)
+		$Sprite2D2.material.set_shader_parameter("outline_width", 4.0)
+		$Sprite2D3.material.set_shader_parameter("outline_width", 4.0)
 
 
 func _on_mouse_exited() -> void:
 	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)
+	$Sprite2D2.material.set_shader_parameter("outline_width", 0.0)
+	$Sprite2D3.material.set_shader_parameter("outline_width", 0.0)

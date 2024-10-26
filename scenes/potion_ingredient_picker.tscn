@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwm5ptffdcrwh"]
+[gd_scene load_steps=6 format=3 uid="uid://cwm5ptffdcrwh"]
 
 [ext_resource type="Script" path="res://scripts/potion_ingredient_picker.gd" id="1_ydysy"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_fgpek"]
-[ext_resource type="Texture2D" uid="uid://b3iemtl4dj6xa" path="res://assets/eyeball.png" id="3_0atim"]
+[ext_resource type="Texture2D" uid="uid://bhovlfesbhued" path="res://assets/modified_ui.png" id="3_01g4t"]
+[ext_resource type="Texture2D" uid="uid://br0u02kdxsyey" path="res://assets/leaves.png" id="4_rsuaj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yymaw"]
 resource_local_to_scene = true
@@ -11,21 +12,43 @@ shader_parameter/outline_width = 0.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="PotionIngredientPicker" type="Control"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(295, 165)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 46.0
-offset_top = 56.0
-offset_right = 196.0
-offset_bottom = 206.0
+offset_right = 295.0
+offset_bottom = 165.0
 mouse_filter = 1
 script = ExtResource("1_ydysy")
 
+[node name="BaseSprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -1)
+scale = Vector2(0.482709, 0.482709)
+texture = ExtResource("3_01g4t")
+centered = false
+region_enabled = true
+region_rect = Rect2(1.40498, 2.02481, 606.198, 347.727)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_yymaw")
-position = Vector2(-46, -56)
+position = Vector2(24, -49)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_0atim")
+texture = ExtResource("4_rsuaj")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yymaw")
+position = Vector2(-76, -2)
+rotation = -0.393473
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_rsuaj")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yymaw")
+position = Vector2(381, 38)
+rotation = 2.07939
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_rsuaj")
 centered = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
