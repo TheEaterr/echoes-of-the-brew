@@ -25,7 +25,15 @@ func reset_game():
 			new_potion.global_position = spot.global_position
 
 
+func game_over() -> void:
+	%Counter/SpawnClientTimer.paused = true
+	%Counter/TimeTrialCountdown.paused = true
+	%GameOver.show()
+	$GameOverPlayer.play()
+
+
 func _on_restart_button_pressed() -> void:
+	$ClickPlayer.play()
 	%GameOver.hide()
 	reset_game()
 	if Global.mode == "infinite":
@@ -69,7 +77,12 @@ func _on_time_trial_button_pressed() -> void:
 	$ClickPlayer.play()
 
 func _on_main_menu_button_pressed() -> void:
+	$ClickPlayer.play()
 	reset_game()    
 	%GameOver.hide()
 	%MainMenu.show()
 	
+
+
+func _on_counter_game_over() -> void:
+	game_over()
