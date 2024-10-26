@@ -33,6 +33,24 @@ func _on_take_order_pressed() -> bool:
 	$Button.disabled = false  # Réactive le 
 	return true
 
+func reset_parameters():
+	global_score = 0
+	clients_served = 0
+	time_remaining = 60
+	score_goal = 50
+	goal_reached = 0
+	$Score/ScoreLabel.text = str(global_score)
+	$EsteemBar/ProgressBar.value = global_score
+	$ClientsServed/ClientsServedLabel.text = str(clients_served)
+	$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
+	$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
+	$SpawnClientTimer.wait_time = max_timer
+	$SpawnClientTimer.paused = true
+	$TimeTrialCountdown.paused = true
+	for client in clients:
+		client.queue_free()
+	clients = []
+
 # Fonction pour supprimer un client
 func remove_client(client, potion, timeout=false):
 	

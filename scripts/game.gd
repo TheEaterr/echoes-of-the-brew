@@ -4,18 +4,7 @@ extends Node2D
 var potion_scene = preload("res://scenes/potion.tscn")
 
 func reset_game():
-	%Counter/SpawnClientTimer.paused = true
-	%Counter/TimeTrialCountdown.paused = true
-	%Counter.global_score = 0
-	%Counter.goal_reached = 0
-	%Counter.score_goal = 50
-	%Counter.time_remaining = 60
-	%Counter.clients_served = 0
-	%Counter/Score/ScoreLabel.text = "0"
-	%Counter/EsteemBar/ProgressBar.value = 0
-	for client in %Counter.clients:
-		client.queue_free()
-	%Counter.clients = []
+	%Counter.reset_parameters()
 	if %Assembly/PotionSpotControl/PotionSpot.current_potion:
 		%Assembly/PotionSpotControl/PotionSpot.current_potion.queue_free()
 		%Assembly/PotionSpotControl/PotionSpot.current_potion = null
@@ -55,8 +44,11 @@ func _on_infinite_button_pressed() -> void:
 	%Counter/Score.hide()
 	%Counter/SpawnClientTimer.paused = false
 	%Counter/SpawnClientTimer.start()
+
 	%Counter._on_take_order_pressed()
+	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
+	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
 
 
