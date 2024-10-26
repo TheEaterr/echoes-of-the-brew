@@ -26,7 +26,10 @@ func _process(_delta: float) -> void:
 
 func _on_received_potion(potion:Potion) -> void:
 	if is_cooking:
+		$AddPotionCookingPlayer.play()
 		potion.start_cooking()
+	else:
+		$AddPotionPlayer.play()
 	$Sprite2D.material.set_shader_parameter("outline_width", 0.0)
 	if current_potion == potion:
 		return

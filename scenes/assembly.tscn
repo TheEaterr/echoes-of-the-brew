@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bctkj7nh63lui"]
+[gd_scene load_steps=12 format=3 uid="uid://bctkj7nh63lui"]
 
 [ext_resource type="Texture2D" uid="uid://n382bbwlf7yu" path="res://assets/wood.jpg" id="1_7432j"]
 [ext_resource type="PackedScene" uid="uid://ohnixu1qn8j5" path="res://scenes/potion_spot.tscn" id="1_fw8jq"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://scripts/assembly/potion_spot_control.gd" id="2_gwo1m"]
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 [ext_resource type="PackedScene" uid="uid://cwm5ptffdcrwh" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
+[ext_resource type="AudioStream" uid="uid://b5bt3jjljtfhg" path="res://assets/sounds/click_1.wav" id="5_ttmys"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="7_3ybtl"]
+[ext_resource type="AudioStream" uid="uid://cwp77bccnsust" path="res://assets/sounds/splash1.wav" id="7_i6v7x"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_0qaeo"]
 pressed = true
@@ -52,8 +54,14 @@ mouse_filter = 1
 script = ExtResource("2_gwo1m")
 metadata/_edit_group_ = true
 
+[node name="IngredientPlayer" type="AudioStreamPlayer" parent="PotionSpotControl"]
+stream = ExtResource("5_ttmys")
+
 [node name="PotionSpot" parent="PotionSpotControl" instance=ExtResource("1_fw8jq")]
 position = Vector2(65, 65)
+
+[node name="BasePlayer" type="AudioStreamPlayer" parent="PotionSpotControl"]
+stream = ExtResource("7_i6v7x")
 
 [node name="IngredientPickers" type="GridContainer" parent="."]
 layout_mode = 0

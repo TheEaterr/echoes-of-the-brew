@@ -26,6 +26,7 @@ func _on_take_order_pressed() -> bool:
 	new_client.client_index = clients.size()
 	new_client.move_to_position(Vector2(200 + queue_offset * clients.size(), 400))
 	clients.append(new_client)
+	$NewClientPlayer.play()
 	
 	$Button.disabled = true  # Désactive le bouton
 	# Lance un timer pour réactiver le bouton après 1 seconde
@@ -185,12 +186,18 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	if penalty_messages.size() == 0:
 		if score > 30:
 			label_text = "Perfect!\n"
+			$SuccessPlayer.play()
 		elif score > 20:
 			label_text = "Excellent!\n"
+			$SuccessPlayer.play()
 		elif score > 0:
 			label_text = "Yummy!\n"
-
+			$MediumPlayer.play()
 	else:
+		if score > 0:
+			$MediumPlayer.play()
+		else:
+			$FailurePlayer.play()
 		# Choix d’un commentaire de pénalité aléatoire
 		label_text = penalty_messages[randi() % penalty_messages.size()] + " "
 

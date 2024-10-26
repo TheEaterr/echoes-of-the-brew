@@ -44,6 +44,7 @@ func delete_all_potions():
 
 
 func _on_button_pressed() -> void:
+	%ClickPlayer.play()
 	hide()
 	toggle_potions_view(false)
 	%Assembly.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dak0wls7pbexl"]
+[gd_scene load_steps=17 format=3 uid="uid://dak0wls7pbexl"]
 
 [ext_resource type="Script" path="res://scripts/counter.gd" id="1_diwaw"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="1_sbb1e"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dsvpytdhtnca2" path="res://assets/trophy.png" id="2_pu5qm"]
 [ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
 [ext_resource type="Texture2D" uid="uid://bm2w10wrjjag8" path="res://assets/counter.png" id="8_ef7al"]
+[ext_resource type="AudioStream" uid="uid://qvoywtfmorjk" path="res://assets/sounds/chimes.wav" id="9_lfph7"]
+[ext_resource type="AudioStream" uid="uid://b4vb8opylm871" path="res://assets/sounds/Ding.wav" id="10_su1jr"]
+[ext_resource type="AudioStream" uid="uid://cr44u60bxwhs5" path="res://assets/sounds/negative_sound.wav" id="11_j7tqt"]
+[ext_resource type="AudioStream" uid="uid://bk8k027oef5dg" path="res://assets/sounds/ding_deep.wav" id="12_44mim"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ytk"]
 bg_color = Color(0.262932, 0.262932, 0.262932, 1)
@@ -181,6 +185,18 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 shortcut = SubResource("Shortcut_66msg")
 text = "Take Order"
+
+[node name="SuccessPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_lfph7")
+
+[node name="MediumPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_su1jr")
+
+[node name="FailurePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_j7tqt")
+
+[node name="NewClientPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_44mim")
 
 [connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
 [connection signal="timeout" from="TimeTrialCountdown" to="." method="_on_time_trial_countdown_timeout"]

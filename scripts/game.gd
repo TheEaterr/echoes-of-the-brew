@@ -44,7 +44,9 @@ func _on_infinite_button_pressed() -> void:
 	%Counter/Score.hide()
 	%Counter/SpawnClientTimer.paused = false
 	%Counter/SpawnClientTimer.start()
+	$ClickPlayer.play()
 
+	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
 	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
@@ -64,6 +66,7 @@ func _on_time_trial_button_pressed() -> void:
 	%Counter/TimeRemaining/TimeRemainingLabel.text = str(%Counter.time_remaining)
 	%Counter/ScoreToReach.show()
 	%Counter/Score.show()
+	$ClickPlayer.play()
 
 func _on_main_menu_button_pressed() -> void:
 	reset_game()    

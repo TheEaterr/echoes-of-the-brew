@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ohnixu1qn8j5"]
+[gd_scene load_steps=8 format=3 uid="uid://ohnixu1qn8j5"]
 
 [ext_resource type="Script" path="res://scripts/potion_spot.gd" id="1_hv68g"]
 [ext_resource type="Texture2D" uid="uid://dcg72apak0mr5" path="res://assets/spot_empty.png" id="2_nud46"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_rk44d"]
+[ext_resource type="AudioStream" uid="uid://bva0eipl0f78b" path="res://assets/sounds/click_3.wav" id="4_eehue"]
+[ext_resource type="AudioStream" uid="uid://c2pfhxlpbuyyf" path="res://assets/sounds/hiss.wav" id="5_m6e6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47vhb"]
 size = Vector2(127, 131)
@@ -23,6 +25,12 @@ shape = SubResource("RectangleShape2D_47vhb")
 material = SubResource("ShaderMaterial_uw0ne")
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_nud46")
+
+[node name="AddPotionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eehue")
+
+[node name="AddPotionCookingPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_m6e6f")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

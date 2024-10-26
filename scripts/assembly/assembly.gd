@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	%ClickPlayer.play()
 	hide()
 	%Cooking.show()
 	%Cooking.toggle_potions_view(true)
