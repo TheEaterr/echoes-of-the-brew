@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dybp0hqm6tffs" path="res://scenes/potion_base_color_picker.tscn" id="4_wlwro"]
 [ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 [ext_resource type="AudioStream" uid="uid://b5bt3jjljtfhg" path="res://assets/sounds/click_1.wav" id="5_ttmys"]
+[ext_resource type="PackedScene" path="res://scenes/potion_ingredient_picker.tscn" id="4_xdlfu"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="7_3ybtl"]
 [ext_resource type="AudioStream" uid="uid://cwp77bccnsust" path="res://assets/sounds/splash1.wav" id="7_i6v7x"]
 [ext_resource type="Texture2D" uid="uid://bhovlfesbhued" path="res://assets/modified_ui.png" id="9_xuu3o"]

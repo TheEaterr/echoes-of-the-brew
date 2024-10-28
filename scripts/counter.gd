@@ -61,8 +61,8 @@ func remove_client(client, potion, timeout=false):
 	var satisfaction_score = 0
 	var label_text = ""
 	if timeout:
-		satisfaction_score = -10
-		label_text = "How slow...\n-10"
+		satisfaction_score = -50
+		label_text = "How slow...\n-50"
 	else:
 		var result = calculate_satisfaction_score(client.waiting_time, potion, client)
 		satisfaction_score = result[0]  # Le score de satisfaction
@@ -135,7 +135,8 @@ func add_empty_potion(restart = false):
 
 	
 func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> Array:
-	var score = int(waiting_time)
+	var total_penalty = int(waiting_time)
+	var score = 0
 	var label_text = ""
 
 	# Comparaison des ingrédients
@@ -151,21 +152,21 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 			extra_ingredients += 1
 
 	var ingredient_penalty = (missing_ingredients + extra_ingredients) * 10
-	score += ingredient_penalty
+	total_penalty += ingredient_penalty
 	
 	# Comparaison des couleurs
 	var color_penalty = 0
 	if client.ordered_color != potion.color:
 		color_penalty = 40
-	score += color_penalty
+	total_penalty += color_penalty
 
 	# Pénalité de cuisson
 	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33) * 10
-	score += cooking_level_penalty 
+	total_penalty += cooking_level_penalty 
 	
 	# Bonus de cuisson parfaite
 	var cooking_bonus_time = 10 * (client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
-	score = 50 - score + cooking_bonus_time
+	score = 20 - total_penalty + cooking_bonus_time
 
 	# Définition des messages possibles avec une sélection aléatoire
 	var penalty_messages = []
@@ -179,11 +180,12 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 		penalty_messages.append("Wrong color!\n")
 	if cooking_level_penalty > 0:
 		penalty_messages.append("Undercooked!\n" if potion.cooking_level < client.ordered_cooking_level else "Overcooked!\n")
-	if score <=0:
+	if score <=-20:
 		penalty_messages.append("Never coming back!\n")
 
 	# Si aucune pénalité spécifique, ajoute un commentaire général selon le score
 	if penalty_messages.size() == 0:
+		score += 30
 		if score > 30:
 			label_text = "Perfect!\n"
 			$SuccessPlayer.play()
@@ -212,7 +214,6 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	return [score, label_text]
 
 
-
 func _on_spawn_client_timer_timeout() -> void:
 	var new_client = await _on_take_order_pressed()
 	if not new_client:
@@ -229,6 +230,6 @@ func _on_time_trial_countdown_timeout() -> void:
 		if global_score >= score_goal:
 			time_remaining = 60
 			goal_reached += 1
-			score_goal += 50 + goal_reached * 10
+			score_goal += 40 + goal_reached * 10
 			$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
 		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
