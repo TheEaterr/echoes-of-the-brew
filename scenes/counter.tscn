@@ -1,14 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dak0wls7pbexl"]
+[gd_scene load_steps=15 format=3 uid="uid://dak0wls7pbexl"]
 
 [ext_resource type="Script" path="res://scripts/counter.gd" id="1_diwaw"]
 [ext_resource type="Theme" uid="uid://bs6iyfflpcmr3" path="res://theme.tres" id="1_sbb1e"]
-[ext_resource type="Texture2D" uid="uid://c4vpwkxw7126u" path="res://assets/customer-satisfaction.png" id="2_3t1kt"]
-[ext_resource type="Texture2D" uid="uid://becjt83axtjr5" path="res://assets/hour-glass.png" id="2_c5oov"]
 [ext_resource type="Texture2D" uid="uid://c6q767kld60fe" path="res://assets/mental-health.png" id="2_dosnb"]
 [ext_resource type="Texture2D" uid="uid://dsvpytdhtnca2" path="res://assets/trophy.png" id="2_pu5qm"]
-[ext_resource type="Texture2D" uid="uid://drjrofpxrkygr" path="res://assets/dart.png" id="4_74muv"]
 [ext_resource type="Texture2D" uid="uid://bm2w10wrjjag8" path="res://assets/counter.png" id="8_ef7al"]
 [ext_resource type="AudioStream" uid="uid://qvoywtfmorjk" path="res://assets/sounds/chimes.wav" id="9_lfph7"]
+[ext_resource type="Texture2D" uid="uid://daxr1peho0kkv" path="res://assets/magic-power.png" id="10_4puef"]
 [ext_resource type="AudioStream" uid="uid://b4vb8opylm871" path="res://assets/sounds/Ding.wav" id="10_su1jr"]
 [ext_resource type="AudioStream" uid="uid://cr44u60bxwhs5" path="res://assets/sounds/negative_sound.wav" id="11_j7tqt"]
 [ext_resource type="AudioStream" uid="uid://bk8k027oef5dg" path="res://assets/sounds/ding_deep.wav" id="12_44mim"]
@@ -51,47 +49,6 @@ offset_bottom = 300.0
 theme = ExtResource("1_sbb1e")
 script = ExtResource("1_diwaw")
 
-[node name="ClientsServed" type="HBoxContainer" parent="."]
-visible = false
-z_index = 1
-layout_mode = 0
-offset_left = 1482.0
-offset_top = 14.0
-offset_right = 1553.0
-offset_bottom = 64.0
-
-[node name="TextureRect" type="TextureRect" parent="ClientsServed"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("2_3t1kt")
-expand_mode = 1
-
-[node name="ClientsServedLabel" type="Label" parent="ClientsServed"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "0
-"
-
-[node name="TimeRemaining" type="HBoxContainer" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 1480.0
-offset_top = 149.0
-offset_right = 1568.0
-offset_bottom = 199.0
-
-[node name="TextureRect" type="TextureRect" parent="TimeRemaining"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("2_c5oov")
-expand_mode = 1
-
-[node name="TimeRemainingLabel" type="Label" parent="TimeRemaining"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "60
-"
-
 [node name="Score" type="HBoxContainer" parent="."]
 z_index = 1
 layout_mode = 0
@@ -114,30 +71,7 @@ text = "0"
 [node name="SpawnClientTimer" type="Timer" parent="."]
 wait_time = 15.0
 
-[node name="TimeTrialCountdown" type="Timer" parent="."]
-
-[node name="ScoreToReach" type="HBoxContainer" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 1480.0
-offset_top = 82.0
-offset_right = 1585.0
-offset_bottom = 132.0
-
-[node name="TextureRect" type="TextureRect" parent="ScoreToReach"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("4_74muv")
-expand_mode = 1
-
-[node name="ScoreToReachLabel" type="Label" parent="ScoreToReach"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "100
-"
-
 [node name="EsteemBar" type="HBoxContainer" parent="."]
-visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 1037.0
@@ -171,17 +105,10 @@ texture = ExtResource("8_ef7al")
 [node name="Button" type="Button" parent="."]
 z_index = 1
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -153.0
-offset_top = -64.0
-offset_right = -14.0
-offset_bottom = -25.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1447.0
+offset_top = 273.0
+offset_right = 1586.0
+offset_bottom = 312.0
 theme_override_font_sizes/font_size = 25
 shortcut = SubResource("Shortcut_66msg")
 text = "Take Order"
@@ -198,5 +125,22 @@ stream = ExtResource("11_j7tqt")
 [node name="NewClientPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_44mim")
 
+[node name="MagicPower" type="HBoxContainer" parent="."]
+z_index = 1
+offset_left = 1482.0
+offset_top = 70.0
+offset_right = 1553.0
+offset_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="MagicPower"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("10_4puef")
+expand_mode = 1
+
+[node name="MagicPowerLabel" type="Label" parent="MagicPower"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
 [connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
-[connection signal="timeout" from="TimeTrialCountdown" to="." method="_on_time_trial_countdown_timeout"]

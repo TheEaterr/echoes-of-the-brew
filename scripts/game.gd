@@ -27,7 +27,6 @@ func reset_game():
 
 func game_over() -> void:
 	%Counter/SpawnClientTimer.paused = true
-	%Counter/TimeTrialCountdown.paused = true
 	%GameOver.show()
 	$GameOverPlayer.play()
 
@@ -36,45 +35,8 @@ func _on_restart_button_pressed() -> void:
 	$ClickPlayer.play()
 	%GameOver.hide()
 	reset_game()
-	if Global.mode == "infinite":
-		_on_infinite_button_pressed()
-	else:
-		_on_time_trial_button_pressed()
+	_on_start_button_pressed()
 
-func _on_infinite_button_pressed() -> void:
-	%MainMenu.hide()
-	Global.mode = "infinite"
-	%Counter/EsteemBar.show()
-	%Counter/ClientsServed.show()
-	%Counter/Button.hide()
-	%Counter/TimeRemaining.hide()
-	%Counter/ScoreToReach.hide()
-	%Counter/Score.hide()
-	%Counter/SpawnClientTimer.paused = false
-	%Counter/SpawnClientTimer.start()
-	$ClickPlayer.play()
-
-	await get_tree().create_timer(1.0).timeout
-	%Counter._on_take_order_pressed()
-	await get_tree().create_timer(1.0).timeout
-	%Counter._on_take_order_pressed()
-	await get_tree().create_timer(1.0).timeout
-	%Counter._on_take_order_pressed()
-
-
-func _on_time_trial_button_pressed() -> void:
-	%MainMenu.hide()
-	Global.mode = "time_trial"
-	%Counter/EsteemBar.hide()
-	%Counter/TimeTrialCountdown.paused = false
-	%Counter/ClientsServed.hide()
-	%Counter/Button.show()
-	%Counter/TimeTrialCountdown.start()
-	%Counter/TimeRemaining.show()
-	%Counter/TimeRemaining/TimeRemainingLabel.text = str(%Counter.time_remaining)
-	%Counter/ScoreToReach.show()
-	%Counter/Score.show()
-	$ClickPlayer.play()
 
 func _on_main_menu_button_pressed() -> void:
 	$ClickPlayer.play()
@@ -86,3 +48,17 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_counter_game_over() -> void:
 	game_over()
+
+
+func _on_start_button_pressed() -> void:
+	%MainMenu.hide()
+	%Counter/SpawnClientTimer.paused = false
+	%Counter/SpawnClientTimer.start()
+	$ClickPlayer.play()
+
+	await get_tree().create_timer(1.0).timeout
+	%Counter._on_take_order_pressed()
+	await get_tree().create_timer(1.0).timeout
+	%Counter._on_take_order_pressed()
+	await get_tree().create_timer(1.0).timeout
+	%Counter._on_take_order_pressed()

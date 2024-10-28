@@ -6,11 +6,10 @@ var queue_offset = 250 # Espace entre les clients dans la file d'attente
 var current_queue_position = Vector2(-100, 300) # Position initiale des clients dans la file
 var clients = []  # Liste des clients en file
 var global_score = 0
-var min_timer = 5
+var magic_power = 0
+var esteem = 100
+var min_timer = 3
 var max_timer = 0
-var clients_served = 0
-var time_remaining = 60
-var score_goal = 50
 var goal_reached = 0
 
 signal game_over
@@ -38,18 +37,11 @@ func _on_take_order_pressed() -> bool:
 
 func reset_parameters():
 	global_score = 0
-	clients_served = 0
-	time_remaining = 60
-	score_goal = 50
-	goal_reached = 0
 	$Score/ScoreLabel.text = str(global_score)
+	$MagicPower/MagicPowerLabel.text = str(global_score)
 	$EsteemBar/ProgressBar.value = global_score
-	$ClientsServed/ClientsServedLabel.text = str(clients_served)
-	$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
-	$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
 	$SpawnClientTimer.wait_time = max_timer
 	$SpawnClientTimer.paused = true
-	$TimeTrialCountdown.paused = true
 	for client in clients:
 		client.queue_free()
 	clients = []
@@ -68,13 +60,10 @@ func remove_client(client, potion, timeout=false):
 		satisfaction_score = result[0]  # Le score de satisfaction
 		label_text = result[1]          # Le texte du commentaire
 
-	global_score += satisfaction_score
-	if Global.mode == "infinite":
-		global_score = min(max(-150, global_score), 100)
-	$Score/ScoreLabel.text = str(global_score)
-	$EsteemBar/ProgressBar.value = global_score
-	clients_served += 1
-	$ClientsServed/ClientsServedLabel.text = str(clients_served)
+	set_global_score(global_score + max(satisfaction_score, 0))
+	if esteem + satisfaction_score > 100:
+		set_magic_power(magic_power + (esteem + satisfaction_score) - 100)
+	set_esteem(min(max(-150, esteem + satisfaction_score), 100))
 	
 	# Jouer l'animation
 	# Jouer l'animation avec le bon texte
@@ -99,12 +88,11 @@ func remove_client(client, potion, timeout=false):
 		clients[i].client_index = i  # Met à jour l'indice
 		clients[i].move_to_position(Vector2(200 + queue_offset * i, 400))  # Déplace le client vers la nouvelle position
 	
-	if global_score <= -150:
+	if esteem <= -150:
 		game_over.emit()
 
 # Lien entre le bouton et la fonction
 func _ready():
-	$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
 	max_timer = $SpawnClientTimer.wait_time
 	$Button.connect("pressed", Callable(self, "_on_take_order_pressed"))
 
@@ -119,7 +107,7 @@ func resume_all_clients():
 		client.resume_timer()
 
 
-func add_empty_potion(restart = false):
+func add_empty_potion(_restart = false):
 	var inventoryGrid = %Inventory/InventoryGrid
 	for slot in inventoryGrid.get_children():  # Parcourt tous les enfants de la scène
 		var spot = slot.get_node("PotionSpot")  # Récupère le Potion
@@ -132,6 +120,20 @@ func add_empty_potion(restart = false):
 			return true # Sort de la fonction après avoir ajouté la potion
 	return false
 
+
+func set_global_score(score: int):
+	global_score = score
+	$Score/ScoreLabel.text = str(global_score)
+
+
+func set_magic_power(power: int):
+	magic_power = power
+	$MagicPower/MagicPowerLabel.text = str(magic_power)
+
+
+func set_esteem(value: int):
+	esteem = value
+	$EsteemBar/ProgressBar.value = value
 
 	
 func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: CharacterBody2D) -> Array:
@@ -222,16 +224,3 @@ func _on_spawn_client_timer_timeout() -> void:
 		game_over.emit()
 	$SpawnClientTimer.wait_time = max($SpawnClientTimer.wait_time - 2, min_timer)
 	$SpawnClientTimer.start()
-
-func _on_time_trial_countdown_timeout() -> void:
-	time_remaining -= 1
-	if time_remaining == 0:
-		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)
-		game_over.emit()
-	else:
-		if global_score >= score_goal:
-			time_remaining = 60
-			goal_reached += 1
-			score_goal += 40 + goal_reached * 10
-			$ScoreToReach/ScoreToReachLabel.text = str(score_goal)
-		$TimeRemaining/TimeRemainingLabel.text = str(time_remaining)

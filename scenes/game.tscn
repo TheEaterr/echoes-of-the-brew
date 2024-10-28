@@ -129,17 +129,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="StartInfinite" type="Button" parent="MainMenu/VBoxContainer"]
+[node name="Start" type="Button" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
-text = "Infinite"
-
-[node name="StartTimeTrial" type="Button" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("6_msr6j")
-theme_override_font_sizes/font_size = 50
-text = "Time Trial"
+text = "Start"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -156,5 +150,4 @@ stream = ExtResource("9_brqqf")
 [connection signal="game_over" from="MainBox/VBoxContainer/Counter" to="." method="_on_counter_game_over"]
 [connection signal="pressed" from="MainBox/GameOver/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MainBox/GameOver/VBoxContainer/MainMenu" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/StartInfinite" to="." method="_on_infinite_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/StartTimeTrial" to="." method="_on_time_trial_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="_on_start_button_pressed"]
