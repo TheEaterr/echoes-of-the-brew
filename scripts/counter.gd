@@ -161,12 +161,13 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	total_penalty += color_penalty
 
 	# Pénalité de cuisson
-	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33) * 10
+	var cooking_level_penalty = abs(client.ordered_cooking_level / 33 - potion.cooking_level / 33) * 20
 	total_penalty += cooking_level_penalty 
 	
 	# Bonus de cuisson parfaite
 	var cooking_bonus_time = 10 * (client.ordered_cooking_level / 33) if cooking_level_penalty == 0 else 0
 	score = 20 - total_penalty + cooking_bonus_time
+	score = max(-50, score)
 
 	# Définition des messages possibles avec une sélection aléatoire
 	var penalty_messages = []
@@ -183,9 +184,10 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 	if score <=-20:
 		penalty_messages.append("Never coming back!\n")
 
-	# Si aucune pénalité spécifique, ajoute un commentaire général selon le score
+	# Choix du commentaire
 	if penalty_messages.size() == 0:
 		score += 30
+		# Si aucune pénalité spécifique, ajoute un commentaire général selon le score
 		if score > 30:
 			label_text = "Perfect!\n"
 			$SuccessPlayer.play()
