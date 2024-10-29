@@ -5,13 +5,10 @@ extends CharacterBody2D
 var client_index = -1  # Indice du client dans la file, assigné depuis le script principal
 var move_speed = 300  # Vitesse de déplacement du client
 var target_position = Vector2()  # Position cible (dans la file d'attente)
-var waiting_time = 0.0  # Chronomètre pour le temps d'attente
-var timer_paused = false  # Variable pour savoir si le chronomètre est en pause
 var ordered_cooking_level = randi() % 100
 var ordered_color : String = "empty"
 var ordered_ingredients = []
 var is_queuing = true
-var queue_timeout = 60
 var zombie_type: int = 1
 var still_walking = true
 var animation_playing = false
@@ -31,18 +28,12 @@ func play_jump_animation():
 
 # Fonction appelée à chaque frame pour gérer le déplacement et le chronomètre
 func _process(delta):
-	if not timer_paused:
-		waiting_time += delta  # Incrémente le temps d'attente si le chronomètre n'est pas en pause
-	
 	if position.distance_to(target_position) > 1:
 		position = position.move_toward(target_position, move_speed * delta)
 	elif still_walking and not(animation_playing):
 		# Arrêter l'animation de marche une fois arrivé
 		$AnimatedSprite2D.play(str(zombie_type) + "_idle")
 		still_walking = false
-	if waiting_time > queue_timeout and is_queuing:
-		is_queuing = false
-		get_parent().remove_client(self, null, true)
 
 # Fonction pour afficher la bulle de commande (une fois le client en place)
 func show_order_icon():
@@ -52,17 +43,24 @@ func show_order_icon():
 	for ingredient in ordered_ingredients:
 		$Potion.add_ingredients(ingredient)
 
-func show_label(text):
+func show_label(text, inc_esteem, inc_magic_power):
 	$Potion.hide()
 	$Label.show()
 	$Label.text = text
-
-# Fonction pour gérer la pause du chronomètre
-func pause_timer():
-	timer_paused = true
-
-func resume_timer():
-	timer_paused = false
+	if inc_esteem < 0:
+		$IncrementContainer/Esteem/EsteemLabel.text = "- " + str(abs(inc_esteem))
+	else:
+		$IncrementContainer/Esteem/EsteemLabel.text = "+ " + str(inc_esteem)
+	if inc_magic_power < 0:
+		$IncrementContainer/MagicPower/MagicPowerLabel.text = "- " + str(abs(inc_magic_power))
+	else:
+		$IncrementContainer/MagicPower/MagicPowerLabel.text = "+ " + str(inc_magic_power)
+	if inc_esteem != 0:
+		$IncrementContainer/Esteem.show()
+	if inc_magic_power != 0:
+		$IncrementContainer/MagicPower.show()
+	if inc_esteem == 0 and inc_magic_power == 0:
+		$IncrementContainer/Esteem.show()
 
 func _ready():
 	# Choix aléatoire des ingrédients commandés
@@ -105,3 +103,8 @@ func _on_potion_received(potion: Potion):
 	potion.current_spot.current_potion = null
 	potion.queue_free() 
 	
+
+func _on_timer_timeout() -> void:
+	if is_queuing and get_tree().paused == false:
+		is_queuing = false
+		get_parent().remove_client(self, null, true)
