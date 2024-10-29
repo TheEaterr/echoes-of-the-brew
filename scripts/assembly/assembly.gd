@@ -16,6 +16,4 @@ func _on_button_pressed() -> void:
 	hide()
 	%Cooking.show()
 	%Cooking.toggle_potions_view(true)
-	if $PotionSpotControl/PotionSpot.current_potion:
-		if $PotionSpotControl/PotionSpot.current_potion != Global.dragged_potion:
-			$PotionSpotControl/PotionSpot.current_potion.hide()
+	

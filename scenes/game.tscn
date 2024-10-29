@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=14 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
 [ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
@@ -9,6 +9,20 @@
 [ext_resource type="AudioStream" uid="uid://imwqv8jmd3mv" path="res://assets/sounds/click_2.wav" id="7_m7v05"]
 [ext_resource type="AudioStream" uid="uid://clfh4kvnkvikm" path="res://assets/sounds/Loop_Kings_Feast.wav" id="8_r2jy8"]
 [ext_resource type="AudioStream" uid="uid://cwxjkff5uyh8j" path="res://assets/sounds/losetrumpet.wav" id="9_brqqf"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_fsdcb"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_1un5u"]
+events = [SubResource("InputEventKey_fsdcb")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pmx5y"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_qnify"]
+events = [SubResource("InputEventKey_pmx5y")]
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -66,6 +80,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_1un5u")
 text = "Menu"
 
 [node name="GameOver" type="Panel" parent="."]
@@ -196,6 +211,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_qnify")
 text = "Continue"
 
 [node name="Restart" type="Button" parent="Options/VBoxContainer"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8n74txubuwy2"]
+[gd_scene load_steps=5 format=3 uid="uid://c8n74txubuwy2"]
 
 [ext_resource type="PackedScene" uid="uid://b2rhn4asbmgvq" path="res://scenes/inventory_slot.tscn" id="1_v5q4b"]
 [ext_resource type="Texture2D" uid="uid://rw057kpdef3h" path="res://assets/shelf.jpg" id="2_no8ll"]
+[ext_resource type="AudioStream" uid="uid://b5bt3jjljtfhg" path="res://assets/sounds/click_1.wav" id="4_0rc85"]
+[ext_resource type="AudioStream" uid="uid://cwp77bccnsust" path="res://assets/sounds/splash1.wav" id="6_38tg2"]
 
 [node name="Inventory" type="Control"]
 custom_minimum_size = Vector2(600, 500)
@@ -11,6 +13,14 @@ offset_right = 600.0
 offset_bottom = 500.0
 mouse_filter = 1
 
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 942.0
+offset_bottom = 655.0
+texture = ExtResource("2_no8ll")
+expand_mode = 1
+
 [node name="InventoryGrid" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,10 +28,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -160.0
-offset_right = 229.0
-offset_bottom = 290.0
+offset_left = -140.0
+offset_top = -236.0
+offset_right = 150.0
+offset_bottom = 214.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 30
@@ -46,10 +56,10 @@ layout_mode = 2
 [node name="InventorySlot6" parent="InventoryGrid" instance=ExtResource("1_v5q4b")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 942.0
-offset_bottom = 655.0
-texture = ExtResource("2_no8ll")
-expand_mode = 1
+[node name="IngredientPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_0rc85")
+
+[node name="BasePlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_38tg2")

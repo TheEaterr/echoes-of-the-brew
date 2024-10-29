@@ -48,5 +48,3 @@ func _on_button_pressed() -> void:
 	hide()
 	toggle_potions_view(false)
 	%Assembly.show()
-	if %Assembly/PotionSpotControl/PotionSpot.current_potion:
-		%Assembly/PotionSpotControl/PotionSpot.current_potion.show()

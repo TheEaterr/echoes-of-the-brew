@@ -6,9 +6,6 @@ var potion_scene = preload("res://scenes/potion.tscn")
 func reset_game():
 	get_tree().paused = false
 	%Counter.reset_parameters()
-	if %Assembly/PotionSpotControl/PotionSpot.current_potion:
-		%Assembly/PotionSpotControl/PotionSpot.current_potion.queue_free()
-		%Assembly/PotionSpotControl/PotionSpot.current_potion = null
 	%Cooking.delete_all_potions()
 	while %Counter.add_empty_potion():
 		pass
@@ -61,15 +58,12 @@ func _on_start_button_pressed() -> void:
 	%Counter/Button.disabled = true
 	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
-	await get_tree().create_timer(1.0).timeout
-	%Counter._on_take_order_pressed()
-	await get_tree().create_timer(1.0).timeout
-	%Counter._on_take_order_pressed()
-	await get_tree().create_timer(1.0).timeout
 	%Counter/Button.disabled = false
 
 
 func _on_options_pressed() -> void:
+	if %MainMenu.visible || %GameOver.visible:
+		return
 	$ClickPlayer.play()
 	get_tree().paused = true
 	%Options.show()
