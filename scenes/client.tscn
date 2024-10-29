@@ -100,7 +100,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"1_hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -123,7 +123,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"1_idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,7 +149,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"1_jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,7 +172,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"1_walking",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,7 +192,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"2_hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -215,7 +215,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"2_idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -241,7 +241,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"2_jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,7 +264,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"2_walking",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -284,7 +284,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"3_hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -307,7 +307,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"3_idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -333,7 +333,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"3_jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -356,7 +356,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"3_walking",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd8y8"]
@@ -395,7 +395,8 @@ material = SubResource("ShaderMaterial_v73t5")
 position = Vector2(-61.25, -129.5)
 scale = Vector2(0.6, 0.641)
 sprite_frames = SubResource("SpriteFrames_1eq8f")
-animation = &"3_jump"
+animation = &"2_jump"
+frame_progress = 0.253
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
