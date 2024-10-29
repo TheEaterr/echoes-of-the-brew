@@ -35,6 +35,7 @@ func game_over() -> void:
 func _on_restart_button_pressed() -> void:
 	$ClickPlayer.play()
 	%GameOver.hide()
+	%Options.hide()
 	reset_game()
 	_on_start_button_pressed()
 
@@ -66,3 +67,15 @@ func _on_start_button_pressed() -> void:
 	%Counter._on_take_order_pressed()
 	await get_tree().create_timer(1.0).timeout
 	%Counter/Button.disabled = false
+
+
+func _on_options_pressed() -> void:
+	$ClickPlayer.play()
+	get_tree().paused = true
+	%Options.show()
+
+
+func _on_continue_button_pressed() -> void:
+	$ClickPlayer.play()
+	get_tree().paused = false
+	%Options.hide()
