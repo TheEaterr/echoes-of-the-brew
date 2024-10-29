@@ -64,4 +64,5 @@ func _on_start_button_pressed() -> void:
 	%Counter._on_take_order_pressed()
 	await get_tree().create_timer(1.0).timeout
 	%Counter._on_take_order_pressed()
+	await get_tree().create_timer(1.0).timeout
 	%Counter/Button.disabled = false

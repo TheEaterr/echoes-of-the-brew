@@ -312,7 +312,14 @@ func calculate_satisfaction_score(waiting_time: float, potion: Potion, client: C
 
 func _on_spawn_client_timer_timeout() -> void:
 	var new_client = await _on_take_order_pressed()
-	if not new_client:
-		game_over.emit()
 	$SpawnClientTimer.wait_time = max($SpawnClientTimer.wait_time - 1, min_timer)
 	$SpawnClientTimer.start()
+	if not new_client:
+		$FullContainer.show()
+		$FailurePlayer.play()
+		set_esteem(min(max(-150, esteem - 50), 100))
+		if esteem <= -150:
+			game_over.emit()
+		await get_tree().create_timer(1.0).timeout
+		$FullContainer.hide()
+

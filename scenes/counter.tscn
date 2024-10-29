@@ -144,4 +144,26 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "0"
 
+[node name="FullContainer" type="HBoxContainer" parent="."]
+visible = false
+z_index = 1
+offset_left = 1059.0
+offset_top = 265.0
+offset_right = 1426.0
+offset_bottom = 320.0
+
+[node name="EsteemLabel" type="Label" parent="FullContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Brewery full  - 50"
+
+[node name="TextureRect" type="TextureRect" parent="FullContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_dosnb")
+expand_mode = 1
+
 [connection signal="timeout" from="SpawnClientTimer" to="." method="_on_spawn_client_timer_timeout"]
