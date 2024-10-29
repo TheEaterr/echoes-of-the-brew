@@ -14,100 +14,100 @@ var goal_reached = 0
 
 # Level 1: Very Negative
 var level_1 = [
-    "I always hated you",
-    "You were a terrible teacher",
-    "Our friendship was a mistake",
-    "I regret meeting you",
-    "You brought nothing but trouble",
-    "Working with you was awful",
-    "You ruined our group project",
-    "I wish I hadn't known you",
-    "You were the worst boss ever",
-    "Our relationship was a disaster"
+	"I always hated you",
+	"You were a terrible teacher",
+	"Our friendship was a mistake",
+	"I regret meeting you",
+	"You brought nothing but trouble",
+	"Working with you was awful",
+	"You ruined our group project",
+	"I wish I hadn't known you",
+	"You were the worst boss ever",
+	"Our relationship was a disaster"
 ]
 
 # Level 2: Negative
 var level_2 = [
-    "Things didn't work out between us",
-    "We had our differences",
-    "I didn't enjoy working with you",
-    "Our time together was challenging",
-    "You caused problems for me",
-    "I found your teaching style harsh",
-    "Our project together was stressful",
-    "There were issues between us",
-    "Your leadership left much to be desired",
-    "Things ended badly for us"
+	"Things didn't work out between us",
+	"We had our differences",
+	"I didn't enjoy working with you",
+	"Our time together was challenging",
+	"You caused problems for me",
+	"I found your teaching style harsh",
+	"Our project together was stressful",
+	"There were issues between us",
+	"Your leadership left much to be desired",
+	"Things ended badly for us"
 ]
 
 # Level 3: Neutral
 var level_3 = [
-    "It's been a while since we last spoke",
-    "Let's catch up on old times",
-    "How have you been?",
-    "Life has changed so much",
-    "I remember those days fondly",
-    "It feels like forever ago",
-    "What have you been up to lately?",
-    "Nice to see you again",
-    "How about we reminisce?",
-    "Good to reconnect"
+	"It's been a while since we last spoke",
+	"Let's catch up on old times",
+	"How have you been?",
+	"Life has changed so much",
+	"I remember those days fondly",
+	"It feels like forever ago",
+	"What have you been up to lately?",
+	"Nice to see you again",
+	"How about we reminisce?",
+	"Good to reconnect"
 ]
 
 # Level 4: Positive
 var level_4 = [
-    "I've missed our conversations",
-    "You were always a great friend",
-    "Our time together was memorable",
-    "I enjoyed working with you",
-    "Your teaching inspired me",
-    "We had some good times",
-    "It's nice to see your face again",
-    "I value our past friendship",
-    "You were a fantastic colleague",
-    "Our time together was wonderful"
+	"I've missed our conversations",
+	"You were always a great friend",
+	"Our time together was memorable",
+	"I enjoyed working with you",
+	"Your teaching inspired me",
+	"We had some good times",
+	"It's nice to see your face again",
+	"I value our past friendship",
+	"You were a fantastic colleague",
+	"Our time together was wonderful"
 ]
 
 # Level 5: More Positive
 var level_5 = [
-    "You made my life better",
-    "Your presence brightened the room",
-    "I admired your work ethic",
-    "We had great chemistry as friends",
-    "You brought out the best in me",
-    "Our collaboration was amazing",
-    "Your guidance meant a lot to me",
-    "Working with you was a pleasure",
-    "I cherish our memories together",
-    "You were an asset to our team"
+	"You made my life better",
+	"Your presence brightened the room",
+	"I admired your work ethic",
+	"We had great chemistry as friends",
+	"You brought out the best in me",
+	"Our collaboration was amazing",
+	"Your guidance meant a lot to me",
+	"Working with you was a pleasure",
+	"I cherish our memories together",
+	"You were an asset to our team"
 ]
 
 # Level 6: Very Positive
 var level_6 = [
-    "I owe so much of my success to you",
-    "Your support meant the world to me",
-    "Our bond was truly special",
-    "You changed my life for the better",
-    "I can't imagine my journey without you",
-    "Your leadership was inspiring",
-    "We made a great team together",
-    "I still value your advice",
-    "You are one of the best people I know",
-    "Our friendship is irreplaceable"
+	"I owe so much of my success to you",
+	"Your support meant the world to me",
+	"Our bond was truly special",
+	"You changed my life for the better",
+	"I can't imagine my journey without you",
+	"Your leadership was inspiring",
+	"We made a great team together",
+	"I still value your advice",
+	"You are one of the best people I know",
+	"Our friendship is irreplaceable"
 ]
 
 # Level 7: Most Positive
 var level_7 = [
-    "I had feelings for you",
-    "Your smile always brightened my day",
-    "You were my rock in tough times",
-    "Our connection was deeper than friends",
-    "I often thought about you",
-    "I cared about you more than I let on",
-    "Our time together was magical",
-    "You were the best part of my past",
-    "I had a crush on you for so long",
-    "Seeing you again brings back wonderful feelings"
+	"I had feelings for you",
+	"Your smile always brightened my day",
+	"You were my rock in tough times",
+	"Our connection was deeper than friends",
+	"I often thought about you",
+	"I cared about you more than I let on",
+	"Our time together was magical",
+	"You were the best part of my past",
+	"I had a crush on you for so long",
+	"Seeing you again brings back wonderful feelings"
 ]
 
 signal game_over
@@ -156,22 +156,22 @@ func remove_client(client, potion, timeout=false):
 
 	if satisfaction_score < -20:
 		label_text = level_1[randi() % level_1.size()]
-	elif satisfaction_score < -10:
-		label_text = level_2[randi() % level_2.size()]
 	elif satisfaction_score < 0:
-		label_text = level_3[randi() % level_3.size()]
+		label_text = level_2[randi() % level_2.size()]
 	elif satisfaction_score < 10:
-		label_text = level_4[randi() % level_4.size()]
+		label_text = level_3[randi() % level_3.size()]
 	elif satisfaction_score < 20:
-		label_text = level_5[randi() % level_5.size()]
+		label_text = level_4[randi() % level_4.size()]
 	elif satisfaction_score < 30:
+		label_text = level_5[randi() % level_5.size()]
+	elif satisfaction_score < 40:
 		label_text = level_6[randi() % level_6.size()]
 	else:
 		label_text = level_7[randi() % level_7.size()]
 
 	set_global_score(global_score + max(satisfaction_score, 0))
 	var new_esteem = min(max(-150, esteem + satisfaction_score), 100)
-	var new_magic_power = 0
+	var new_magic_power = magic_power
 	if esteem + satisfaction_score > 100:
 		new_magic_power = magic_power + (esteem + satisfaction_score) - 100
 	client.show_label(label_text, new_esteem - esteem, new_magic_power - magic_power)
@@ -322,4 +322,3 @@ func _on_spawn_client_timer_timeout() -> void:
 			game_over.emit()
 		await get_tree().create_timer(1.0).timeout
 		$FullContainer.hide()
-

@@ -10,7 +10,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 4.0
 expand_margin_top = 10.0
+expand_margin_right = 4.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qibd"]
@@ -24,7 +26,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 4.0
 expand_margin_top = 10.0
+expand_margin_right = 4.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8pv6"]
@@ -37,7 +41,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 4.0
 expand_margin_top = 10.0
+expand_margin_right = 4.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhhix"]
@@ -50,7 +56,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 4.0
 expand_margin_top = 10.0
+expand_margin_right = 4.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxy6f"]
@@ -63,7 +71,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+expand_margin_left = 4.0
 expand_margin_top = 10.0
+expand_margin_right = 4.0
 expand_margin_bottom = 10.0
 
 [resource]

@@ -147,6 +147,7 @@ text = "0"
 [node name="FullContainer" type="HBoxContainer" parent="."]
 visible = false
 z_index = 1
+layout_mode = 0
 offset_left = 1059.0
 offset_top = 265.0
 offset_right = 1426.0
