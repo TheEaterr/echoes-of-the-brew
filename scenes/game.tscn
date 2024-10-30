@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwmb7gp01p7nu"]
+[gd_scene load_steps=15 format=3 uid="uid://cwmb7gp01p7nu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_hgtjr"]
 [ext_resource type="PackedScene" uid="uid://dak0wls7pbexl" path="res://scenes/counter.tscn" id="2_5jqg4"]
@@ -23,6 +23,13 @@ keycode = 4194305
 
 [sub_resource type="Shortcut" id="Shortcut_qnify"]
 events = [SubResource("InputEventKey_pmx5y")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg1ix"]
+bg_color = Color(0, 0, 0, 0.666667)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -220,6 +227,71 @@ theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
 
+[node name="Story" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Story"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -732.0
+offset_top = -302.0
+offset_right = 732.0
+offset_bottom = 302.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eg1ix")
+
+[node name="Label" type="Label" parent="Story/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -719.5
+offset_top = -302.0
+offset_right = 719.5
+offset_bottom = 302.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "After a long time, you come back to your hometown and realize everyone is now an undead.
+
+You make it your mission to save everyone with your potion making skills. Every undead you save will tell you what they remember from you depending on the quality of your potion. Be careful, if you make shoddy potions, your self-esteem will take the hit ! "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GotIt" type="Button" parent="Story"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = -119.0
+offset_right = 135.5
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_msr6j")
+theme_override_font_sizes/font_size = 50
+text = "Got it"
+
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_m7v05")
@@ -239,3 +311,4 @@ stream = ExtResource("9_brqqf")
 [connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/Continue" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Story/GotIt" to="." method="_on_got_it_button_pressed"]

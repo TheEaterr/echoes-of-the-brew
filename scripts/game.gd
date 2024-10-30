@@ -34,7 +34,7 @@ func _on_restart_button_pressed() -> void:
 	%GameOver.hide()
 	%Options.hide()
 	reset_game()
-	_on_start_button_pressed()
+	start_game()
 
 
 func _on_main_menu_button_pressed() -> void:
@@ -43,14 +43,7 @@ func _on_main_menu_button_pressed() -> void:
 	%GameOver.hide()
 	%MainMenu.show()
 	
-
-
-func _on_counter_game_over() -> void:
-	game_over()
-
-
-func _on_start_button_pressed() -> void:
-	%MainMenu.hide()
+func start_game() -> void:
 	%Counter/SpawnClientTimer.paused = false
 	%Counter/SpawnClientTimer.start()
 	$ClickPlayer.play()
@@ -61,8 +54,16 @@ func _on_start_button_pressed() -> void:
 	%Counter/Button.disabled = false
 
 
+func _on_counter_game_over() -> void:
+	game_over()
+
+
+func _on_start_button_pressed() -> void:
+	%MainMenu.hide()
+	%Story.show()
+
 func _on_options_pressed() -> void:
-	if %MainMenu.visible || %GameOver.visible:
+	if %MainMenu.visible || %GameOver.visible || %Story.visible:
 		return
 	$ClickPlayer.play()
 	get_tree().paused = true
@@ -73,3 +74,8 @@ func _on_continue_button_pressed() -> void:
 	$ClickPlayer.play()
 	get_tree().paused = false
 	%Options.hide()
+
+
+func _on_got_it_button_pressed() -> void:
+	%Story.hide()
+	start_game()
