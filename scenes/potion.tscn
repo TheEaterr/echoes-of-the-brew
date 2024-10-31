@@ -169,6 +169,7 @@ position = Vector2(20, 20)
 scale = Vector2(0.9, 0.9)
 
 [node name="CookingBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -213.333
 offset_top = 206.667
 offset_right = 215.667
