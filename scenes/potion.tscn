@@ -153,7 +153,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ornj")
-animation = &"purple_high"
+animation = &"purple_low"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wntg2")
@@ -173,3 +173,24 @@ scale = Vector2(1, 1.8)
 theme_override_styles/background = SubResource("StyleBoxFlat_6b4oo")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lde87")
 show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(3.33333, 0)
+points = PackedVector2Array(-66.6667, 6.66667, -170, 6.66667)
+default_color = Color(0, 0, 0, 0.666667)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(6.667, 43)
+points = PackedVector2Array(-70, 6.66667, -170, 6.66667)
+default_color = Color(0, 0, 0, 0.666667)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2(23.333, 86)
+points = PackedVector2Array(-86.6667, 6.6666, -170, 6.66667)
+default_color = Color(0, 0, 0, 0.666667)
+begin_cap_mode = 2
+end_cap_mode = 2
