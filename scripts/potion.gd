@@ -50,12 +50,36 @@ var available_colors = ["empty", "purple", "blue", "green"]
 var available_ingredients = ["bones", "flower", "roots", "eyeball", "gems", "leaves"]
 var ingredient_sprites = []
 var ingredient_textures = {
-	"bones": preload("res://assets/bones.png"),
-	"flower": preload("res://assets/flower.png"),
-	"roots": preload("res://assets/roots.png"),
-	"eyeball": preload("res://assets/eyeball.png"),
-	"gems": preload("res://assets/gems.png"),
-	"leaves": preload("res://assets/leaves.png")
+	"bones": {
+		"full": preload("res://assets/bones.png"),
+		"primary": preload("res://assets/bones_primary.png"),
+		"secondary": preload("res://assets/bones_secondary.png")
+	},
+	"flower": {
+		"full": preload("res://assets/flower.png"),
+		"primary": preload("res://assets/flower_primary.png"),
+		"secondary": preload("res://assets/flower_secondary.png")
+	},
+	"roots": {
+		"full": preload("res://assets/roots.png"),
+		"primary": preload("res://assets/roots_primary.png"),
+		"secondary": preload("res://assets/roots_secondary.png")
+	},
+	"eyeball": {
+		"full": preload("res://assets/eyeball.png"),
+		"primary": preload("res://assets/eyeball_primary.png"),
+		"secondary": preload("res://assets/eyeball_secondary.png")
+	},
+	"gems": {
+		"full": preload("res://assets/gems.png"),
+		"primary": preload("res://assets/gems_primary.png"),
+		"secondary": preload("res://assets/gems_secondary.png")
+	},
+	"leaves": {
+		"full": preload("res://assets/leaves.png"),
+		"primary": preload("res://assets/leaves_primary.png"),
+		"secondary": preload("res://assets/leaves_secondary.png")
+	}
 }
 
 func _init():
@@ -94,12 +118,18 @@ func update_potion_animation():
 			$TopOutline.hide()
 			$MidOutline.hide()
 			$BottomOutline.hide()
-	for i in range(2):
-		if i < len(ingredients):
-			ingredient_sprites[i].texture = ingredient_textures[ingredients[i]]
-			ingredient_sprites[i].visible = true
-		else:
-			ingredient_sprites[i].visible = false
+	if len(ingredients) == 0:
+		$Ingredient1.visible = false
+		$Ingredient2.visible = false
+	elif len(ingredients) == 1:
+		ingredient_sprites[0].texture = ingredient_textures[ingredients[0]]["full"]
+		ingredient_sprites[0].visible = true
+		ingredient_sprites[1].visible = false
+	else:
+		ingredient_sprites[0].texture = ingredient_textures[ingredients[0]]["primary"]
+		ingredient_sprites[1].texture = ingredient_textures[ingredients[1]]["secondary"]
+		ingredient_sprites[0].visible = true
+		ingredient_sprites[1].visible = true
 
 func start_cooking():
 	if not is_cooking and color != "empty":
@@ -148,6 +178,8 @@ func set_color(new_color : String):
 		
 func add_ingredients(new_ingredient : String):
 	if new_ingredient in available_ingredients and len(ingredients) < 2 :
+		if new_ingredient in ingredients:
+			return
 		ingredients.append(new_ingredient)
 		update_potion_animation()
 
