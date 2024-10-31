@@ -69,16 +69,31 @@ func _init():
 func update_potion_animation():
 	if color == "empty":
 		$AnimatedSprite2D.play("empty")
+		$TopOutline.hide()
+		$MidOutline.hide()
+		$BottomOutline.hide()
 	else:
 		if cooking_level < 33:
 			$AnimatedSprite2D.play(color + "_high")
+			$TopOutline.show()
+			$MidOutline.hide()
+			$BottomOutline.hide()
 		elif cooking_level < 66:
 			$AnimatedSprite2D.visible = true
 			$AnimatedSprite2D.play(color + "_mid")
+			$TopOutline.hide()
+			$MidOutline.show()
+			$BottomOutline.hide()
 		elif cooking_level < 100:
 			$AnimatedSprite2D.play(color + "_low")
+			$TopOutline.hide()
+			$MidOutline.hide()
+			$BottomOutline.show()
 		else: 
 			$AnimatedSprite2D.play("empty")
+			$TopOutline.hide()
+			$MidOutline.hide()
+			$BottomOutline.hide()
 	for i in range(2):
 		if i < len(ingredients):
 			ingredient_sprites[i].texture = ingredient_textures[ingredients[i]]
@@ -123,6 +138,12 @@ func _on_timer_timeout():
 func set_color(new_color : String):
 	if new_color in available_colors:
 		color = new_color
+		if color == "empty":
+			$TopOutline.hide()
+			$MidOutline.hide()
+			$BottomOutline.hide()
+		else:
+			$TopOutline.show()
 		update_potion_animation()
 		
 func add_ingredients(new_ingredient : String):
