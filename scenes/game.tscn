@@ -102,6 +102,8 @@ offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AddScoreHTTPRequest" type="HTTPRequest" parent="GameOver"]
+
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
 layout_mode = 1
 anchors_preset = 8
@@ -109,27 +111,65 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.5
-offset_top = -83.0
-offset_right = 135.5
-offset_bottom = 83.0
+offset_left = -196.0
+offset_top = -190.0
+offset_right = 196.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="GameOver/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 70
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="GameOver/VBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Achieved Score: "
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LineEdit" type="LineEdit" parent="GameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Your Name"
+max_length = 15
+
+[node name="SendScoreButton" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_msr6j")
+theme_override_font_sizes/font_size = 40
+text = "Send"
+
+[node name="SendingStatus" type="Label" parent="GameOver/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sending..."
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+offset_left = 604.0
+offset_top = 582.0
+offset_right = 996.0
+offset_bottom = 778.0
+theme_override_constants/separation = 50
+
+[node name="Restart" type="Button" parent="GameOver/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
 
-[node name="MainMenu" type="Button" parent="GameOver/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="GameOver/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
@@ -176,6 +216,12 @@ layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Start"
+
+[node name="Leaderboard" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_msr6j")
+theme_override_font_sizes/font_size = 50
+text = "Leaderboard"
 
 [node name="Options" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -226,6 +272,12 @@ layout_mode = 2
 theme = ExtResource("6_msr6j")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
+
+[node name="MainMenu" type="Button" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_msr6j")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
 
 [node name="Story" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -304,11 +356,121 @@ autoplay = true
 [node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_brqqf")
 
+[node name="Leaderboard" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GetScoreHTTPRequest" type="HTTPRequest" parent="Leaderboard"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Leaderboard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -415.5
+offset_right = 219.5
+offset_bottom = 439.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Leaderboard/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="Scores" type="VBoxContainer" parent="Leaderboard/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score1" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score2" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score3" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score4" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score5" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score6" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score7" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score8" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score9" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Score10" type="Label" parent="Leaderboard/VBoxContainer/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="Leaderboard/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_msr6j")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
 [connection signal="game_over" from="MainBox/VBoxContainer/Counter" to="." method="_on_counter_game_over"]
 [connection signal="pressed" from="MainBox/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="GameOver/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="GameOver/VBoxContainer/MainMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="request_completed" from="GameOver/AddScoreHTTPRequest" to="." method="_on_gameover_http_request_request_completed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/HBoxContainer/SendScoreButton" to="." method="_on_send_score_button_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer2/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer2/MainMenu" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Start" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/Continue" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Options/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Options/VBoxContainer/MainMenu" to="." method="_on_options_main_menu_button_pressed"]
 [connection signal="pressed" from="Story/GotIt" to="." method="_on_got_it_button_pressed"]
+[connection signal="request_completed" from="Leaderboard/GetScoreHTTPRequest" to="." method="_on_leaderboard_http_request_request_completed"]
+[connection signal="pressed" from="Leaderboard/VBoxContainer/MainMenu" to="." method="_on_leaderboard_main_menu_button_pressed"]
