@@ -13,7 +13,7 @@ config_version=5
 config/name="Echoes of the brew"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/potion_purple_mid_1.png"
 
 [autoload]
 
