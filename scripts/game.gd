@@ -22,6 +22,7 @@ func reset_game():
 			new_potion.current_spot = spot 
 			add_child(new_potion) 
 			new_potion.global_position = spot.global_position
+	%GameOver/VBoxContainer/HBoxContainer/SendScoreButton.disabled = false
 
 
 func game_over() -> void:
